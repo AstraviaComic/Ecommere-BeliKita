@@ -3,194 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BeliKita - Produk Kelas Atas</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f3f4f6;
-      color: #111827;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background-color: #2563eb;
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .top-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-grow: 1;
-      max-width: 600px;
-    }
-
-    .search-container {
-      flex: 1;
-    }
-
-    .search-container input[type="search"] {
-      width: 100%;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: none;
-      font-size: 16px;
-      outline: none;
-    }
-
-    .balance {
-      background-color: #3b82f6;
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .cart-icon svg {
-      width: 28px;
-      height: 28px;
-      fill: white;
-    }
-
-    main {
-      padding: 24px;
-      background-color: #e5e7eb;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .categories-top {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .categories-top button {
-      background-color: white;
-      border: 2px solid #2563eb;
-      color: #2563eb;
-      padding: 8px 20px;
-      border-radius: 999px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .categories-top button.active {
-      background-color: #2563eb;
-      color: white;
-    }
-
-    .product-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .product-card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-image {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-
-    .product-info {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .product-category {
-      font-size: 12px;
-      font-weight: bold;
-      color: #2563eb;
-      border: 1px solid #2563eb;
-      padding: 2px 12px;
-      border-radius: 999px;
-      width: fit-content;
-      text-transform: uppercase;
-    }
-
-    .product-name {
-      font-size: 16px;
-      font-weight: bold;
-      color: #111827;
-    }
-
-    .product-description {
-      font-size: 14px;
-      color: #6b7280;
-    }
-
-    .product-price {
-      font-size: 16px;
-      font-weight: bold;
-      color: #10b981;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .top-right {
-        width: 100%;
-      }
-
-      main {
-        padding: 16px;
-      }
-
-      .categories-top {
-        overflow-x: auto;
-      }
-
-      .product-list {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      }
-    }
-  </style>
+  <title>TokoKita - Produk</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <div class="logo">BeliKita</div>
-    <div class="top-right">
-      <div class="search-container">
-        <input type="search" placeholder="Cari produk..." />
+    <div class="judul">TokoKita</div>
+    <div class="atas">
+      <div class="cari">
+        <input type="search" placeholder="Cari barang..." />
       </div>
-      <div class="balance">Rp 100.000</div>
-      <div class="cart-icon">
+      <div class="saldo">Rp 100.000</div>
+      <div class="keranjang">
         <svg viewBox="0 0 24 24">
           <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.82 14H18c.83 0 1.54-.5 1.84-1.22l3.32-7.87a.996.996 0 0 0-.92-1.41H5.21L4.27 1H1v2h2l3.6 7.59-1.35 2.44c-.14.25-.25.53-.25.83 0 .83.67 1.5 1.5 1.5H19v-2H7.82z"/>
         </svg>
@@ -199,72 +23,55 @@
   </header>
 
   <main>
-    <nav class="categories-top">
-      <button class="active" onclick="filterCategory('all')">Semua</button>
+    <nav class="kategori">
+      <button class="aktif" onclick="filterCategory('all')">Semua</button>
       <button onclick="filterCategory('Elektronik')">Elektronik</button>
-      <button onclick="filterCategory('Fashion')">Fashion</button>
-      <button onclick="filterCategory('Kosmetik')">Kosmetik</button>
-      <button onclick="filterCategory('Perlengkapan')">Perlengkapan Rumah</button>
+      <button onclick="filterCategory('Pakaian')">Pakaian</button>
+      <button onclick="filterCategory('Kecantikan')">Kecantikan</button>
+      <button onclick="filterCategory('Rumah')">Rumah</button>
     </nav>
 
-    <section class="product-list" id="productList">
-      <div class="product-card" data-category="Elektronik">
-        <img class="product-image" src="https://www.dummyimg.in/placeholder?text=Smartphone+Premium+X&bg_color=%2343e123" alt="Smartphone Premium X">
-        <div class="product-info">
-          <div class="product-category">Elektronik</div>
-          <div class="product-name">Smartphone Premium X</div>
-          <div class="product-description">Smartphone dengan kamera canggih dan performa tinggi.</div>
-          <div class="product-price">Rp 7.500.000</div>
+    <section class="daftar-barang" id="productList">
+      <div class="kartu-barang" data-category="Elektronik">
+        <img class="gambar-barang" src="https://www.dummyimg.in/placeholder?text=HP+Jadul&bg_color=%2343e123" alt="HP Jadul">
+        <div class="isi-barang">
+          <div class="kategori-barang">Elektronik</div>
+          <div class="nama-barang">HP Jadul</div>
+          <div class="deskripsi-barang">Telepon genggam buat nelpon dan SMS aja.</div>
+          <div class="harga-barang">Rp 300.000</div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Fashion">
-        <img class="product-image" src="https://www.dummyimg.in/placeholder?text=Jam+Tangan+Luxury&bg_color=%23e24343" alt="Jam Tangan Luxury">
-        <div class="product-info">
-          <div class="product-category">Fashion</div>
-          <div class="product-name">Jam Tangan Luxury</div>
-          <div class="product-description">Jam tangan eksklusif dengan desain elegan.</div>
-          <div class="product-price">Rp 3.500.000</div>
+      <div class="kartu-barang" data-category="Pakaian">
+        <img class="gambar-barang" src="https://www.dummyimg.in/placeholder?text=Kaos+Polos&bg_color=%23e24343" alt="Kaos Polos">
+        <div class="isi-barang">
+          <div class="kategori-barang">Pakaian</div>
+          <div class="nama-barang">Kaos Polos</div>
+          <div class="deskripsi-barang">Kaos simpel buat sehari-hari, adem dipakai.</div>
+          <div class="harga-barang">Rp 50.000</div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Kosmetik">
-        <img class="product-image" src="https://www.dummyimg.in/placeholder?text=Lipstik+Matte&bg_color=%23c43e8d" alt="Lipstik Matte">
-        <div class="product-info">
-          <div class="product-category">Kosmetik</div>
-          <div class="product-name">Lipstik Matte</div>
-          <div class="product-description">Lipstik dengan hasil matte tahan lama.</div>
-          <div class="product-price">Rp 250.000</div>
+      <div class="kartu-barang" data-category="Kecantikan">
+        <img class="gambar-barang" src="https://www.dummyimg.in/placeholder?text=Bedak+Biasa&bg_color=%23c43e8d" alt="Bedak Biasa">
+        <div class="isi-barang">
+          <div class="kategori-barang">Kecantikan</div>
+          <div class="nama-barang">Bedak</div>
+          <div class="deskripsi-barang">Bedak bikin putih.</div>
+          <div class="harga-barang">Rp 25.000</div>
         </div>
       </div>
 
-      <div class="product-card" data-category="Perlengkapan">
-        <img class="product-image" src="https://www.dummyimg.in/placeholder?text=Vacuum+Cleaner+Ultra&bg_color=%23e2b743" alt="Vacuum Cleaner Ultra">
-        <div class="product-info">
-          <div class="product-category">Perlengkapan Rumah</div>
-          <div class="product-name">Vacuum Cleaner Ultra</div>
-          <div class="product-description">Pembersih debu otomatis dan hemat daya.</div>
-          <div class="product-price">Rp 1.200.000</div>
+      <div class="kartu-barang" data-category="Rumah">
+        <img class="gambar-barang" src="https://www.dummyimg.in/placeholder?text=Sapu+Ijuk&bg_color=%23e2b743" alt="Sapu Ijuk">
+        <div class="isi-barang">
+          <div class="kategori-barang">Rumah</div>
+          <div class="nama-barang">Sapu Ijuk</div>
+          <div class="deskripsi-barang">Ori dari indonesia</div>
+          <div class="harga-barang">Rp 20.000</div>
         </div>
       </div>
     </section>
   </main>
-
-  <script>
-    function filterCategory(category) {
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      const buttons = document.querySelectorAll('.categories-top button');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-    }
-  </script>
 </body>
 </html>
