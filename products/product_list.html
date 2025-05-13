@@ -1,398 +1,308 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BeliKita - Produk Kelas Atas</title>
-<style>
-  /* Base and reset */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f3f4f6;
-    color: #111827;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background-color: #2563eb; /* blue-600 */
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .logo {
-    font-weight: 800;
-    font-size: 1.75rem;
-    letter-spacing: 0.1em;
-    user-select: none;
-  }
-  .top-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .balance {
-    background-color: #3b82f6; /* blue-500 */
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    font-size: 1rem;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
-    white-space: nowrap;
-    user-select: none;
-  }
-  .cart-icon {
-    position: relative;
-    cursor: pointer;
-  }
-  .cart-icon svg {
-    width: 28px;
-    height: 28px;
-    fill: white;
-    transition: fill 0.3s;
-  }
-  .cart-icon:hover svg {
-    fill: #a5b4fc; /* lighter blue */
-  }
-  .search-container {
-    flex: 1 1 300px;
-    max-width: 500px;
-  }
-  .search-container input[type="search"] {
-    width: 100%;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    border: none;
-    font-size: 1rem;
-    outline: none;
-    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-    transition: box-shadow 0.3s;
-  }
-  .search-container input[type="search"]:focus {
-    box-shadow: 0 0 8px #3b82f6;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem 2rem;
-    gap: 1.5rem;
-    flex-grow:1;
-    background-color: #e5e7eb; /* gray-200 */
-  }
-
-  /* Category buttons on top */
-  .categories-top {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .categories-top button {
-    background-color: white;
-    border: 2px solid #3b82f6;
-    color: #2563eb;
-    padding: 0.5rem 1.25rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    user-select: none;
-    flex-shrink: 0;
-  }
-  .categories-top button:hover {
-    background-color: #3b82f6;
-    color: white;
-    box-shadow: 0 4px 6px rgb(59 130 246 / 0.5);
-  }
-  .categories-top button.active {
-    background-color: #2563eb;
-    color: white;
-    box-shadow: 0 6px 10px rgb(37 99 235 / 0.6);
-  }
-
-  section.product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-
-  /* Product card */
-  .product-card {
-    background-color: white;
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1), 0 1px 2px rgb(0 0 0 / 0.06);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-  }
-  .product-card:hover {
-    box-shadow: 0 10px 15px rgb(59 130 246 / 0.5);
-    transform: translateY(-5px);
-  }
-
-  .product-image {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-bottom: 1px solid #e5e7eb;
-    transition: transform 0.4s ease;
-  }
-  .product-card:hover .product-image {
-    transform: scale(1.05);
-  }
-
-  .product-info {
-    padding: 1rem 1.25rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .product-category {
-    align-self: flex-start;
-    padding: 0.15rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #3b82f6;
-    border: 1.5px solid #3b82f6;
-    margin-bottom: 0.75rem;
-    user-select: none;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  .product-card:hover .product-category {
-    background-color: #3b82f6;
-    color: white;
-  }
-
-  .product-name {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #111827;
-    margin: 0 0 0.5rem 0;
-    flex-shrink: 0;
-  }
-  .product-description {
-    font-size: 0.9rem;
-    color: #6b7280;
-    flex-grow: 1;
-    margin-bottom: 1rem;
-  }
-  .product-price {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #10b981;
-    text-shadow: 0 0 5px #10b981aa;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    header {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BeliKita - Produk Kelas Atas</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f3f4f6;
+      color: #111827;
+      display: flex;
       flex-direction: column;
-      align-items: stretch;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #2563eb;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
       gap: 1rem;
+      color: white;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.75rem;
+      letter-spacing: 1px;
     }
     .top-right {
-      justify-content: flex-end;
-    }
-    main {
-      padding: 1rem 1rem 2rem;
-    }
-    .categories-top {
-      justify-content: flex-start;
-      overflow-x: auto;
-      padding-bottom: 8px;
-    }
-    section.product-list {
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      display: flex;
+      align-items: center;
       gap: 1rem;
     }
-  }
-</style>
+    .balance {
+      background-color: #3b82f6;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      font-size: 1rem;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+    }
+    .cart-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+      transition: 0.3s;
+    }
+    .cart-icon:hover svg {
+      fill: #a5b4fc;
+    }
+
+    main {
+      flex-grow: 1;
+      background-color: #e5e7eb;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .categories-top {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .categories-top button {
+      background: white;
+      border: 2px solid #3b82f6;
+      color: #2563eb;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .categories-top button:hover {
+      background-color: #3b82f6;
+      color: white;
+      box-shadow: 0 4px 6px rgba(59,130,246,0.5);
+    }
+    .categories-top button.active {
+      background-color: #2563eb;
+      color: white;
+      box-shadow: 0 6px 10px rgba(37,99,235,0.6);
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      box-shadow: 0 10px 15px rgba(59,130,246,0.5);
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-bottom: 1px solid #e5e7eb;
+      transition: transform 0.4s;
+    }
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      align-self: flex-start;
+      padding: 0.15rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #3b82f6;
+      border: 1.5px solid #3b82f6;
+      margin-bottom: 0.75rem;
+      transition: 0.3s;
+    }
+    .product-card:hover .product-category {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .product-name {
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+    .product-description {
+      font-size: 0.9rem;
+      color: #6b7280;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+    .product-price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #10b981;
+      text-shadow: 0 0 5px rgba(16,185,129,0.67);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .top-right {
+        justify-content: flex-end;
+      }
+      main {
+        padding: 1rem;
+      }
+      .categories-top {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+      .product-list {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="logo" aria-label="Logo BeliKita">BeliKita</div>
-  <div class="top-right" role="search">
-    <div class="search-container" style="flex-grow:1; max-width: 400px;">
-      <input id="searchInput" type="search" placeholder="Cari produk..." aria-label="Cari produk" />
+  <header>
+    <div class="logo">BeliKita</div>
+    <div class="top-right">
+      <div class="balance">$100.91</div>
+      <div class="cart-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.82 14H18c.83 0 1.54-.5 1.84-1.22l3.32-7.87a.996.996 0 0 0-.92-1.41H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44c-.14.25-.25.53-.25.83 0 .83.67 1.5 1.5 1.5H19v-2H7.82z"/></svg>
+      </div>
     </div>
-    <div class="balance" aria-label="Saldo akun">$100.91</div>
-    <div class="cart-icon" role="button" tabindex="0" aria-label="Keranjang belanja">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.82 14H18c.83 0 1.54-.5 1.84-1.22l3.32-7.87a.996.996 0 0 0-.92-1.41H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44c-.14.25-.25.53-.25.83 0 .83.67 1.5 1.5 1.5H19v-2H7.82z"/></svg>
-    </div>
-  </div>
-</header>
-<main>
-  <nav class="categories-top" role="tablist" aria-label="Kategori produk" id="categoryList">
-    <button class="active" data-category="all" role="tab" aria-selected="true" tabindex="0">Semua</button>
-    <button data-category="elektronik" role="tab" tabindex="-1">Elektronik</button>
-    <button data-category="fashion" role="tab" tabindex="-1">Fashion</button>
-    <button data-category="kosmetik" role="tab" tabindex="-1">Kosmetik</button>
-    <button data-category="perlengkapan_rumah" role="tab" tabindex="-1">Perlengkapan Rumah</button>
-  </nav>
-  <section class="product-list" id="productList" aria-live="polite" aria-label="Daftar produk">
-    <!-- Product cards injected by JS -->
-  </section>
-</main>
+  </header>
+  <main>
+    <nav class="categories-top" id="categoryList">
+      <button class="active" data-category="all">Semua</button>
+      <button data-category="elektronik">Elektronik</button>
+      <button data-category="fashion">Fashion</button>
+      <button data-category="kosmetik">Kosmetik</button>
+      <button data-category="perlengkapan_rumah">Perlengkapan Rumah</button>
+      <button data-category="perlengkapan_rumah">Rekomendasi</button>
+      <button data-category="perlengkapan_rumah">bandingkan produk</button>
+      <button data-category="perlengkapan_rumah">Bundle produk</button>
+    </nav>
+    <section class="product-list" id="productList"></section>
+  </main>
 
-<script>
-  const products = [
-    {
-      id: 1,
-      name: "Smartphone Premium X",
-      category: "elektronik",
-      price: 7500000,
-      img: "https://placehold.co/400x300?text=Smartphone+Premium+X",
-      description: "Smartphone dengan kamera canggih dan performa tinggi."
-    },
-    {
-      id: 2,
-      name: "Jam Tangan Luxury",
-      category: "fashion",
-      price: 3500000,
-      img: "https://placehold.co/400x300?text=Jam+Tangan+Luxury",
-      description: "Jam tangan eksklusif dengan desain elegan."
-    },
-    {
-      id: 3,
-      name: "Lipstik Matte",
-      category: "kosmetik",
-      price: 250000,
-      img: "https://placehold.co/400x300?text=Lipstik+Matte",
-      description: "Lipstik dengan hasil matte tahan lama."
-    },
-    {
-      id: 4,
-      name: "Speaker Bluetooth HiFi",
-      category: "elektronik",
-      price: 1250000,
-      img: "https://placehold.co/400x300?text=Speaker+Bluetooth+HiFi",
-      description: "Speaker bluetooth dengan suara jernih dan bass kuat."
-    },
-    {
-      id: 5,
-      name: "Jas Formal Pria",
-      category: "fashion",
-      price: 2200000,
-      img: "https://placehold.co/400x300?text=Jas+Formal+Pria",
-      description: "Jas formal pria dengan potongan modern."
-    },
-    {
-      id: 6,
-      name: "Set Alat Masak Luxury",
-      category: "perlengkapan_rumah",
-      price: 5200000,
-      img: "https://placehold.co/400x300?text=Set+Alat+Masak+Luxury",
-      description: "Set alat masak lengkap berbahan stainless steel premium."
+  <script>
+    const products = [
+      {
+        id: 1,
+        name: "Smartphone Premium X",
+        category: "elektronik",
+        price: 7500000,
+        img: "https://placehold.co/400x300?text=Smartphone+Premium+X",
+        description: "Smartphone dengan kamera canggih dan performa tinggi."
+      },
+      {
+        id: 2,
+        name: "Jam Tangan Luxury",
+        category: "fashion",
+        price: 3500000,
+        img: "https://placehold.co/400x300?text=Jam+Tangan+Luxury",
+        description: "Jam tangan eksklusif dengan desain elegan."
+      },
+      {
+        id: 3,
+        name: "Lipstik Matte",
+        category: "kosmetik",
+        price: 250000,
+        img: "https://placehold.co/400x300?text=Lipstik+Matte",
+        description: "Lipstik dengan hasil matte tahan lama."
+      },
+      {
+        id: 4,
+        name: "Speaker Bluetooth HiFi",
+        category: "elektronik",
+        price: 1250000,
+        img: "https://placehold.co/400x300?text=Speaker+Bluetooth+HiFi",
+        description: "Speaker bluetooth dengan suara jernih dan bass kuat."
+      },
+      {
+        id: 5,
+        name: "Jas Formal Pria",
+        category: "fashion",
+        price: 2200000,
+        img: "https://placehold.co/400x300?text=Jas+Formal+Pria",
+        description: "Jas formal pria dengan potongan modern."
+      },
+      {
+        id: 6,
+        name: "Set Alat Masak Luxury",
+        category: "perlengkapan_rumah",
+        price: 5200000,
+        img: "https://placehold.co/400x300?text=Set+Alat+Masak+Luxury",
+        description: "Set alat masak lengkap berbahan stainless steel premium."
+      }
+    ];
+
+    const productList = document.getElementById("productList");
+    const categoryButtons = document.querySelectorAll("#categoryList button");
+
+    function displayProducts(filter = "all") {
+      productList.innerHTML = "";
+      products
+        .filter(p => filter === "all" || p.category === filter)
+        .forEach(product => {
+          const card = document.createElement("div");
+          card.className = "product-card";
+          card.innerHTML = `
+            <img class="product-image" src="${product.img}" alt="${product.name}">
+            <div class="product-info">
+              <div class="product-category">${product.category}</div>
+              <div class="product-name">${product.name}</div>
+              <div class="product-description">${product.description}</div>
+              <div class="product-price">Rp ${product.price.toLocaleString("id-ID")}</div>
+            </div>
+          `;
+          productList.appendChild(card);
+        });
     }
-  ];
 
-  const productListEl = document.getElementById('productList');
-  const categoryListEl = document.getElementById('categoryList');
-  const searchInput = document.getElementById('searchInput');
-  const categoryButtons = Array.from(categoryListEl.querySelectorAll('button'));
-
-  function formatPrice(num) {
-    return "Rp" + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
-
-  function renderProducts(category = 'all', searchTerm = '') {
-    productListEl.innerHTML = '';
-    let filteredProducts = products;
-
-    if (category !== 'all') {
-      filteredProducts = filteredProducts.filter(p => p.category === category);
-    }
-    if (searchTerm.trim() !== '') {
-      const lowerTerm = searchTerm.trim().toLowerCase();
-      filteredProducts = filteredProducts.filter(p =>
-        p.name.toLowerCase().includes(lowerTerm) ||
-        p.description.toLowerCase().includes(lowerTerm)
-      );
-    }
-    if (filteredProducts.length === 0) {
-      productListEl.innerHTML = "<p style='color:#6b7280;font-size:1rem;'>Produk tidak ditemukan.</p>";
-      return;
-    }
-    for (const product of filteredProducts) {
-      const card = document.createElement('article');
-      card.className = 'product-card';
-      card.tabIndex = 0;
-      card.setAttribute('role', 'group');
-      card.setAttribute('aria-label', `${product.name}, kategori ${product.category.replace('_',' ')}, harga ${formatPrice(product.price)}`);
-      card.innerHTML = `
-        <img class="product-image" src="${product.img}" alt="Gambar ${product.name}" />
-        <div class="product-info">
-          <span class="product-category">${product.category.replace('_',' ').toUpperCase()}</span>
-          <h3 class="product-name">${product.name}</h3>
-          <p class="product-description">${product.description}</p>
-          <div class="product-price">${formatPrice(product.price)}</div>
-        </div>
-      `;
-      productListEl.appendChild(card);
-    }
-  }
-
-  // Handle category button clicks and keyboard navigation for accessibility
-  categoryListEl.addEventListener('click', e => {
-    if (e.target.tagName === 'BUTTON') {
-      setActiveCategory(e.target);
-    }
-  });
-
-  categoryListEl.addEventListener('keydown', e => {
-    const index = categoryButtons.indexOf(document.activeElement);
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      const nextIndex = (index + 1) % categoryButtons.length;
-      categoryButtons[nextIndex].focus();
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      const prevIndex = (index - 1 + categoryButtons.length) % categoryButtons.length;
-      categoryButtons[prevIndex].focus();
-    } else if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      setActiveCategory(document.activeElement);
-    }
-  });
-
-  function setActiveCategory(button) {
-    categoryButtons.forEach(btn => {
-      btn.classList.remove('active');
-      btn.setAttribute('aria-selected', 'false');
-      btn.tabIndex = -1;
+    categoryButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelector(".categories-top .active")?.classList.remove("active");
+        button.classList.add("active");
+        displayProducts(button.dataset.category);
+      });
     });
-    button.classList.add('active');
-    button.setAttribute('aria-selected', 'true');
-    button.tabIndex = 0;
-    button.focus();
 
-    renderProducts(button.getAttribute('data-category'), searchInput.value);
-  }
-
-  // Search input handler
-  searchInput.addEventListener('input', e => {
-    const activeBtn = categoryListEl.querySelector('button.active');
-    const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
-    renderProducts(category, e.target.value);
-  });
-
-  // Initial render
-  renderProducts();
-</script>
+    displayProducts();
+  </script>
 </body>
 </html>
-
