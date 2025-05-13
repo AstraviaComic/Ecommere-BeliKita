@@ -1,0 +1,118 @@
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 15px 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: #007BFF;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 20px;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: #007BFF;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    }
+
+    .intro h1 {
+      font-size: 36px;
+      color: #007BFF;
+    }
+
+    .intro p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .team-area {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .profile-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .profile-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .profile-card h2 {
+      font-size: 20px;
+      margin: 10px 0 5px;
+    }
+
+    .profile-card h3 {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .profile-card p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      color: #333;
+      margin-top: 40px;
+    }
