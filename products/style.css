@@ -1,0 +1,152 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #f3f4f6;
+      color: #111;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #2563eb;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .judul {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .atas {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-grow: 1;
+      max-width: 600px;
+    }
+
+    .cari {
+      flex: 1;
+    }
+
+    .cari input[type="search"] {
+      width: 100%;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .saldo {
+      background-color: #3b82f6;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .keranjang svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    main {
+      padding: 24px;
+      background-color: #e5e7eb;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .kategori {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .kategori button {
+      background-color: white;
+      border: 2px solid #2563eb;
+      color: #2563eb;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .kategori button.aktif {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .daftar-barang {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .kartu-barang {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gambar-barang {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .isi-barang {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .kategori-barang {
+      font-size: 12px;
+      font-weight: bold;
+      color: #2563eb;
+      border: 1px solid #2563eb;
+      padding: 2px 12px;
+      border-radius: 999px;
+      width: fit-content;
+      text-transform: uppercase;
+    }
+
+    .nama-barang {
+      font-size: 16px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    .deskripsi-barang {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .harga-barang {
+      font-size: 16px;
+      font-weight: bold;
+      color: #10b981;
+    }
