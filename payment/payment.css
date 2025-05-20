@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 1rem;
+}
+
+th {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+label {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+input[type="radio"] {
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 auto;
+    display: block;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+}
+
+.back-button img {
+    width: 30px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 1rem;
+}

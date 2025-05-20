@@ -3,306 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BeliKita - Produk Kelas Atas</title>
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f3f4f6;
-      color: #111827;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background-color: #2563eb;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      color: white;
-    }
-    .logo {
-      font-weight: bold;
-      font-size: 1.75rem;
-      letter-spacing: 1px;
-    }
-    .top-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .balance {
-      background-color: #3b82f6;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-weight: bold;
-      font-size: 1rem;
-      white-space: nowrap;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    }
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-    }
-    .cart-icon svg {
-      width: 28px;
-      height: 28px;
-      fill: white;
-      transition: 0.3s;
-    }
-    .cart-icon:hover svg {
-      fill: #a5b4fc;
-    }
-
-    main {
-      flex-grow: 1;
-      background-color: #e5e7eb;
-      padding: 1.5rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .categories-top {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .categories-top button {
-      background: white;
-      border: 2px solid #3b82f6;
-      color: #2563eb;
-      padding: 0.5rem 1.25rem;
-      border-radius: 9999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .categories-top button:hover {
-      background-color: #3b82f6;
-      color: white;
-      box-shadow: 0 4px 6px rgba(59,130,246,0.5);
-    }
-    .categories-top button.active {
-      background-color: #2563eb;
-      color: white;
-      box-shadow: 0 6px 10px rgba(37,99,235,0.6);
-    }
-
-    .product-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    .product-card:hover {
-      box-shadow: 0 10px 15px rgba(59,130,246,0.5);
-      transform: translateY(-5px);
-    }
-
-    .product-image {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-bottom: 1px solid #e5e7eb;
-      transition: transform 0.4s;
-    }
-    .product-card:hover .product-image {
-      transform: scale(1.05);
-    }
-
-    .product-info {
-      padding: 1rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .product-category {
-      align-self: flex-start;
-      padding: 0.15rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #3b82f6;
-      border: 1.5px solid #3b82f6;
-      margin-bottom: 0.75rem;
-      transition: 0.3s;
-    }
-    .product-card:hover .product-category {
-      background-color: #3b82f6;
-      color: white;
-    }
-
-    .product-name {
-      font-size: 1.125rem;
-      font-weight: bold;
-      color: #111827;
-      margin-bottom: 0.5rem;
-    }
-    .product-description {
-      font-size: 0.9rem;
-      color: #6b7280;
-      flex-grow: 1;
-      margin-bottom: 1rem;
-    }
-    .product-price {
-      font-size: 1rem;
-      font-weight: bold;
-      color: #10b981;
-      text-shadow: 0 0 5px rgba(16,185,129,0.67);
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .top-right {
-        justify-content: flex-end;
-      }
-      main {
-        padding: 1rem;
-      }
-      .categories-top {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 8px;
-      }
-      .product-list {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 1rem;
-      }
-    }
-  </style>
+  <title>TokoKita - Produk</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <div class="logo">BeliKita</div>
-    <div class="top-right">
-      <div class="balance">$100.91</div>
-      <div class="cart-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.82 14H18c.83 0 1.54-.5 1.84-1.22l3.32-7.87a.996.996 0 0 0-.92-1.41H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44c-.14.25-.25.53-.25.83 0 .83.67 1.5 1.5 1.5H19v-2H7.82z"/></svg>
+    <div class="judul">TokoKita</div>
+    <div class="atas">
+      <div class="cari">
+        <input type="search" placeholder="Cari barang..." />
       </div>
+      <div class="saldo">Rp 100.000</div>
+      <a href="../cart_checkout/cart.html"><i class="fa-solid fa-cart-shopping" style="color: white; font-size: 24px;"></i></a>
     </div>
   </header>
+
   <main>
-    <nav class="categories-top" id="categoryList">
-      <button class="active" data-category="all">Semua</button>
-      <button data-category="elektronik">Elektronik</button>
-      <button data-category="fashion">Fashion</button>
-      <button data-category="kosmetik">Kosmetik</button>
-      <button data-category="perlengkapan_rumah">Perlengkapan Rumah</button>
-      <button data-category="perlengkapan_rumah">Rekomendasi</button>
-      <button data-category="perlengkapan_rumah">bandingkan produk</button>
-      <button data-category="perlengkapan_rumah">Bundle produk</button>
+    <nav class="kategori">
+      <button class="aktif" onclick="filterCategory('all')">Semua</button>
+      <button onclick="filterCategory('Elektronik')">Elektronik</button>
+      <button onclick="filterCategory('Pakaian')">Pakaian</button>
+      <button onclick="filterCategory('Kecantikan')">Kecantikan</button>
+      <button onclick="filterCategory('Rumah')">Rumah</button>
     </nav>
-    <section class="product-list" id="productList"></section>
+
+    <section class="daftar-barang" id="productList">
+      <div class="kartu-barang" data-category="Elektronik">
+        <img class="gambar-barang" src="https://www.dummyimg.in/placeholder?text=HP+Jadul&bg_color=%2343e123" alt="HP Jadul">
+        <div class="isi-barang">
+          <div class="kategori-barang">Elektronik</div>
+          <div class="nama-barang">HP Jadul</div>
+          <div class="deskripsi-barang">Telepon genggam buat nelpon dan SMS aja.</div>
+          <div class="harga-barang">Rp 300.000</div>
+        </div>
+      </div>
+
+      <div class="kartu-barang" data-category="Pakaian">
+        <img class="gambar-barang" src="https://www.dummyimg.in/placeholder?text=Kaos+Polos&bg_color=%23e24343" alt="Kaos Polos">
+        <div class="isi-barang">
+          <div class="kategori-barang">Pakaian</div>
+          <div class="nama-barang">Kaos Polos</div>
+          <div class="deskripsi-barang">Kaos simpel buat sehari-hari, adem dipakai.</div>
+          <div class="harga-barang">Rp 50.000</div>
+        </div>
+      </div>
+
+      <div class="kartu-barang" data-category="Kecantikan">
+        <img class="gambar-barang" src="https://www.dummyimg.in/placeholder?text=Bedak+Biasa&bg_color=%23c43e8d" alt="Bedak Biasa">
+        <div class="isi-barang">
+          <div class="kategori-barang">Kecantikan</div>
+          <div class="nama-barang">Bedak</div>
+          <div class="deskripsi-barang">Bedak bikin putih.</div>
+          <div class="harga-barang">Rp 25.000</div>
+        </div>
+      </div>
+
+      <div class="kartu-barang" data-category="Rumah">
+        <img class="gambar-barang" src="https://www.dummyimg.in/placeholder?text=Sapu+Ijuk&bg_color=%23e2b743" alt="Sapu Ijuk">
+        <div class="isi-barang">
+          <div class="kategori-barang">Rumah</div>
+          <div class="nama-barang">Sapu Ijuk</div>
+          <div class="deskripsi-barang">Ori dari indonesia</div>
+          <div class="harga-barang">Rp 20.000</div>
+        </div>
+      </div>
+    </section>
   </main>
-
-  <script>
-    const products = [
-      {
-        id: 1,
-        name: "Smartphone Premium X",
-        category: "elektronik",
-        price: 7500000,
-        img: "https://placehold.co/400x300?text=Smartphone+Premium+X",
-        description: "Smartphone dengan kamera canggih dan performa tinggi."
-      },
-      {
-        id: 2,
-        name: "Jam Tangan Luxury",
-        category: "fashion",
-        price: 3500000,
-        img: "https://placehold.co/400x300?text=Jam+Tangan+Luxury",
-        description: "Jam tangan eksklusif dengan desain elegan."
-      },
-      {
-        id: 3,
-        name: "Lipstik Matte",
-        category: "kosmetik",
-        price: 250000,
-        img: "https://placehold.co/400x300?text=Lipstik+Matte",
-        description: "Lipstik dengan hasil matte tahan lama."
-      },
-      {
-        id: 4,
-        name: "Speaker Bluetooth HiFi",
-        category: "elektronik",
-        price: 1250000,
-        img: "https://placehold.co/400x300?text=Speaker+Bluetooth+HiFi",
-        description: "Speaker bluetooth dengan suara jernih dan bass kuat."
-      },
-      {
-        id: 5,
-        name: "Jas Formal Pria",
-        category: "fashion",
-        price: 2200000,
-        img: "https://placehold.co/400x300?text=Jas+Formal+Pria",
-        description: "Jas formal pria dengan potongan modern."
-      },
-      {
-        id: 6,
-        name: "Set Alat Masak Luxury",
-        category: "perlengkapan_rumah",
-        price: 5200000,
-        img: "https://placehold.co/400x300?text=Set+Alat+Masak+Luxury",
-        description: "Set alat masak lengkap berbahan stainless steel premium."
-      }
-    ];
-
-    const productList = document.getElementById("productList");
-    const categoryButtons = document.querySelectorAll("#categoryList button");
-
-    function displayProducts(filter = "all") {
-      productList.innerHTML = "";
-      products
-        .filter(p => filter === "all" || p.category === filter)
-        .forEach(product => {
-          const card = document.createElement("div");
-          card.className = "product-card";
-          card.innerHTML = `
-            <img class="product-image" src="${product.img}" alt="${product.name}">
-            <div class="product-info">
-              <div class="product-category">${product.category}</div>
-              <div class="product-name">${product.name}</div>
-              <div class="product-description">${product.description}</div>
-              <div class="product-price">Rp ${product.price.toLocaleString("id-ID")}</div>
-            </div>
-          `;
-          productList.appendChild(card);
-        });
-    }
-
-    categoryButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        document.querySelector(".categories-top .active")?.classList.remove("active");
-        button.classList.add("active");
-        displayProducts(button.dataset.category);
-      });
-    });
-
-    displayProducts();
-  </script>
 </body>
 </html>
