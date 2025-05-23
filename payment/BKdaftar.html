@@ -1,34 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bkcash</title>
+    <title> DAFTAR BKCASH</title>
+    <link rel="stylesheet" href="bkdaflog.css">
 </head>
 <body>
     <div class="headbk">
+        <a href="bklogin.html"><img src="../payment/aset/arrow-small-left.png" alt="kembali"></a>
         <h1>DAFTAR BKCASH</h1>
     </div>
+    <br>
     <fieldset>
-        <div class="bkdaftar">
-            <form action="" method="post">
-                <label for="">masukan nama</label>
-                <br>
-                <input type="text">
-                <br>
-                <label for="">masukan no handphone</label>
-                <br>
-                <input type="number">
-                <br>
-                <label for="">masukan pin</label>
-                <br>
-                <input type="number">
-            </form>
-        </div>
-        <br>
-        <div class="bkdaf">
-            <button>KONFIRMASI</button>
-        </div>
+        <form action="" method="post" class="bkdaftar">
+            <br>
+            <label for="nama">Masukan nama</label>
+            <br>
+            <input type="text" id="nama" name="nama" minlength="8" maxlength="16">
+            <br><br>
+            <label for="nohp">Masukan no handphone</label><br>
+            <input type="tel" name="nohp" id="nohp" pattern="08[0-9]{8,11}" minlength="10" maxlength="13" required>
+            <br><br>
+            <label for="pin">Masukan PIN</label><br>
+            <input type="password" id="pin" name="pin" maxlength="6"><br><br>
+
+            <button type="submit">DAFTAR</button>
+        </form>
     </fieldset>
 </body>
 </html>
