@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Produk</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .container {
+      display: flex;
+      gap: 2rem;
+    }
+    .form-section {
+      width: 35%;
+      padding: 1rem;
+      background: #f5f5f5;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .table-section {
+      width: 65%;
+      overflow-x: auto;
+    }
+    input, select, button, textarea {
+      margin: .4rem 0;
+      padding: .5rem;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    label { 
+      margin-top: 1rem; 
+      display: block; 
+      font-weight: bold; 
+      color: #333;
+    }
+    .produk-table {
+      width: 100%;
+      margin-top: 1rem;
+      border-collapse: collapse;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .produk-table th {
+      background-color: #f8f9fa;
+      position: sticky;
+      top: 0;
+    }
+    .produk-table th, .produk-table td {
+      padding: .75rem;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: middle;
+    }
+    .produk-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .produk-table tr:hover {
+      background-color: #f1f1f1;
+    }
+    .produk-table img {
+      width: 40px;
+      height: auto;
+      border-radius: 4px;
+    }
+    .aksi-btn {
+      margin-right: .3rem;
+      padding: .3rem .6rem;
+      font-size: .9rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .edit { 
+      background: #ffc107; 
+      border: none; 
+      color: #212529;
+    }
+    .edit:hover {
+      background: #e0a800;
+    }
+    .hapus { 
+      background: #dc3545; 
+      border: none; 
+      color: white; 
+    }
+    .hapus:hover {
+      background: #c82333;
+    }
+    select.variase-filter {
+      width: auto;
+      padding: .3rem;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #0069d9;
+    }
+    #daftarVariasi {
+      list-style-type: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    #daftarVariasi li {
+      background: white;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #daftarVariasi button {
+      background: #dc3545;
+      padding: 0.2rem 0.5rem;
+    }
+    #daftarVariasi button:hover {
+      background: #c82333;
+    }
+    .section-title {
+      color: #333;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: #333;">Admin Produk</h1>
+  
+  <div class="container">
+    <!-- Form Input Section -->
+    <div class="form-section">
+      <h2 class="section-title">Form Produk</h2>
+      
+      <label>Nama Produk</label>
+      <input type="text" id="nama" placeholder="Masukkan nama produk" />
+
+      <label>Deskripsi</label>
+      <textarea id="deskripsi" rows="3" placeholder="Masukkan deskripsi produk"></textarea>
+
+      <label>Harga</label>
+      <input type="number" id="harga" placeholder="Masukkan harga" />
+
+      <label>Kategori</label>
+      <select id="kategori">
+        <option value="">-- Pilih Kategori --</option>
+        <option value="Elektronik">Elektronik</option>
+        <option value="Pakaian">Pakaian</option>
+        <option value="Makanan">Makanan</option>
+        <option value="Aksesoris">Aksesoris</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>URL Gambar</label>
+      <input type="text" id="gambar" placeholder="Masukkan URL gambar" />
+
+      <label>Variasi Produk</label>
+      <input type="text" id="namaVariasi" placeholder="Contoh: Merah / L">
+      <input type="number" id="stokVariasi" placeholder="Stok">
+      <button type="button" onclick="tambahVariasi()">+ Tambah Variasi</button>
+      <ul id="daftarVariasi"></ul>
+
+      <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+        <button onclick="simpanProduk()" style="flex: 1;">💾 Simpan Produk</button>
+        <button onclick="resetForm()" style="flex: 1; background: #6c757d;">🔄 Reset</button>
+      </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-section">
+      <h2 class="section-title">Daftar Produk</h2>
+      <table class="produk-table">
+        <thead>
+          <tr>
+            <th>Gambar</th>
+            <th>Nama</th>
+            <th>Kategori</th>
+            <th>Harga</th>
+            <th>Filter Variasi</th>
+            <th>Stok</th>
+            <th>Terjual</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="tabelProduk"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let produk = JSON.parse(localStorage.getItem("produk")) || [];
+    let editIndex = null;
+    let variasiSementara = [];
+
+    function simpanProduk() {
+      const nama = document.getElementById("nama").value.trim();
+      const deskripsi = document.getElementById("deskripsi").value.trim();
+      const harga = parseInt(document.getElementById("harga").value);
+      const kategori = document.getElementById("kategori").value.trim();
+      const gambar = document.getElementById("gambar").value.trim();
+      const stok = variasiSementara.reduce((a, b) => a + b.stok, 0);
+
+      if (!nama || isNaN(harga) || !kategori || variasiSementara.length === 0) {
+        alert("Isi semua data produk dan setidaknya satu variasi.");
+        return;
+      }
+
+      // Default terjual 0 untuk semua variasi baru
+      const variasiDenganTerjual = variasiSementara.map(v => ({
+        ...v,
+        terjual: v.terjual !== undefined ? v.terjual : 0
+      }));
+
+      const item = { 
+        nama, 
+        deskripsi, 
+        harga, 
+        stok, 
+        kategori, 
+        gambar, 
+        terjual: variasiDenganTerjual.reduce((a,b) => a + b.terjual, 0), 
+        variasi: variasiDenganTerjual 
+      };
+
+      if (editIndex !== null) {
+        produk[editIndex] = item;
+        editIndex = null;
+      } else {
+        produk.push(item);
+      }
+
+      localStorage.setItem("produk", JSON.stringify(produk));
+      resetForm();
+      tampilkanProduk();
+    }
+
+    function resetForm() {
+      document.getElementById("nama").value = "";
+      document.getElementById("deskripsi").value = "";
+      document.getElementById("harga").value = "";
+      document.getElementById("kategori").value = "";
+      document.getElementById("gambar").value = "";
+      document.getElementById("namaVariasi").value = "";
+      document.getElementById("stokVariasi").value = "";
+      document.getElementById("daftarVariasi").innerHTML = "";
+      variasiSementara = [];
+      editIndex = null;
+    }
+
+    function tambahVariasi() {
+      const nama = document.getElementById("namaVariasi").value.trim();
+      const stok = parseInt(document.getElementById("stokVariasi").value);
+      if (!nama || isNaN(stok)) return alert("Isi variasi dan stok");
+
+      variasiSementara.push({ nama, stok });
+      tampilkanDaftarVariasi();
+      document.getElementById("namaVariasi").value = "";
+      document.getElementById("stokVariasi").value = "";
+    }
+
+    function tampilkanDaftarVariasi() {
+      const ul = document.getElementById("daftarVariasi");
+      ul.innerHTML = "";
+      variasiSementara.forEach((v, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `${v.nama} - Stok: ${v.stok}`;
+        
+        const delBtn = document.createElement("button");
+        delBtn.innerHTML = "❌";
+        delBtn.onclick = () => hapusVariasi(i);
+        
+        li.appendChild(delBtn);
+        ul.appendChild(li);
+      });
+    }
+
+    function hapusVariasi(i) {
+      variasiSementara.splice(i, 1);
+      tampilkanDaftarVariasi();
+    }
+
+    function updateRowProduk(index) {
+      const filterSelect = document.getElementById(`filterVariasi-${index}`);
+      const filter = filterSelect.value;
+
+      const produkItem = produk[index];
+      let stokFiltered = 0;
+      let terjualFiltered = 0;
+
+      if(filter === "semua") {
+        stokFiltered = produkItem.variasi.reduce((a, b) => a + b.stok, 0);
+        terjualFiltered = produkItem.variasi.reduce((a, b) => a + (b.terjual || 0), 0);
+      } else {
+        const varFiltered = produkItem.variasi.find(v => v.nama === filter);
+        stokFiltered = varFiltered ? varFiltered.stok : 0;
+        terjualFiltered = varFiltered ? varFiltered.terjual || 0 : 0;
+      }
+
+      document.getElementById(`stokProduk-${index}`).textContent = stokFiltered;
+      document.getElementById(`terjualProduk-${index}`).textContent = terjualFiltered;
+    }
+
+    function tampilkanProduk() {
+      const tbody = document.getElementById("tabelProduk");
+      tbody.innerHTML = "";
+
+      produk.forEach((item, i) => {
+        let opsiVariasi = `<option value="semua">Semua</option>`;
+        item.variasi.forEach(v => {
+          opsiVariasi += `<option value="${v.nama}">${v.nama}</option>`;
+        });
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><img src="${item.gambar}" onerror="this.src='https://via.placeholder.com/40'" /></td>
+          <td>${item.nama}</td>
+          <td>${item.kategori}</td>
+          <td>Rp ${item.harga.toLocaleString()}</td>
+          <td>
+            <select id="filterVariasi-${i}" class="variase-filter" onchange="updateRowProduk(${i})">
+              ${opsiVariasi}
+            </select>
+          </td>
+          <td id="stokProduk-${i}">${item.stok}</td>
+          <td id="terjualProduk-${i}">${item.terjual}</td>
+          <td>
+            <button class="aksi-btn edit" onclick="editProduk(${i})">Edit</button>
+            <button class="aksi-btn hapus" onclick="hapusProduk(${i})">Hapus</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      produk.forEach((_, i) => updateRowProduk(i));
+    }
+
+    function hapusProduk(i) {
+      if (confirm("Yakin ingin hapus produk ini?")) {
+        produk.splice(i, 1);
+        localStorage.setItem("produk", JSON.stringify(produk));
+        tampilkanProduk();
+      }
+    }
+
+    function editProduk(i) {
+      const item = produk[i];
+      document.getElementById("nama").value = item.nama;
+      document.getElementById("deskripsi").value = item.deskripsi;
+      document.getElementById("harga").value = item.harga;
+      document.getElementById("kategori").value = item.kategori;
+      document.getElementById("gambar").value = item.gambar;
+      variasiSementara = [...item.variasi];
+      tampilkanDaftarVariasi();
+      editIndex = i;
+      
+      // Scroll ke form section
+      document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Inisialisasi
+    tampilkanProduk();
+</script>
+</body>
+</html>

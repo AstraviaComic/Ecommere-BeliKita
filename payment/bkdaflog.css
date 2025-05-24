@@ -1,0 +1,60 @@
+.headbk {
+    margin-top: -22px;
+    margin-left: -8px;
+    margin-right: -8px;
+    text-align: center;
+    background-color: #0B83DB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+body{
+    font-family: sans-serif;
+    background: linear-gradient(135deg , #8DD8FF,#0B83DB);
+        height: 101vh;
+}
+.headbk img {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: -100%;
+}
+
+.bkdaftar{
+    text-align: center;
+}
+.bkdaftar button{
+    background-color: #0BCDDB;
+}
+.bklog{
+    margin-top: -22px;
+    margin-left: -8px;
+    margin-right: -8px;
+    text-align: center;
+    background-color: #0B83DB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.bklog img{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: -100%;
+}
+.bklogisi{
+    text-align: center;
+}
+.bklogisi button{
+    background-color: #0BCDDB;
+}
+fieldset{
+    background-color: whitesmoke;
+    border: 1px solid #0BCDDB;
+    padding: 20px;
+    margin: 20px auto;
+    width: fit-content;
+    border-radius: 8px;
+}
