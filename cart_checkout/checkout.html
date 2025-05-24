@@ -1,107 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Checkout</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>ECOMMERE-BELIKITA | Checkout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header */
+    .header {
+      background-color: #1677ff;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .header .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .header .user-menu {
+      font-size: 14px;
+    }
+
+    .header .user-menu span {
+      margin-left: 12px;
+    }
+
+    /* Section */
+    .section {
+      border-bottom: 1px solid #eee;
+      padding: 20px 24px;
+    }
+
+    .section h2 {
+      color: #1677ff;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .section .address, .section .product, .section .shipping {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .product-container {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 16px;
+      margin-top: 12px;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      font-weight: bold;
+    }
+
+    .product-detail {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .product-detail img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    .product-subtotal {
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .protection {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .pesan input {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .shipping {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .shipping-total {
+      text-align: right;
+      font-weight: bold;
+    }
+
+    a {
+      color: #1677ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+      .summary {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+  }
+
+  .summary-box {
+    width: 300px;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .summary-row.total {
+    font-weight: bold;
+    font-size: 18px;
+    color: #1677ff;
+  }
+
+  .summary-row.discount {
+    color: #1677ff;
+  }
+
+  .btn-submit {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 24px 24px 24px;
+  }
+
+  .btn-submit button {
+    background-color: #1677ff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn-submit button:hover {
+    background-color: #1677ff;
+  }
+
+
+  </style>
 </head>
-<body class="bg-white font-sans text-black">
-  <div class="max-w-6xl mx-auto p-4">
-    <h1 class="text-3xl font-extrabold text-center mb-4">Checkout</h1>
+<body>
 
-    <nav class="bg-gray-300 rounded-md flex justify-center space-x-6 py-2 mb-6 text-xs font-semibold text-gray-700 select-none">
-      <div class="flex items-center space-x-2">
-        <span class="step-circle bg-black text-white">1</span>
-        <span>keranjang</span>
-      </div>
-      <div class="flex items-center space-x-2">
-        <span class="step-circle bg-black text-white">2</span>
-        <span>detail checkout</span>
-      </div>
-      <div class="flex items-center space-x-2">
-        <span class="step-circle bg-gray-400 text-black">3</span>
-        <span>Jasa Pengiriman</span>
-      </div>
-      <div class="flex items-center space-x-2">
-        <span class="step-circle bg-gray-400 text-black">4</span>
-        <span>pesanan selesai</span>
-      </div>
-      <div class="flex items-center space-x-2">
-        <span class="step-circle bg-gray-400 text-black">5</span>
-        <span>detail pengiriman</span>
-      </div>
-    </nav>
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">BELIKITA | Checkout</div>
+    <div class="user-menu">
+      <span>Notifikasi</span>
+      <span>Bantuan</span>
+      <span>Bahasa Indonesia</span>
+      <span><strong>ekasafans</strong></span>
+    </div>
+  </div>
 
-    <div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
+  <!-- Alamat Pengiriman -->
+  <div class="section">
+    <h2>Alamat Pengiriman</h2>
+    <div class="address">
+      <strong>ekasafa (+62) 85791540723</strong><br>
+      Jalan Kh Agussalim No. 4, Sampang (dpn tko mutiara ilmu), KAB. SAMPANG - SAMPANG, JAWA TIMUR, ID 69216
+      <a href="#">Ubah</a><br><br>
+      <input type="checkbox"> Kirim sebagai Dropshipper
+    </div>
+  </div>
 
-      <div class="flex-1 space-y-6">
-        <form class="space-y-6">
-          <fieldset class="border border-gray-300 rounded-md p-4">
-            <legend class="font-semibold text-sm mb-2 px-2">Informasi Kontak</legend>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="flex flex-col">
-                <label for="nama-depan" class="text-xs font-semibold mb-1">Nama depan</label>
-                <input type="text" id="nama-depan" placeholder="nama depan" class="border border-gray-300 rounded px-2 py-1 text-xs" />
-              </div>
-              <div class="flex flex-col">
-                <label for="nama-belakang" class="text-xs font-semibold mb-1">Nama belakang</label>
-                <input type="text" id="nama-belakang" placeholder="nama belakang" class="border border-gray-300 rounded px-2 py-1 text-xs" />
-              </div>
-              <div class="flex flex-col">
-                <label for="nomor-telepon" class="text-xs font-semibold mb-1">Nomor telepon</label>
-                <input type="text" id="nomor-telepon" placeholder="nomor telepon" class="border border-gray-300 rounded px-2 py-1 text-xs" />
-              </div>
-              <div class="flex flex-col">
-                <label for="alamat-email" class="text-xs font-semibold mb-1">Alamat EMAIL</label>
-                <input type="email" id="alamat-email" placeholder="alamat email" class="border border-gray-300 rounded px-2 py-1 text-xs" />
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="border border-gray-300 rounded-md p-4">
-            <legend class="font-semibold text-sm mb-2 px-2">Alamat Pengiriman</legend>
-            <div class="flex flex-col space-y-4">
-              <div class="flex flex-col">
-                <label for="alamat-jalan" class="text-xs font-semibold mb-1 uppercase">Alamat / Jalan*</label>
-                <input type="text" id="alamat-jalan" class="border border-gray-300 rounded px-2 py-1 text-xs" />
-              </div>
-              <div class="flex flex-col">
-                <label for="negara" class="text-xs font-semibold mb-1 uppercase">Negara*</label>
-                <input type="text" id="negara" class="border border-gray-300 rounded px-2 py-1 text-xs" />
-              </div>
-              <div class="flex flex-col">
-                <label for="kota" class="text-xs font-semibold mb-1 uppercase">Kota*</label>
-                <input type="text" id="kota" class="border border-gray-300 rounded px-2 py-1 text-xs" />
-              </div>
-              <div class="flex flex-col">
-                <label for="kode-pos" class="text-xs font-semibold mb-1 uppercase">Kode Pos*</label>
-                <input type="text" id="kode-pos" class="border border-gray-300 rounded px-2 py-1 text-xs" />
-              </div>
-            </div>
-          </fieldset>
-        </form>
+  <!-- Produk Dipesan -->
+  <div class="section">
+    <h2>Produk Dipesan</h2>
+    <div class="product-container">
+      <div class="product-header">
+        <div>Toko Berkah Jaya</div>
+        <div><a href="#" style="color: green;">chat sekarang</a></div>
       </div>
 
-      <div class="flex-1 border border-gray-300 rounded-md p-4 text-xs">
-        <h2 class="font-bold mb-4">Ringkasan Pesanan</h2>
-
-        <div class="flex items-center mb-4 space-x-3">
-          <img src="laptop.jpg" alt="Laptop Lenovo" class="w-10 h-10 object-contain" />
-          <div class="flex-1">
-            <div class="font-semibold">Laptop Lenovo</div>
-            <div class="text-gray-500 text-[10px]">warna hitam</div>
-            <div class="mt-1 flex items-center space-x-2 text-xs">
-              <button class="border border-gray-400 rounded px-1">-</button>
-              <span>1</span>
-              <button class="border border-gray-400 rounded px-1">+</button>
-            </div>
-          </div>
-          <div class="font-semibold">Rp. 4.000.000</div>
+      <div class="product-detail">
+        <img src="laptop.jpg" alt="Produk">
+        <div class="product-info">
+          <div><strong>Laptop Lenovo</strong></div>
+          <div>Warna : abu abu</div>
         </div>
+        <div class="product-subtotal">
+          Rp 4.000.000<br>
+          Jumlah: 1<br>
+          Subtotal: Rp 4.000.000
+        </div>
+      </div>
 
+      <div class="protection">
+        <input type="checkbox">
+        <div>
+          <strong>Proteksi Kerusakan +</strong><br>
+          Melindungi produkmu dari kerusakan/kerugian total selama 6 bulan. <a href="#">Pelajari</a><br>
+          Rp 2.000
+        </div>
+      </div>
+
+<<<<<<< HEAD
+      <div class="pesan">
+        <input type="text" placeholder="(Opsional) Tinggalkan pesan">
+=======
         <div class="flex items-center mb-4 space-x-3">
           <img src="handphone.jpg" alt="handphone iphone 13" class="w-10 h-10 object-contain" />
           <div class="flex-1">
@@ -143,10 +273,87 @@
           <span>Total</span>
           <span>Rp. 13.000.000</span>
         </div>
+>>>>>>> 112762e5026eb5f9aa95ec5bfcc7f6c59589df9d
       </div>
     </div>
   </div>
 
+<<<<<<< HEAD
+  <!-- Opsi Pengiriman -->
+  <div class="section">
+    <div class="shipping">
+      <div>
+        <strong>Opsi Pengiriman:</strong> Hemat<br>
+        Garansi tiba: 27 - 30 Mei<br>
+        <small>Voucher s/d Rp 10.000 jika pesanan belum tiba 30 Mei 2025.</small>
+      </div>
+      <a href="#">Ubah</a>
+    </div>
+    <div class="shipping-total">Rp15.000</div>
+  </div>
+
+  <!-- Metode Pembayaran -->
+<div style="padding: 24px; border-top: 1px solid #eee;">
+  <h3 style="margin-bottom: 16px;">Metode Pembayaran</h3>
+  
+  <!-- Opsi Tab -->
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+    <button style="padding: 6px 12px; border: 1px solid #ccc; background-color: #f5f5f5;">Saldo ShopeePay (Rp12.200)</button>
+    <button style="padding: 6px 12px; border: 1px solid #ccc;">COD</button>
+    <button style="padding: 6px 12px; border: 1px solid #ccc;">COD - Cek Dulu</button>
+    <button style="padding: 6px 12px; border: 1px solid #f53d2d; color: #f53d2d; background-color: #fff;">Transfer Bank</button>
+    <button style="padding: 6px 12px; border: 1px solid #ccc;">Kartu Kredit/Debit</button>
+    <button style="padding: 6px 12px; border: 1px solid #ccc;" disabled>Cicilan Kartu Kredit</button>
+  </div>
+
+  <!-- Pilih Bank -->
+  <div>
+    <h4 style="margin-bottom: 12px;">Pilih Bank</h4>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="seabank.jpg"/> SeaBank</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank bca.jpg"/> Bank BCA</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank mandiri.jpg"/> Bank Mandiri</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank bni.jpg"/> Bank BNI</label>
+      <label><input type="radio" name="bank" checked> <img style="width: 20px; height: 20px;" src="bank bri.jpg"/> Bank BRI</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank syariah.jpg"/> Bank Syariah Indonesia (BSI)</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank permatajpg.jpg"/> Bank Permata</label>
+      </div>
+  </div>
+</div>
+
+  <!-- Ringkasan Pembayaran -->
+<div class="summary">
+  <div class="summary-box">
+    <div class="summary-row">
+      <span>Subtotal Pesanan</span>
+      <span>Rp 4.000.000</span>
+    </div>
+    <div class="summary-row">
+      <span>Subtotal Pengiriman</span>
+      <span>Rp15.000</span>
+    </div>
+    <div class="summary-row">
+      <span>Biaya Layanan <span title="Biaya tambahan untuk layanan">❔</span></span>
+      <span>Rp2.000</span>
+    </div>
+    <div class="summary-row discount">
+      <span>Voucher Diskon</span>
+      <span>-Rp 1.000</span>
+    </div>
+    <div class="summary-row total">
+      <span>Total Pembayaran</span>
+      <span>Rp 4.016.000</span>
+    </div>
+  </div>
+</div>
+
+<!-- Tombol Buat Pesanan -->
+<div class="btn-submit">
+  <button>Buat Pesanan</button>
+</div>
+
+=======
   <div class="border border-gray-300 rounded-md p-4 text-xs"><a href="../payment/payment_methods.html" class="font-semibold">Metode pembayaran</a></div>
+>>>>>>> 112762e5026eb5f9aa95ec5bfcc7f6c59589df9d
 </body>
 </html>
