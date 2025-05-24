@@ -23,7 +23,9 @@ fieldset{
     width: fit-content;
     border-radius: 8px;
 }
-/* .pkirim{
-    margin-top: -21px;
-    margin-left: 90%;
-} */
+.Qris img{
+    width: 300px;
+}
+.pkirim{
+    margin-left: 35%;
+}
