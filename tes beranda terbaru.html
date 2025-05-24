@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>BeliKita</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #f3f4f6;
+      color: #111;
+    }
+
+    header {
+      background-color: #2563eb;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .judul {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .atas {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-grow: 1;
+      max-width: 600px;
+    }
+
+    .cari {
+      flex: 1;
+    }
+
+    .cari input[type="search"] {
+      width: 100%;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .saldo {
+      background-color: #3b82f6;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .keranjang svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #1e40af;
+      color: white;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: calc(100vh - 72px);
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #2563eb;
+    }
+
+    main {
+      flex: 1;
+      padding: 24px;
+      background-color: #e5e7eb;
+    }
+
+    .kategori {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .kategori button {
+      background-color: white;
+      border: 2px solid #2563eb;
+      color: #2563eb;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .kategori button.aktif {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .daftar-barang {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .kartu-barang {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gambar-barang {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .isi-barang {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .kategori-barang {
+      font-size: 12px;
+      font-weight: bold;
+      color: #2563eb;
+      border: 1px solid #2563eb;
+      padding: 2px 12px;
+      border-radius: 999px;
+      width: fit-content;
+      text-transform: uppercase;
+    }
+
+    .nama-barang {
+      font-size: 16px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    .deskripsi-barang {
+      font-size: 14px;
+      color: #666;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .harga-barang {
+      font-size: 16px;
+      font-weight: bold;
+      color: #10b981;
+      margin-top: 8px;
+    }
+
+    .info-stok {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .info-stok div {
+      display: flex;
+      align-items: center;
+    }
+
+    .info-stok i {
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="judul">BeliKita</div>
+    <div class="atas">
+      <div class="cari">
+        <input type="search" placeholder="Cari barang..." />
+      </div>
+      <div class="saldo">Saldo: Rp 100.000</div>
+      <div class="keranjang">
+        <i class="fa-solid fa-cart-shopping" style="font-size: 24px;"></i>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Menu</h2>
+      <a href="profile/account.html" title="Profil / Login">&nbsp;<i class="fas fa-user"></i>&nbsp;&nbsp;&nbsp; Akun</a>
+      <a href="cart_checkout/cart.html"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp; Keranjang</a>
+      <a href="#">About Us</a>
+    </aside>
+
+    <main>
+      <div class="kategori">
+        <button class="aktif" onclick="filterCategory('all', event)">Semua</button>
+        <button onclick="filterCategory('Elektronik', event)">Elektronik</button>
+        <button onclick="filterCategory('Pakaian', event)">Pakaian</button>
+        <button onclick="filterCategory('Makanan', event)">Makanan</button>
+      </div>
+
+      <div class="daftar-barang" id="daftarBarang">
+        <!-- Produk akan ditampilkan di sini melalui JavaScript -->
+      </div>
+    </main>
+  </div>
+
+  <script>
+
+    if (!localStorage.getItem("produk")) {
+      localStorage.setItem("produk", JSON.stringify(contohProduk));
+    }
+
+    // Fungsi untuk memotong deskripsi
+    function potongDeskripsi(deskripsi) {
+      if (!deskripsi) return "Tidak ada deskripsi";
+      if (deskripsi.length > 50) {
+        return deskripsi.substring(0, 50) + '...';
+      }
+      return deskripsi;
+    }
+
+    // Fungsi untuk menampilkan produk
+    function tampilkanProduk() {
+      const produk = JSON.parse(localStorage.getItem("produk")) || [];
+      const daftarBarang = document.getElementById('daftarBarang');
+      daftarBarang.innerHTML = '';
+
+      if (produk.length === 0) {
+        daftarBarang.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Tidak ada produk tersedia</p>';
+        return;
+      }
+
+      produk.forEach(item => {
+  const kartuBarang = document.createElement('div');
+  kartuBarang.className = 'kartu-barang';
+  kartuBarang.setAttribute('data-category', item.kategori || 'Uncategorized');
+
+  const deskripsiSingkat = potongDeskripsi(item.deskripsi);
+
+  const totalStok = item.variasi ? item.variasi.reduce((total, variasi) => total + (variasi.stok || 0), 0) : 0;
+  const totalTerjual = item.variasi ? item.variasi.reduce((total, variasi) => total + (variasi.terjual || 0), 0) : 0;
+
+  kartuBarang.innerHTML = `
+    <img src="${item.gambar || 'https://via.placeholder.com/300x160'}" alt="${item.nama}" class="gambar-barang" />
+    <div class="isi-barang">
+      <div class="kategori-barang">${item.kategori || 'Uncategorized'}</div>
+      <div class="nama-barang">${item.nama || 'Produk Tanpa Nama'}</div>
+      <div class="deskripsi-barang">${deskripsiSingkat}</div>
+      <div class="info-stok">
+        <div><i class="fas fa-box"></i> Stok: ${totalStok}</div>
+        <div><i class="fas fa-chart-line"></i> Terjual: ${totalTerjual}</div>
+      </div>
+      <div class="harga-barang">Rp ${item.harga ? item.harga.toLocaleString('id-ID') : '0'}</div>
+    </div>
+  `;
+
+  // Tambahkan klik untuk buka halaman detail
+  kartuBarang.onclick = () => {
+    window.location.href = `produk/detail.html?nama=${encodeURIComponent(item.nama)}`;
+  };
+
+  daftarBarang.appendChild(kartuBarang);
+});
+
+    }
+
+    // Fungsi filter kategori
+    function filterCategory(kategori, event) {
+      const barang = document.querySelectorAll('.kartu-barang');
+      const tombol = document.querySelectorAll('.kategori button');
+
+      tombol.forEach(btn => btn.classList.remove('aktif'));
+      event.target.classList.add('aktif');
+
+      barang.forEach(item => {
+        const itemKategori = item.getAttribute('data-category');
+        if (kategori === 'all' || kategori === itemKategori) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Jalankan saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', tampilkanProduk);
+  </script>
+</body>
+</html>
