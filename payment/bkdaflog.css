@@ -1,13 +1,11 @@
-.headbk {
-    margin-top: -22px;
-    margin-left: -8px;
-    margin-right: -8px;
-    text-align: center;
-    background-color: #0B83DB;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+.headbk , .bklog{
+  background-color: #0B83DB; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px; 
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 body{
     font-family: sans-serif;
@@ -27,16 +25,8 @@ body{
 .bkdaftar button{
     background-color: #0BCDDB;
 }
-.bklog{
-    margin-top: -22px;
-    margin-left: -8px;
-    margin-right: -8px;
-    text-align: center;
-    background-color: #0B83DB;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+.bklog h1,.headbk h1{
+    color: white;
 }
 .bklog img{
     position: relative;

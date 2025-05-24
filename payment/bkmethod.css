@@ -1,57 +1,51 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  background: linear-gradient(135deg , #8DD8FF, #0B83DB);
 }
 
-
-table {
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: separate;
-    border-spacing: 1rem;
-}
-
-th {
-    padding-top: 1rem;
-}
-
-label {
-    cursor: pointer;
-    display: inline-block;
-}
-
-input[type="radio"] {
-    display: block;
-    margin: 0 auto 10px auto;
+h1, h2 {
+  text-align: center;
+  color: white;
 }
 
 img {
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
+}
+
+label {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
 }
 
 button {
-    cursor: pointer;
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 0 auto;
-    display: block;
+  background-color: aquamarine;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 auto;
+  display: block;
+  border: none;
+  border-radius: 8px;
 }
 
 .back-button {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .back-button img {
-    width: 30px;
+  width: 30px;
 }
 
 .container {
-    padding: 20px;
+  padding: 20px;
 }
+
 .button-container {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
