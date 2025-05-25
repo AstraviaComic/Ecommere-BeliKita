@@ -292,14 +292,33 @@
   </div>
 
   <!-- Metode Pembayaran -->
-<div class="section pmp">
-  <a href="../payment/payment_methods.html">
-    <button id="btnMetodePembayaran">Pilih Metode Pembayaran</button>
-  </a>
-  <img id="paymentImage" src="" alt="" width="70px" height="auto" style="display: none;">
-</div>
+<div style="padding: 24px; border-top: 1px solid #eee;">
+  <h3 style="margin-bottom: 16px;">Metode Pembayaran</h3>
+  
+  <!-- Opsi Tab -->
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+    <button style="padding: 6px 12px; border: 1px solid #ccc; background-color: #f5f5f5;">Saldo ShopeePay (Rp12.200)</button>
+    <button style="padding: 6px 12px; border: 1px solid #ccc;">COD</button>
+    <button style="padding: 6px 12px; border: 1px solid #ccc;">COD - Cek Dulu</button>
+    <button style="padding: 6px 12px; border: 1px solid #f53d2d; color: #f53d2d; background-color: #fff;">Transfer Bank</button>
+    <button style="padding: 6px 12px; border: 1px solid #ccc;">Kartu Kredit/Debit</button>
+    <button style="padding: 6px 12px; border: 1px solid #ccc;" disabled>Cicilan Kartu Kredit</button>
+  </div>
 
-<script src="script.js"></script>
+  <!-- Pilih Bank -->
+  <div>
+    <h4 style="margin-bottom: 12px;">Pilih Bank</h4>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="seabank.jpg"/> SeaBank</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank bca.jpg"/> Bank BCA</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank mandiri.jpg"/> Bank Mandiri</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank bni.jpg"/> Bank BNI</label>
+      <label><input type="radio" name="bank" checked> <img style="width: 20px; height: 20px;" src="bank bri.jpg"/> Bank BRI</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank syariah.jpg"/> Bank Syariah Indonesia (BSI)</label>
+      <label><input type="radio" name="bank"> <img style="width: 20px; height: 20px;" src="bank permatajpg.jpg"/> Bank Permata</label>
+      </div>
+  </div>
+</div>
 
   <!-- Ringkasan Pembayaran -->
 <div class="summary">
