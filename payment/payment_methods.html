@@ -14,6 +14,7 @@
       </a>
       <h1>METODE PEMBAYARAN</h1>
     </div> 
+
     <div class="metisi">
       <h2 class="section-title">PILIH METODE PEMBAYARAN</h2>
 
@@ -21,49 +22,51 @@
         <div class="payment-options">
           <label>
             <input type="radio" name="payment-method" value="cod" />
-            <img src="aset/cod.png" alt="Bayar di Tempat (COD)" />
+            <img src="../payment/aset/cod.png" alt="Bayar di Tempat (COD)" />
           </label>
           <label>
             <input type="radio" name="payment-method" value="bk-cash" />
-            <img src="aset/bkcash.png" alt="Bk Cash" />
+            <img src="../payment/aset/bkcash.png" alt="Bk Cash" />
           </label>
         </div> 
+
         <h2 class="section-title">Transfer Bank</h2>
         <div class="payment-options">
           <label>
             <input type="radio" name="payment-method" value="mandiri" />
-            <img src="aset/logo mandiri.png" alt="Transfer Bank Mandiri" />
+            <img src="../payment/aset/logo mandiri.png" alt="Transfer Bank Mandiri" />
           </label>
           <label>
             <input type="radio" name="payment-method" value="bri" />
-            <img src="aset/logo bri.png" alt="Transfer Bank BRI" />
+            <img src="../payment/aset/logo bri.png" alt="Transfer Bank BRI" />
           </label>
           <label>
             <input type="radio" name="payment-method" value="bni" />
-            <img src="aset/logo bni.png" alt="Transfer Bank BNI" />
+            <img src="../payment/aset/logo bni.png" alt="Transfer Bank BNI" />
           </label>
           <label>
             <input type="radio" name="payment-method" value="bca" />
-            <img src="aset/logo bca.png" alt="Transfer Bank BCA" />
+            <img src="../payment/aset/logo bca.png" alt="Transfer Bank BCA" />
           </label>
         </div> 
+
         <h2 class="section-title">E-Wallet</h2>
         <div class="payment-options">
           <label>
             <input type="radio" name="payment-method" value="dana" />
-            <img src="aset/logo dana.png" alt="Dana" />
+            <img src="../payment/aset/logo dana.png" alt="Dana" />
           </label>
           <label>
             <input type="radio" name="payment-method" value="ovo" />
-            <img src="aset/logo ovo.jpeg" alt="OVO" />
+            <img src="../payment/aset/logo ovo.jpeg" alt="OVO" />
           </label>
           <label>
             <input type="radio" name="payment-method" value="gopay" />
-            <img src="aset/logo gopay.png" alt="GoPay" />
+            <img src="../payment/aset/logo gopay.png" alt="GoPay" />
           </label>
           <label>
             <input type="radio" name="payment-method" value="shopeepay" />
-            <img src="aset/logo shopeepay.png" alt="ShopeePay" />
+            <img src="../payment/aset/logo shopeepay.png" alt="ShopeePay" />
           </label>
         </div>
 
@@ -73,5 +76,18 @@
       </form>
     </div>
   </div>
+  <script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
+      if (selectedMethod) {
+        localStorage.setItem("metodePembayaran", selectedMethod.value);
+        window.location.href = "../cart_checkout/checkout.html";
+      } else {
+        alert("Silakan pilih metode pembayaran terlebih dahulu.");
+      }
+    });
+  </script>
 </body>
 </html>
