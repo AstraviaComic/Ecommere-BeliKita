@@ -28,7 +28,8 @@ label {
 }
 
 button {
-  background-color: aquamarine;
+  background-color: rgb(63, 101, 121);
+  color: white;
   cursor: pointer;
   padding: 10px 20px;
   font-size: 16px;
