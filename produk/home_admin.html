@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
   <title>BeliKita</title>
   <link rel="stylesheet" href="../style.css">
+  <script src="../index.js"></script>
 </head>
 <body>
   <header>
@@ -30,7 +31,7 @@
       <a href="admin.html" title="admin">&nbsp;<i class="fas fa-user" style="color: yellowgreen;"></i>&nbsp;&nbsp;&nbsp; Admin</a>
       <a href="cart_checkout/cart.html"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp; Keranjang</a>
       <a href="payment/bklogin.html"><span class="racing">BK </span>&nbsp;&nbsp;&nbsp;<span class="racing">BK </span><span class="rasis">Cash</span></a>
-      <a href="#">About Us</a>
+      <a href="../about.html">About Us</a>
     </aside>
 
     <main>
@@ -47,86 +48,5 @@
     </main>
   </div>
 
-  <script>
-
-    if (!localStorage.getItem("produk")) {
-      localStorage.setItem("produk", JSON.stringify(contohProduk));
-    }
-
-    // Fungsi untuk memotong deskripsi
-    function potongDeskripsi(deskripsi) {
-      if (!deskripsi) return "Tidak ada deskripsi";
-      if (deskripsi.length > 50) {
-        return deskripsi.substring(0, 50) + '...';
-      }
-      return deskripsi;
-    }
-
-    // Fungsi untuk menampilkan produk
-    function tampilkanProduk() {
-      const produk = JSON.parse(localStorage.getItem("produk")) || [];
-      const daftarBarang = document.getElementById('daftarBarang');
-      daftarBarang.innerHTML = '';
-
-      if (produk.length === 0) {
-        daftarBarang.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Tidak ada produk tersedia</p>';
-        return;
-      }
-
-      produk.forEach(item => {
-  const kartuBarang = document.createElement('div');
-  kartuBarang.className = 'kartu-barang';
-  kartuBarang.setAttribute('data-category', item.kategori || 'Uncategorized');
-
-  const deskripsiSingkat = potongDeskripsi(item.deskripsi);
-
-  const totalStok = item.variasi ? item.variasi.reduce((total, variasi) => total + (variasi.stok || 0), 0) : 0;
-  const totalTerjual = item.variasi ? item.variasi.reduce((total, variasi) => total + (variasi.terjual || 0), 0) : 0;
-
-  kartuBarang.innerHTML = `
-    <img src="${item.gambar || 'https://via.placeholder.com/300x160'}" alt="${item.nama}" class="gambar-barang" />
-    <div class="isi-barang">
-      <div class="kategori-barang">${item.kategori || 'Uncategorized'}</div>
-      <div class="nama-barang">${item.nama || 'Produk Tanpa Nama'}</div>
-      <div class="deskripsi-barang">${deskripsiSingkat}</div>
-      <div class="info-stok">
-        <div><i class="fas fa-box"></i> Stok: ${totalStok}</div>
-        <div><i class="fas fa-chart-line"></i> Terjual: ${totalTerjual}</div>
-      </div>
-      <div class="harga-barang">Rp ${item.harga ? item.harga.toLocaleString('id-ID') : '0'}</div>
-    </div>
-  `;
-
-  // Tambahkan klik untuk buka halaman detail
-  kartuBarang.onclick = () => {
-    window.location.href = `produk/detail.html?nama=${encodeURIComponent(item.nama)}`;
-  };
-
-  daftarBarang.appendChild(kartuBarang);
-});
-
-    }
-
-    // Fungsi filter kategori
-    function filterCategory(kategori, event) {
-      const barang = document.querySelectorAll('.kartu-barang');
-      const tombol = document.querySelectorAll('.kategori button');
-
-      tombol.forEach(btn => btn.classList.remove('aktif'));
-      event.target.classList.add('aktif');
-
-      barang.forEach(item => {
-        const itemKategori = item.getAttribute('data-category');
-        if (kategori === 'all' || kategori === itemKategori) {
-          item.style.display = 'flex';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-
-    // Jalankan saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', tampilkanProduk);
-  </script>
-</body>
+  </body>
 </html>
