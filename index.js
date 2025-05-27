@@ -2,7 +2,6 @@ if (!localStorage.getItem("produk")) {
       localStorage.setItem("produk", JSON.stringify(contohProduk));
     }
 
-    // Fungsi untuk memotong deskripsi
     function potongDeskripsi(deskripsi) {
       if (!deskripsi) return "Tidak ada deskripsi";
       if (deskripsi.length > 50) {
@@ -11,7 +10,6 @@ if (!localStorage.getItem("produk")) {
       return deskripsi;
     }
 
-    // Fungsi untuk menampilkan produk
     function tampilkanProduk() {
       const produk = JSON.parse(localStorage.getItem("produk")) || [];
       const daftarBarang = document.getElementById('daftarBarang');
@@ -46,7 +44,6 @@ if (!localStorage.getItem("produk")) {
     </div>
   `;
 
-  // Tambahkan klik untuk buka halaman detail
   kartuBarang.onclick = () => {
     window.location.href = `produk/detail.html?nama=${encodeURIComponent(item.nama)}`;
   };
@@ -56,7 +53,6 @@ if (!localStorage.getItem("produk")) {
 
     }
 
-    // Fungsi filter kategori
     function filterCategory(kategori, event) {
       const barang = document.querySelectorAll('.kartu-barang');
       const tombol = document.querySelectorAll('.kategori button');
@@ -74,5 +70,5 @@ if (!localStorage.getItem("produk")) {
       });
     }
 
-    // Jalankan saat halaman dimuat
     document.addEventListener('DOMContentLoaded', tampilkanProduk);
+

@@ -4,16 +4,14 @@
   <meta charset="UTF-8">
   <title>Detail Produk</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="detail.css">
+  <link rel="stylesheet" href="asset/detail.css">
 </head>
 <body>
   <div class="parent">
-    <!-- Div 1: Hanya gambar produk -->
     <div class="div1">
       <img id="productImage" class="product-image" src="" alt="Gambar Produk">
     </div>
     
-    <!-- Div 2: Semua informasi produk kecuali deskripsi -->
     <div class="div2" id="productInfo">
       <h1 id="productName"></h1>
       <p><strong>Kategori:</strong> <span id="productCategory"></span></p>
@@ -32,8 +30,6 @@
       <button id="beli">Beli Sekarang</button>
     </div>
 
-
-    <!-- div3: Deskripsi Produk -->
     <div class="div3">
       <h2>Deskripsi Produk</h2>
       <p id="productDescription"></p>
@@ -42,7 +38,6 @@
       </div>
     </div>
 
-    
     <div class="div4">
       <a href="../index.html"><i class="fa-solid fa-arrow-left"></i></a>
     </div>
@@ -61,12 +56,10 @@
         return;
       }
 
-      // Isi div1 (gambar)
       const productImage = document.getElementById("productImage");
       productImage.src = produk.gambar || 'https://via.placeholder.com/300x160';
       productImage.alt = produk.nama;
 
-      // Isi div2 (informasi produk)
       document.getElementById("productName").textContent = produk.nama;
       document.getElementById("productCategory").textContent = produk.kategori;
       document.getElementById("productPrice").textContent = produk.harga.toLocaleString('id-ID');
@@ -77,10 +70,8 @@
       document.getElementById("totalStock").textContent = totalStok;
       document.getElementById("totalSold").textContent = totalTerjual;
 
-      // Isi div3 (deskripsi)
       document.getElementById("productDescription").textContent = produk.deskripsi || "Tidak ada deskripsi produk";
 
-      // Setup variasi dan pembelian
       const produkList = JSON.parse(localStorage.getItem("produk")) || [];
       const produkIndex = produkList.findIndex(p => p.nama === nama);
       const variasiSelect = document.getElementById("variasi");
@@ -89,7 +80,6 @@
       const kurangBtn = document.getElementById("kurang");
       const beliBtn = document.getElementById("beli");
 
-      // Tampilkan opsi variasi
       produk.variasi?.forEach((v, i) => {
         const opt = document.createElement("option");
         opt.value = i;
@@ -125,7 +115,6 @@
           varian.stok -= jumlah;
           varian.terjual = (varian.terjual || 0) + jumlah;
 
-          // Simpan kembali
           produkList[produkIndex].variasi[indexVarian] = varian;
           localStorage.setItem("produk", JSON.stringify(produkList));
 
