@@ -12,7 +12,6 @@
 </head>
 
 <body>
-  <!-- untuk atas -->
   <header class="bg-blue-500 p-4">
     <div class="flex mx-20 items-center justify-between text-white">
       <div class="h-7 w-7 text-white">
@@ -26,12 +25,9 @@
       <a class="text-3xl" href="#">BeliKita</a>
     </div>
   </header>
-  <!-- main content -->
   <div class="px-20 py-10">
     <div class="flex w-full h-full rounded-2xl">
-      <!-- sidebar kiri -->
       <div class="flex flex-col w-1/4 h-[800px] p-10 bg-gray-200 rounded-2xl shadow-xl/20">
-        <!-- foto profile -->
         <div class="flex my-10 items-center justify-center">
           <div class="flex w-36 h-36 rounded-full">
             <div class="w-full h-full">
@@ -39,7 +35,6 @@
             </div>
           </div>
         </div>
-        <!-- navigasi sidebar -->
         <div class="flex flex-col my-15 gap-y-5">
           <div class="flex gap-x-4 items-center ml-10">
             <img src="./assets/svg/profil.svg" alt="profil" class="w-10 h-10"></img>
@@ -57,11 +52,6 @@
                 href="#">Manage Produk</a></div>
           </div>
           <div class="flex gap-x-4 items-center ml-10">
-            <img src="./assets/svg/wishlist.svg" alt="wishlist" class="w-10 h-10"></img>
-            <div class="text-2xl tracking-widest text-black hover:text-blue-700 hover:cursor-pointer hover:scale-110"><a
-                href="manage_categori.html">Manage Categori</a></div>
-          </div>
-          <div class="flex gap-x-4 items-center ml-10">
             <div class="flex w-10 h-10 items-center justify-center">
               <img src="./assets/svg/logout.svg" alt="logout" class="ml-2 w-7 h-7"></img>
             </div>
@@ -70,16 +60,137 @@
           </div>
         </div>
       </div>
-      <!-- content sebelah kanan -->
       <div class="flex flex-col w-3/4 p-10 rounded-2xl">
-        <!-- content header -->
-        <div class="flex gap-x-4 items-center justify-center">
+        <div class="flex gap-x-4 items-center justify-center mb-8">
           <div class="text-5xl font-bold">Manage Order</div>
         </div>
 
-        <!-- content -->
+        <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Order ID
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Customer
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Tanggal
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Total
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1001</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Anna</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 11, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">80.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                    Tertunda
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1002</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Michel</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 15, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">40.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Selesai
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1003</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Udin</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 18, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">149.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Selesai
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1004</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Zahro</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 20, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">24.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                    Kembali
+                  </span>
+                </td>
+              </tr>
+               <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1005</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">apipp</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 21, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">79.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Selesai
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1006</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Andre</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 23, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">43.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                    Kembali
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1007</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Jesika</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 24, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">67.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Selesai
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1008</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Depin</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 25, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">54.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                    Tertunda
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">#1009</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Laura</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">Mei 26, 2025</td>
+                <td class="px-6 py-4 whitespace-nowrap text-lg text-gray-900">40.000</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-lg leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                    Kembali
+                  </span>
+                </td>
+              </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
   </div>
 </body>
 
