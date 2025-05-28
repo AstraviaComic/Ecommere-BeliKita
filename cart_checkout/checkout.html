@@ -6,9 +6,9 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: white;
       margin: 0;
       padding: 0;
+      background-color: white;
     }
 
     .header {
@@ -20,19 +20,23 @@
       padding: 12px 24px;
     }
 
-    .header .logo {
+    .logo {
       font-size: 20px;
       font-weight: bold;
     }
 
-    .header .user-menu {
+    .user-menu span {
+      margin-left: 12px;
       font-size: 14px;
     }
 
+<<<<<<< HEAD
     .header .user-menu span {
       margin-left: 12px;
     }
 
+=======
+>>>>>>> dd0eb31ccf44c9b1ab94ab8e26827381bbb14f7e
     .section {
       border-bottom: 1px solid #eee;
       padding: 20px 24px;
@@ -44,7 +48,7 @@
       margin-bottom: 10px;
     }
 
-    .section .address, .section .product, .section .shipping {
+    .address, .product, .shipping {
       font-size: 14px;
       line-height: 1.6;
     }
@@ -69,9 +73,9 @@
       margin-bottom: 16px;
     }
 
-    .product-detail img {
-      width: 80px;
-      height: 80px;
+    .product-detail img, .w-10h-10object-contain {
+      width: 100px;
+      height: auto;
       object-fit: cover;
     }
 
@@ -86,24 +90,14 @@
 
     .protection {
       display: flex;
-      align-items: flex-start;
       gap: 8px;
       font-size: 13px;
       margin-bottom: 12px;
     }
 
-    .pesan input {
-      width: 100%;
-      padding: 8px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
     .shipping {
       display: flex;
       justify-content: space-between;
-      align-items: center;
     }
 
     .shipping-total {
@@ -151,6 +145,7 @@
     .btn-submit {
       display: flex;
       justify-content: flex-end;
+<<<<<<< HEAD
       padding: 0 24px 24px 24px;
     }
 
@@ -168,6 +163,29 @@
 
     .btn-order:hover {
       background-color: #0f5ed7;
+=======
+      padding: 0 24px 24px;
+    }
+
+    .btn-submit button {
+      background-color: #1677ff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-submit button:hover {
+      background-color: #105fcd;
+    }
+
+    #paymentImage {
+      display: block;
+      margin-top: 10px;
+>>>>>>> dd0eb31ccf44c9b1ab94ab8e26827381bbb14f7e
     }
   </style>
 </head>
@@ -218,8 +236,42 @@
       <div class="protection">
       </div>
 
+<<<<<<< HEAD
       <div class="pesan">
         <input type="text" placeholder="(Opsional) Tinggalkan pesan">
+=======
+      <div class="product-detail">
+        <img src="handphone.jpg" alt="handphone iphone 13">
+        <div class="product-info">
+          <div><strong>handphone iphone 13</strong></div>
+          <div>warna putih</div>
+          <div>Jumlah: 1</div>
+        </div>
+        <div class="product-subtotal">Rp. 8.000.000</div>
+      </div>
+
+      <div class="product-detail">
+        <img src="setrika.jpg" alt="Setrika Philips">
+        <div class="product-info">
+          <div><strong>Setrika Philips</strong></div>
+          <div>warna pink</div>
+          <div>Jumlah: 1</div>
+        </div>
+        <div class="product-subtotal">Rp. 1.000.000</div>
+      </div>
+
+      <div class="shipping">
+        <span>Ongkir</span>
+        <span>Rp. 0</span>
+      </div>
+      <div class="shipping">
+        <span>Subtotal</span>
+        <span>Rp. 13.000.000</span>
+      </div>
+      <div class="shipping" style="font-weight: bold;">
+        <span>Total</span>
+        <span>Rp. 13.000.000</span>
+>>>>>>> dd0eb31ccf44c9b1ab94ab8e26827381bbb14f7e
       </div>
     </div>
   </div>
@@ -235,6 +287,17 @@
     </div>
   </div>
 
+<<<<<<< HEAD
+=======
+  <!-- Metode Pembayaran -->
+  <div class="section pmp">
+    <a href="../payment/payment_methods.html">
+      <button id="btnMetodePembayaran">Pilih Metode Pembayaran</button>
+    </a>
+    <img id="paymentImage" src="" alt="Metode Pembayaran" width="70px" height="auto" style="display: none;">
+  </div>
+
+>>>>>>> dd0eb31ccf44c9b1ab94ab8e26827381bbb14f7e
   <!-- Ringkasan Pembayaran -->
   <div class="summary">
     <div class="summary-box">
@@ -244,6 +307,7 @@
       </div>
       <div class="summary-row">
         <span>Subtotal Pengiriman</span>
+<<<<<<< HEAD
         <span>Rp 0</span>
       </div>
       <div class="summary-row">
@@ -253,14 +317,36 @@
       <div class="summary-row total">
         <span>Total Pembayaran</span>
         <span>Rp 4.000.000</span>
+=======
+        <span>Rp15.000</span>
+      </div>
+      <div class="summary-row">
+        <span>Biaya Layanan <span title="Biaya tambahan untuk layanan">❔</span></span>
+        <span>Rp2.000</span>
+      </div>
+      <div class="summary-row discount">
+        <span>Voucher Diskon</span>
+        <span>-Rp 1.000</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total Pembayaran</span>
+        <span>Rp 4.016.000</span>
+>>>>>>> dd0eb31ccf44c9b1ab94ab8e26827381bbb14f7e
       </div>
     </div>
   </div>
 
   <!-- Tombol Buat Pesanan -->
   <div class="btn-submit">
+<<<<<<< HEAD
     <a href="dikemas.html" class="btn-order">Buat Pesanan</a>
   </div>
 
+=======
+    <button>Buat Pesanan</button>
+  </div>
+
+  <script src="script.js"></script>
+>>>>>>> dd0eb31ccf44c9b1ab94ab8e26827381bbb14f7e
 </body>
 </html>

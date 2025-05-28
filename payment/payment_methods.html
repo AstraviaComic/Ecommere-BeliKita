@@ -1,119 +1,93 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Metode Pembayaran</title>
-    <link rel="stylesheet" href="payment.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Metode Pembayaran</title>
+  <link rel="stylesheet" href="payment_metod.css" />
 </head>
 <body>
-    <div class="container">
-        <table>
-            <tr>
-                <td class="back-button">
-                    <button>
-                        <a href="../cart_checkout/checkout.html"><img src="aset/arrow-small-left.png" alt="Kembali" /></a>
-                    </button>
-                </td>
-                <td>
-                    <h1>METODE PEMBAYARAN</h1>
-                </td>
-            </tr>
-        </table>
+  <div class="container">
+    <div class="pmh">
+      <a href="../cart_checkout/checkout.html">
+        <img src="aset/arrow-small-left.png" alt="Kembali ke Checkout" />
+      </a>
+      <h1>METODE PEMBAYARAN</h1>
+    </div> 
 
-        <div>
-            <h2 class="section-title">PILIH METODE PEMBAYARAN</h2>
+    <div class="metisi">
+      <h2 class="section-title">PILIH METODE PEMBAYARAN</h2>
 
-            <form action="#" method="post">
-                <table>
-                    <tr>
-                        <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="cod" />
-                                <img src="aset/cod.png" alt="COD" />
-                            </label>
-                        </td>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="bk-cash" />
-                                <img src="aset/bkcash.png" alt="Bk Cash" />
-                            </label>
-                        </td>
-                    </tr>
+      <form action="#" method="post"> 
+        <div class="payment-options">
+          <label>
+            <input type="radio" name="payment-method" value="cod" />
+            <img src="../payment/aset/cod.png" alt="Bayar di Tempat (COD)" />
+          </label>
+          <label>
+            <input type="radio" name="payment-method" value="bk-cash" />
+            <img src="../payment/aset/bkcash.png" alt="Bk Cash" />
+          </label>
+        </div> 
 
-                    <tr>
-                        <th colspan="2" class="section-title">Transfer Bank</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="mandiri" />
-                                <img src="aset/logo mandiri.png" alt="Mandiri" />
-                            </label>
-                        </td>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="bri" />
-                                <img src="aset/logo bri.png" alt="BRI" />
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="bni" />
-                                <img src="aset/logo bni.png" alt="BNI" />
-                            </label>
-                        </td>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="bca" />
-                                <img src="aset/logo bca.png" alt="BCA" />
-                            </label>
-                        </td>
-                    </tr>
+        <h2 class="section-title">Transfer Bank</h2>
+        <div class="payment-options">
+          <label>
+            <input type="radio" name="payment-method" value="mandiri" />
+            <img src="../payment/aset/logo mandiri.png" alt="Transfer Bank Mandiri" />
+          </label>
+          <label>
+            <input type="radio" name="payment-method" value="bri" />
+            <img src="../payment/aset/logo bri.png" alt="Transfer Bank BRI" />
+          </label>
+          <label>
+            <input type="radio" name="payment-method" value="bni" />
+            <img src="../payment/aset/logo bni.png" alt="Transfer Bank BNI" />
+          </label>
+          <label>
+            <input type="radio" name="payment-method" value="bca" />
+            <img src="../payment/aset/logo bca.png" alt="Transfer Bank BCA" />
+          </label>
+        </div> 
 
-                    <tr>
-                        <th colspan="2" class="section-title">E-Wallet</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="dana" />
-                                <img src="aset/logo dana.png" alt="Dana" />
-                            </label>
-                        </td>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="ovo" />
-                                <img src="aset/logo ovo.jpeg" alt="OVO" />
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="gopay" />
-                                <img src="aset/logo gopay.png" alt="GoPay" />
-                            </label>
-                        </td>
-                        <td>
-                            <label>
-                                <input type="radio" name="payment-method" value="shopeepay" />
-                                <img src="aset/logo shopeepay.png" alt="ShopeePay" />
-                            </label>
-                        </td>
-                    </tr>
-                </table>
-
-                <div class="button-container">
-                    <button type="submit">Lanjutkan</button>
-                </div>
-            </form>
+        <h2 class="section-title">E-Wallet</h2>
+        <div class="payment-options">
+          <label>
+            <input type="radio" name="payment-method" value="dana" />
+            <img src="../payment/aset/logo dana.png" alt="Dana" />
+          </label>
+          <label>
+            <input type="radio" name="payment-method" value="ovo" />
+            <img src="../payment/aset/logo ovo.jpeg" alt="OVO" />
+          </label>
+          <label>
+            <input type="radio" name="payment-method" value="gopay" />
+            <img src="../payment/aset/logo gopay.png" alt="GoPay" />
+          </label>
+          <label>
+            <input type="radio" name="payment-method" value="shopeepay" />
+            <img src="../payment/aset/logo shopeepay.png" alt="ShopeePay" />
+          </label>
         </div>
+
+        <div class="button-container">
+          <button type="submit">Lanjutkan</button>
+        </div>
+      </form>
     </div>
+  </div>
+  <script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
+      if (selectedMethod) {
+        localStorage.setItem("metodePembayaran", selectedMethod.value);
+        window.location.href = "../cart_checkout/checkout.html";
+      } else {
+        alert("Silakan pilih metode pembayaran terlebih dahulu.");
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bandingkan Produk</title>
+  <link rel="stylesheet" href="asset/banding.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <button class="back-btn" onclick="history.back()">Kembali</button>
+    <h2>Bandingkan Dua Produk</h2>
+  </div>
+
+  <div class="grid">
+    <div class="selector">
+      <label for="produk1">Produk Pertama:</label>
+      <select id="produk1"></select>
+
+      <label for="produk2">Produk Kedua:</label>
+      <select id="produk2"></select>
+    </div>
+
+    <div class="card" id="card1">Pilih dua produk untuk dibandingkan.</div>
+
+    <div class="card" id="card2">Pilih dua produk untuk dibandingkan.</div>
+  </div>
+
+  <script>
+    const produk = JSON.parse(localStorage.getItem("produk")) || [];
+    const select1 = document.getElementById("produk1");
+    const select2 = document.getElementById("produk2");
+
+    produk.forEach((p, i) => {
+      const option1 = new Option(p.nama, i);
+      const option2 = new Option(p.nama, i);
+      select1.add(option1);
+      select2.add(option2);
+    });
+
+    function tampilkanPerbandingan() {
+      const i1 = select1.value;
+      const i2 = select2.value;
+
+      const card1 = document.getElementById("card1");
+      const card2 = document.getElementById("card2");
+
+      if (i1 === "" || i2 === "" || i1 === i2) {
+        card1.innerHTML = `<p>Silakan pilih dua produk yang berbeda.</p>`;
+        card2.innerHTML = `<p>Silakan pilih dua produk yang berbeda.</p>`;
+        return;
+      }
+
+      const p1 = produk[i1];
+      const p2 = produk[i2];
+
+      card1.innerHTML = `
+        <img src="${p1.gambar}" alt="${p1.nama}">
+        <h3>${p1.nama}</h3>
+        <p><strong>Harga:</strong> Rp${p1.harga}</p>
+        <p><strong>Stok:</strong> ${p1.stok}</p>
+        <p><strong>Kategori:</strong> ${p1.kategori}</p>
+      `;
+
+      card2.innerHTML = `
+        <img src="${p2.gambar}" alt="${p2.nama}">
+        <h3>${p2.nama}</h3>
+        <p><strong>Harga:</strong> Rp${p2.harga}</p>
+        <p><strong>Stok:</strong> ${p2.stok}</p>
+        <p><strong>Kategori:</strong> ${p2.kategori}</p>
+      `;
+    }
+
+    select1.addEventListener("change", tampilkanPerbandingan);
+    select2.addEventListener("change", tampilkanPerbandingan);
+  </script>
+</body>
+</html>

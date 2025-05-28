@@ -1,13 +1,16 @@
 .headconfir{   
-    margin-top: -22px;
-    margin-left: -8px;
-    margin-right: -8px;
-    text-align: center;
-    background-color: #0B83DB;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  background-color: #0B83DB; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 1000px; 
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.headconfir h1,.Qris h1{
+    color: white;
 }
 body{
     font-family: sans-serif;
@@ -23,7 +26,9 @@ fieldset{
     width: fit-content;
     border-radius: 8px;
 }
-/* .pkirim{
-    margin-top: -21px;
-    margin-left: 90%;
-} */
+.Qris img{
+    width: 300px;
+}
+.pkirim{
+    margin-left: 35%;
+}
