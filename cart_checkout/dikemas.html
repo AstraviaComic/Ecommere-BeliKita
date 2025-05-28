@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Sedang Dikemas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    /* Header biru */
+    .top-bar {
+      background-color: #1677ff;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .top-bar .menu {
+      display: flex;
+      gap: 20px;
+      font-weight: normal;
+    }
+
+    /* Tab navigasi */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #f2f2f2;
+      margin: 20px;
+      margin-bottom: 15px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      color: #555;
+    }
+
+    .tab.active {
+      color: #1677ff;
+      border-bottom: 2px solid #1677ff;
+      font-weight: bold;
+    }
+
+    /* Order box */
+    .order-box {
+      border: 1px solid #eee;
+      padding: 15px;
+      margin: 0 20px 20px 20px;
+    }
+
+    .shop-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .shop-name {
+      font-weight: bold;
+    }
+
+    .shop-buttons button {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    .status {
+      color: #1677ff;
+      font-weight: bold;
+    }
+
+    .product {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .product img {
+      width: 70px;
+      height: 70px;
+      margin-right: 10px;
+      border: 1px solid #eee;
+    }
+
+    .product-details {
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .variant {
+      color: #666;
+      font-size: 13px;
+    }
+
+    .price {
+      text-align: right;
+      font-size: 13px;
+    }
+
+    .price del {
+      color: #aaa;
+      margin-right: 5px;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 16px;
+      margin: 15px 0;
+    }
+
+    .total span {
+      color: #1677ff;
+      font-weight: bold;
+    }
+
+    .actions {
+      text-align: right;
+    }
+
+    .actions button {
+      padding: 8px 15px;
+      border: none;
+      margin-left: 10px;
+      cursor: pointer;
+      background-color: #1677ff;
+      color: white;
+      border-radius: 4px;
+    }
+
+    .delivery-info {
+      font-size: 13px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .delivery-info a {
+      color: #069;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER BIRU -->
+  <div class="top-bar">
+    <div><strong>BELIKITA</strong> | Riwayat pemesanan</div>
+    <div class="menu">
+      <div>Notifikasi</div>
+      <div>Bantuan</div>
+      <div>Bahasa Indonesia</div>
+      <div><strong>ekasafans</strong></div>
+    </div>
+  </div>
+
+  <!-- ORDER BOX -->
+  <div class="order-box">
+    <div class="shop-info">
+      <div class="shop-name">
+        <span style="color: #1677ff; font-weight: bold;"></span>BeliKita
+      </div>
+      <div class="status">SEDANG DIKEMAS</div>
+    </div>
+
+    <div class="product">
+      <img src="laptop.jpg" alt="Laptop">
+      <div class="product-details">
+        <div class="product-title">Laptop lenovo ram 6</div>
+        <div class="variant">Warna : abu abu<br>x1</div>
+      </div>
+      <div class="price"><del>4.000.000</del></div>
+    </div>
+
+    <div class="delivery-info">
+      Produk akan dikirimkan sebelum <a href="#">26-05-2025</a>
+    </div>
+
+    <div class="total">
+      Total Pesanan: <span>Rp 4.000.000</span>
+    </div>
+
+    <div class="actions">
+      <button onclick="window.location.href='cart.html'">Batalkan Pesanan</button>
+    </div>
+  </div>
+
+</body>
+</html>

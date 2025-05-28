@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pelacakan Pesanan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .step-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+    }
+
+    .step {
+      text-align: center;
+      flex: 1;
+      position: relative;
+    }
+
+    .step::before {
+      content: '';
+      height: 4px;
+      background-color: #4CAF50;
+      position: absolute;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    .circle {
+      width: 36px;
+      height: 36px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .inactive .circle {
+      background-color: #ccc;
+    }
+
+    .section {
+      margin-top: 20px;
+    }
+
+    .gray-box {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+
+    .button {
+      background-color: rgb(51, 95, 255);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .button.disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+
+    .address {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .timeline {
+      border-left: 3px solid #ccc;
+      padding-left: 15px;
+      margin-top: 10px;
+    }
+
+    .timeline-item {
+      margin-bottom: 15px;
+    }
+
+    .timeline-item strong {
+      color: #009688;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>No. Pesanan: 250524PETQ3MWP <span style="color:blue;">| PESANAN SEDANG DIKIRIM</span></h2>
+
+  <div class="step-bar">
+    <div class="step">
+      <div class="circle">✓</div>
+      <div>Pesanan Dibuat<br><small>24-05-2025 14:44</small></div>
+    </div>
+    <div class="step">
+      <div class="circle">✓</div>
+      <div>Pembayaran Dikonfirmasi<br><small>24-05-2025 14:44</small></div>
+    </div>
+    <div class="step">
+      <div class="circle">✓</div>
+      <div>Pesanan Dikirim<br><small>24-05-2025 19:16</small></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Alamat Pengiriman</h3>
+    <div class="address">
+      <p><strong>Syahrifudin</strong></p>
+      <p>085855455400</p>
+      <p>JL. Jalan Raya Telang, Bangkalan, Jawa timur, Indonesai, 69162</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <strong>Hari ini 19:16</strong><br>
+        Pesanan dalam Pengiriman - Pesanan telah diserahkan ke jasa kirim untuk diproses.
+      </div>
+      <div class="timeline-item">
+        <strong>Hari ini 14:45</strong><br>
+        Sedang Dikemas - Kurir ditugaskan untuk menjemput pesanan.
+      </div>
+      <div class="timeline-item">
+        <strong>Hari ini 14:45</strong><br>
+        Pengirim telah mengatur pengiriman.
+      </div>
+      <div class="timeline-item">
+        <strong>Hari ini 14:44</strong><br>
+        Pesanan Dibuat.
+      </div>
+    </div>
+
+    <p style="margin-top: 20px;">SPX Hemat<br>SPXID054524609615</p>
+  </div>
+
+</body>
+</html>

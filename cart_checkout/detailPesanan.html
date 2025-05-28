@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Pesanan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fff;
+    }
+
+    /* Header biru */
+    .header {
+      background-color: #1d4ed8; /* Tailwind blue-600 */
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .header .menu {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .header .menu span {
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      border: 1px solid #ddd;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .box-title {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+    }
+
+    .option input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .option label {
+      display: flex;
+      align-items: center;
+    }
+
+    .bk-cash {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #eee;
+      font-weight: bold;
+      font-style: italic;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      font-size: 14px;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title">BELIKITA | <span style="font-weight: normal;">Detail pesanan</span></div>
+    <div class="menu">
+      <a href="#" style="color: white; text-decoration: none;">Notifikasi</a>
+      <a href="#" style="color: white; text-decoration: none;">Bantuan</a>
+      <a href="#" style="color: white; text-decoration: none;">Bahasa Indonesia</a>
+      <span>ekasafans</span>
+    </div>
+  </div>
+
+  <!-- KONTEN UTAMA -->
+  <div class="container">
+    <div class="box-title">detail pesanan</div>
+
+    <div class="option">
+      <label><input type="radio" name="shipping" checked>JNT Reguler</label>
+      <span>Rp. 0</span>
+    </div>
+
+    <div class="bk-cash">
+      <span>COD</span>
+      <span>Rp. 4.000.000</span>
+    </div>
+
+    <div class="summary">
+      <span>Subtotal</span>
+      <span>Rp. 4.000.000</span>
+    </div>
+
+    <div class="summary total">
+      <span>Total</span>
+      <span>Rp. 4.000.000</span>
+    </div>
+
+    <button class="checkout-btn">Lanjut</button>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Jasa Pengiriman</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Navbar biru */
+    .navbar {
+      background-color: #1E88FF;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+    }
+
+    .navbar-left {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .navbar-right {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+    }
+
+    .navbar-right span {
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 30px auto;
+      border: 1px solid #ddd;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .option {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f9f9f9;
+    }
+
+    .option input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .option label {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .selected {
+      background-color: #fff;
+      border: 2px solid black;
+    }
+
+    .payment-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #eee;
+      color: green;
+      border: none;
+      font-weight: bold;
+      margin: 15px 0;
+      cursor: pointer;
+    }
+
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">BELIKITA | <span style="font-weight: normal;">Jasa pengiriman</span></div>
+    <div class="navbar-right">
+      <span>Notifikasi</span>
+      <span>Bantuan</span>
+      <span>Bahasa Indonesia</span>
+      <span><strong>ekasafans</strong></span>
+    </div>
+  </div>
+
+  <!-- Konten utama -->
+  <div class="container">
+    <div class="section-title">Jasa Pengiriman</div>
+
+    <div class="option selected">
+      <label><input type="radio" name="shipping" checked>JNT Reguler</label>
+      <span>Rp. 0</span>
+    </div>
+
+    <div class="option">
+      <label><input type="radio" name="shipping">JNT Express</label>
+      <span>Rp. 0</span>
+    </div>
+
+    <div class="option">
+      <label><input type="radio" name="shipping">Ambil ditempat</label>
+      <span>Rp. 0</span>
+    </div>
+
+    <button class="payment-button">Pilih Metode Pembayaran</button>
+
+    <div class="summary">
+      <span>Subtotal</span>
+      <span>Rp. 4.000.000</span>
+    </div>
+    <div class="summary total">
+      <span>Total</span>
+      <span>Rp. 4.000.000</span>
+    </div>
+
+    <button class="checkout-btn">Lanjut</button>
+  </div>
+
+</body>
+</html>

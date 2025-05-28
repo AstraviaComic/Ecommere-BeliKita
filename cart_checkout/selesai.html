@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Progress Pesanan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      padding: 20px;
+    }
+
+    .step-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Garis horizontal di belakang semua lingkaran */
+    .step-bar::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: #4CAF50;
+      z-index: 0;
+    }
+
+    .step {
+      text-align: center;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .circle {
+      width: 36px;
+      height: 36px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .highlight {
+      color: blue;
+    }
+
+    .info-box {
+      background-color: #fff8e1;
+      padding: 10px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      margin-top: 25px;
+      font-weight: bold;
+    }
+
+    .alamat {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .timeline {
+      border-left: 3px solid #ccc;
+      padding-left: 15px;
+      margin-top: 10px;
+    }
+
+    .timeline-item {
+      margin-bottom: 15px;
+    }
+
+    .timeline-item strong {
+      color: #009688;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>No. Pesanan: <strong>250524PETQ3MWP</strong> <span class="highlight">| PESANAN SELESAI</span></h2>
+
+  <div class="step-bar">
+    <div class="step">
+      <div class="circle">✓</div>
+      <div>Pesanan Dibuat<br><small>12-05-2025 15:56</small></div>
+    </div>
+    <div class="step">
+      <div class="circle">✓</div>
+      <div>Pesanan Dibayarkan<br><small>(Rp4.000.000)<br>12-05-2025 15:57</small></div>
+    </div>
+    <div class="step">
+      <div class="circle">✓</div>
+      <div>Pesanan Dikirim<br><small>13-05-2025 17:15</small></div>
+    </div>
+    <div class="step">
+      <div class="circle">✓</div>
+      <div>Pesanan Selesai<br><small>15-05-2025 16:42</small></div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    Nilai pesanan sebelum <strong>12-09-2025</strong> dan dapatkan maks. 30 Koin Shopee!
+  </div>
+
+  <div class="section-title">Alamat Pengiriman</div>
+  <div class="alamat">
+    <p><strong>Syahrifudin</strong></p>
+    <p>085855455400</p>
+    <p>JL. Jl Raya Telang, Bangkalan, Jawa Timur, Indonesia 69162</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>15-05-2025 16:33 - Terkirim</strong><br>
+      Pesanan tiba di alamat tujuan. Diterima oleh Yang bersangkutan.<br>
+      Penerima: Syahrifudin
+    </div>
+    <div class="timeline-item">
+      <strong>15-05-2025 12:09</strong><br>
+      Pesanan dalam Pengiriman - Pesanan dalam proses pengantaran.
+    </div>
+    <div class="timeline-item">
+      <strong>15-05-2025 11:55</strong><br>
+      Kurir sudah ditugaskan. Pesanan akan dikirim.
+    </div>
+  </div>
+
+  <div class="footer-note">
+    SPX Standard<br>SPXID050778355415
+  </div>
+
+</body>
+</html>
