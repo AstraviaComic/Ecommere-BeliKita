@@ -25,99 +25,138 @@
       align-items: center;
       gap: 5px;
     }
+
+    .checkout-btn {
+      padding: 10px 20px;
+      background-color: #1e78ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: red;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Tambahan: Header biru -->
   <header style="background-color: #1e78ff; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
     <div style="font-weight: bold; font-size: 18px;">
       BELIKITA | <span style="font-weight: normal;">Keranjang</span>
     </div>
     <nav style="display: flex; gap: 20px; font-size: 14px;">
-      <a href="#" style="color: white; text-decoration: none;">Notifikasi</a>
-      <a href="#" style="color: white; text-decoration: none;">Bantuan</a>
-      <a href="#" style="color: white; text-decoration: none;">Bahasa Indonesia</a>
+      <a href="#" style="color: white;">Notifikasi</a>
+      <a href="#" style="color: white;">Bantuan</a>
+      <a href="#" style="color: white;">Bahasa Indonesia</a>
       <span style="font-weight: bold;">ekasafans</span>
     </nav>
   </header>
 
   <div class="container">
-    <h1>keranjang</h1>
-
-    <table>
+    <h1>Keranjang</h1>
+    <table id="cartTable">
       <thead>
         <tr>
-          <th>produk</th>
-          <th>jumlah</th>
-          <th>harga</th>
-          <th>subtotal</th>
+          <th>Produk</th>
+          <th>Jumlah</th>
+          <th>Harga</th>
+          <th>Subtotal</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            <img src="laptop.jpg" alt="Laptop">
-            <div>
-              <strong>Laptop Lenovo</strong><br>
-              warna: hitam<br>
-              <a href="#">× hapus</a>
-            </div>
-          </td>
-          <td>
-            <button>-</button> 1 <button>+</button>
-          </td>
-          <td>Rp. 4.000.000</td>
-          <td class="subtotal-checkbox">
-            <input type="checkbox" name="checkout[]" value="4000000">
-            <strong>Rp. 4.000.000</strong>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img src="handphone.jpg" alt="iPhone">
-            <div>
-              <strong>Handphone iPhone 13</strong><br>
-              warna: putih<br>
-              <a href="#">× hapus</a>
-            </div>
-          </td>
-          <td>
-            <button>-</button> 1 <button>+</button>
-          </td>
-          <td>Rp. 8.000.000</td>
-          <td class="subtotal-checkbox">
-            <input type="checkbox" name="checkout[]" value="8000000">
-            <strong>Rp. 8.000.000</strong>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img src="setrika.jpg" alt="Setrika">
-            <div>
-              <strong>Setrika Sharp</strong><br>
-              warna: pink<br>
-              <a href="#">× hapus</a>
-            </div>
-          </td>
-          <td>
-            <button>-</button> 1 <button>+</button>
-          </td>
-          <td>Rp. 1.000.000</td>
-          <td class="subtotal-checkbox">
-            <input type="checkbox" name="checkout[]" value="1000000">
-            <strong>Rp. 1.000.000</strong>
-          </td>
-        </tr>
-      </tbody>
+      <tbody></tbody>
     </table>
 
     <div class="totals">
-      <p>Subtotal: <strong>Rp. 4.000.000</strong></p>
-      <p>Total: <strong>Rp. 4.000.000</strong></p><br>
-      <a href="checkout.html"><button class="checkout-btn">checkout</button></a>
+      <p>Subtotal: <strong id="subtotalDisplay">Rp. 0</strong></p>
+      <p>Total: <strong id="totalDisplay">Rp. 0</strong></p><br>
+      <a href="checkout.html"><button class="checkout-btn">Checkout</button></a>
     </div>
   </div>
+
+  <script>
+    function formatRupiah(angka) {
+      return "Rp. " + angka.toLocaleString("id-ID");
+    }
+
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const tbody = document.querySelector("#cartTable tbody");
+      tbody.innerHTML = "";
+
+      cart.forEach((item, index) => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+          <td>
+            <img src="${item.gambar || 'https://via.placeholder.com/50'}" alt="${item.nama}">
+            <div>
+              <strong>${item.nama}</strong><br>
+              Varian: ${item.varian}<br>
+              <a href="#" onclick="hapusItem(${index})">× hapus</a>
+            </div>
+          </td>
+          <td>
+            <button onclick="ubahJumlah(${index}, -1)">-</button>
+            ${item.jumlah}
+            <button onclick="ubahJumlah(${index}, 1)">+</button>
+          </td>
+          <td>${formatRupiah(item.harga)}</td>
+          <td class="subtotal-checkbox">
+            <input type="checkbox" onchange="updateTotal()" data-index="${index}" checked>
+            <strong>${formatRupiah(item.harga * item.jumlah)}</strong>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+
+      updateTotal();
+    }
+
+    function ubahJumlah(index, delta) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (!cart[index]) return;
+
+      cart[index].jumlah += delta;
+      if (cart[index].jumlah < 1) cart[index].jumlah = 1;
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function hapusItem(index) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function updateTotal() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      let total = 0;
+
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          const idx = parseInt(cb.dataset.index);
+          total += cart[idx].harga * cart[idx].jumlah;
+        }
+      });
+
+      document.getElementById("subtotalDisplay").textContent = formatRupiah(total);
+      document.getElementById("totalDisplay").textContent = formatRupiah(total);
+    }
+
+    document.addEventListener("DOMContentLoaded", loadCart);
+  </script>
 
 </body>
 </html>

@@ -11,14 +11,14 @@
     <div class="div1">
       <img id="productImage" class="product-image" src="" alt="Gambar Produk">
     </div>
-    
+
     <div class="div2" id="productInfo">
       <h1 id="productName"></h1>
       <p><strong>Kategori:</strong> <span id="productCategory"></span></p>
       <p><strong>Harga:</strong> Rp <span id="productPrice"></span></p>
       <p><strong>Stok Total:</strong> <span id="totalStock"></span></p>
       <p><strong>Total Terjual:</strong> <span id="totalSold"></span></p>
-      
+
       <label for="variasi">Pilih Varian:</label>
       <select id="variasi"></select>
 
@@ -27,7 +27,8 @@
         <span id="jumlah">1</span>
         <button id="tambah">+</button>
       </div>
-      <button id="beli">Beli Sekarang</button>
+
+      <button id="tambahKeranjang">+ Keranjang</button>
     </div>
 
     <div class="div3">
@@ -63,13 +64,12 @@
       document.getElementById("productName").textContent = produk.nama;
       document.getElementById("productCategory").textContent = produk.kategori;
       document.getElementById("productPrice").textContent = produk.harga.toLocaleString('id-ID');
-      
+
       const totalStok = produk.variasi ? produk.variasi.reduce((a, v) => a + (v.stok || 0), 0) : 0;
       const totalTerjual = produk.variasi ? produk.variasi.reduce((a, v) => a + (v.terjual || 0), 0) : 0;
-      
+
       document.getElementById("totalStock").textContent = totalStok;
       document.getElementById("totalSold").textContent = totalTerjual;
-
       document.getElementById("productDescription").textContent = produk.deskripsi || "Tidak ada deskripsi produk";
 
       const produkList = JSON.parse(localStorage.getItem("produk")) || [];
@@ -78,7 +78,7 @@
       const jumlahSpan = document.getElementById("jumlah");
       const tambahBtn = document.getElementById("tambah");
       const kurangBtn = document.getElementById("kurang");
-      const beliBtn = document.getElementById("beli");
+      const tambahKeranjangBtn = document.getElementById("tambahKeranjang");
 
       produk.variasi?.forEach((v, i) => {
         const opt = document.createElement("option");
@@ -107,22 +107,40 @@
         }
       });
 
-      beliBtn.addEventListener("click", () => {
+      tambahKeranjangBtn.addEventListener("click", () => {
         const indexVarian = parseInt(variasiSelect.value);
         const varian = produk.variasi[indexVarian];
 
-        if (varian.stok >= jumlah) {
-          varian.stok -= jumlah;
-          varian.terjual = (varian.terjual || 0) + jumlah;
-
-          produkList[produkIndex].variasi[indexVarian] = varian;
-          localStorage.setItem("produk", JSON.stringify(produkList));
-
-          alert(`Berhasil membeli ${jumlah} ${produk.nama} - ${varian.nama}`);
-          location.reload();
-        } else {
-          alert("Stok tidak mencukupi!");
+        if (jumlah > varian.stok) {
+          alert("Jumlah melebihi stok!");
+          return;
         }
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existing = cart.find(item =>
+          item.nama === produk.nama &&
+          item.varian === varian.nama
+        );
+
+        if (existing) {
+          if (existing.jumlah + jumlah > varian.stok) {
+            alert("Jumlah total melebihi stok tersedia!");
+            return;
+          }
+          existing.jumlah += jumlah;
+        } else {
+          cart.push({
+            nama: produk.nama,
+            gambar: produk.gambar,
+            harga: produk.harga,
+            varian: varian.nama,
+            jumlah: jumlah
+          });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${jumlah} produk ditambahkan ke keranjang`);
       });
     });
   </script>
