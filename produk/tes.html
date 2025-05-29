@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Produk</title>
   <link rel="stylesheet" href="asset/admin.css">
+  <style>
+    /* Tambahkan style untuk preview gambar */
+    .image-preview {
+      max-width: 150px;
+      max-height: 150px;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <h1 style="text-align: center; color: #333;">Admin Produk</h1>
@@ -27,11 +36,15 @@
         <option value="Elektronik">Elektronik</option>
         <option value="Pakaian">Pakaian</option>
         <option value="Makanan">Makanan</option>
+        <option value="Aksesoris">Aksesoris</option>
+        <option value="Other">Other</option>
       </select>
 
-      <label>URL Gambar</label>
-      <input type="text" id="gambar" placeholder="Masukkan URL gambar" />
-
+      <label>Gambar Produk</label>
+      <input type="file" id="gambar" accept="image/*" />
+      <img id="imagePreview" class="image-preview" alt="Preview Gambar" />
+      
+      <!-- Sisanya tetap sama -->
       <label>Variasi Produk</label>
       <input type="text" id="namaVariasi" placeholder="Contoh: Merah / L">
       <input type="number" id="stokVariasi" placeholder="Stok">
@@ -68,13 +81,30 @@
     let produk = JSON.parse(localStorage.getItem("produk")) || [];
     let editIndex = null;
     let variasiSementara = [];
+    let gambarBase64 = null;
+
+    // Event listener untuk preview gambar
+    document.getElementById('gambar').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+          gambarBase64 = event.target.result;
+          const preview = document.getElementById('imagePreview');
+          preview.src = gambarBase64;
+          preview.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(file);
+      }
+    });
 
     function simpanProduk() {
       const nama = document.getElementById("nama").value.trim();
       const deskripsi = document.getElementById("deskripsi").value.trim();
       const harga = parseInt(document.getElementById("harga").value);
       const kategori = document.getElementById("kategori").value.trim();
-      const gambar = document.getElementById("gambar").value.trim();
       const stok = variasiSementara.reduce((a, b) => a + b.stok, 0);
 
       if (!nama || isNaN(harga) || !kategori || variasiSementara.length === 0) {
@@ -94,7 +124,7 @@
         harga, 
         stok, 
         kategori, 
-        gambar, 
+        gambar: gambarBase64, // Simpan sebagai base64
         terjual: variasiDenganTerjual.reduce((a,b) => a + b.terjual, 0), 
         variasi: variasiDenganTerjual 
       };
@@ -120,10 +150,69 @@
       document.getElementById("namaVariasi").value = "";
       document.getElementById("stokVariasi").value = "";
       document.getElementById("daftarVariasi").innerHTML = "";
+      document.getElementById("imagePreview").style.display = "none";
       variasiSementara = [];
+      gambarBase64 = null;
       editIndex = null;
     }
 
+    function tampilkanProduk() {
+      const tbody = document.getElementById("tabelProduk");
+      tbody.innerHTML = "";
+
+      produk.forEach((item, i) => {
+        let opsiVariasi = `<option value="semua">Semua</option>`;
+        item.variasi.forEach(v => {
+          opsiVariasi += `<option value="${v.nama}">${v.nama}</option>`;
+        });
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><img src="${item.gambar}" onerror="this.src='https://via.placeholder.com/40'" style="max-width: 40px; max-height: 40px;" /></td>
+          <td>${item.nama}</td>
+          <td>${item.kategori}</td>
+          <td>Rp ${item.harga.toLocaleString()}</td>
+          <td>
+            <select id="filterVariasi-${i}" class="variase-filter" onchange="updateRowProduk(${i})">
+              ${opsiVariasi}
+            </select>
+          </td>
+          <td id="stokProduk-${i}">${item.stok}</td>
+          <td id="terjualProduk-${i}">${item.terjual}</td>
+          <td>
+            <button class="aksi-btn edit" onclick="editProduk(${i})">Edit</button>
+            <button class="aksi-btn hapus" onclick="hapusProduk(${i})">Hapus</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      produk.forEach((_, i) => updateRowProduk(i));
+    }
+
+    function editProduk(i) {
+      const item = produk[i];
+      document.getElementById("nama").value = item.nama;
+      document.getElementById("deskripsi").value = item.deskripsi;
+      document.getElementById("harga").value = item.harga;
+      document.getElementById("kategori").value = item.kategori;
+      
+      // Set gambar preview jika ada
+      if (item.gambar) {
+        gambarBase64 = item.gambar;
+        const preview = document.getElementById('imagePreview');
+        preview.src = gambarBase64;
+        preview.style.display = 'block';
+      }
+      
+      variasiSementara = [...item.variasi];
+      tampilkanDaftarVariasi();
+      editIndex = i;
+      
+      document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Fungsi-fungsi lainnya tetap sama (tambahVariasi, tampilkanDaftarVariasi, hapusVariasi, updateRowProduk, hapusProduk)
     function tambahVariasi() {
       const nama = document.getElementById("namaVariasi").value.trim();
       const stok = parseInt(document.getElementById("stokVariasi").value);
@@ -177,40 +266,6 @@
       document.getElementById(`terjualProduk-${index}`).textContent = terjualFiltered;
     }
 
-    function tampilkanProduk() {
-      const tbody = document.getElementById("tabelProduk");
-      tbody.innerHTML = "";
-
-      produk.forEach((item, i) => {
-        let opsiVariasi = `<option value="semua">Semua</option>`;
-        item.variasi.forEach(v => {
-          opsiVariasi += `<option value="${v.nama}">${v.nama}</option>`;
-        });
-
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td><img src="${item.gambar}" onerror="this.src='https://via.placeholder.com/40'" /></td>
-          <td>${item.nama}</td>
-          <td>${item.kategori}</td>
-          <td>Rp ${item.harga.toLocaleString()}</td>
-          <td>
-            <select id="filterVariasi-${i}" class="variase-filter" onchange="updateRowProduk(${i})">
-              ${opsiVariasi}
-            </select>
-          </td>
-          <td id="stokProduk-${i}">${item.stok}</td>
-          <td id="terjualProduk-${i}">${item.terjual}</td>
-          <td>
-            <button class="aksi-btn edit" onclick="editProduk(${i})">Edit</button>
-            <button class="aksi-btn hapus" onclick="hapusProduk(${i})">Hapus</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      produk.forEach((_, i) => updateRowProduk(i));
-    }
-
     function hapusProduk(i) {
       if (confirm("Yakin ingin hapus produk ini?")) {
         produk.splice(i, 1);
@@ -219,21 +274,7 @@
       }
     }
 
-    function editProduk(i) {
-      const item = produk[i];
-      document.getElementById("nama").value = item.nama;
-      document.getElementById("deskripsi").value = item.deskripsi;
-      document.getElementById("harga").value = item.harga;
-      document.getElementById("kategori").value = item.kategori;
-      document.getElementById("gambar").value = item.gambar;
-      variasiSementara = [...item.variasi];
-      tampilkanDaftarVariasi();
-      editIndex = i;
-      
-      document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
-    }
-
     tampilkanProduk();
-</script>
+  </script>
 </body>
 </html>
