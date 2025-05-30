@@ -35,15 +35,13 @@
         <option value="Elektronik">Elektronik</option>
         <option value="Pakaian">Pakaian</option>
         <option value="Makanan">Makanan</option>
-        <option value="Aksesoris">Aksesoris</option>
-        <option value="Other">Other</option>
       </select>
 
       <label>Gambar Produk</label>
       <input type="file" id="gambar" accept="image/*" />
       <img id="imagePreview" class="image-preview" alt="Preview Gambar" />
       
-      <!-- Sisanya tetap sama -->
+
       <label>Variasi Produk</label>
       <input type="text" id="namaVariasi" placeholder="Contoh: Merah / L">
       <input type="number" id="stokVariasi" placeholder="Stok">
@@ -82,7 +80,7 @@
     let variasiSementara = [];
     let gambarBase64 = null;
 
-    // Event listener untuk preview gambar
+ 
     document.getElementById('gambar').addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file) {
