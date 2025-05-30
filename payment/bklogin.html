@@ -14,7 +14,7 @@
     <br>
     <fieldset>
         <div class="bklogisi">
-            <form id="formLogin" method="post">
+            <form id="formLogin" method="post" action="bkcash.html">
                 <label for="nohp">Masukan no handphone</label><br>
                 <input type="tel" id="nohp" name="nohp" pattern="08[0-9]{8,11}" minlength="10" maxlength="13" required>
                 <br><br>
@@ -27,33 +27,5 @@
             <p>Belum punya akun? <a href="BKdaftar.html">Daftar</a></p>
         </div>
     </fieldset>
-
-    <script>
-        document.getElementById("formLogin").addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            const nohp = document.getElementById("nohp").value.trim();
-            const pin = document.getElementById("pin").value.trim();
-
-            if (!nohp || !pin) {
-                alert("Semua kolom harus diisi!");
-                return;
-            }
-
-            // Ambil data yang sudah ada
-            const daftarPengguna = JSON.parse(localStorage.getItem("bkcashUsers")) || [];
-
-            // Cek apakah pengguna terdaftar
-            const penggunaTerdaftar = daftarPengguna.find(u => u.nohp === nohp && u.pin === pin);
-
-            if (penggunaTerdaftar) {
-                alert("Login berhasil!");
-                // Redirect ke halaman setelah login
-                window.location.href = "bkcash.html"; // Ganti dengan halaman tujuan setelah login
-            } else {
-                alert("Nomor HP atau PIN salah!");
-            }
-        });
-    </script>
 </body>
 </html>

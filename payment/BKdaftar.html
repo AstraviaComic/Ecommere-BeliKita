@@ -13,7 +13,7 @@
   </div>
   <br>
   <fieldset>
-    <form id="formDaftar" class="bkdaftar">
+    <form id="formDaftar" class="bkdaftar" action="bklogin.html">
       <br>
       <label for="nama">Masukan nama</label><br>
       <input type="text" id="nama" name="nama" minlength="8" maxlength="16" required>
@@ -30,43 +30,5 @@
       <button type="submit">DAFTAR</button>
     </form>
   </fieldset>
-
-  <script>
-    document.getElementById("formDaftar").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const nama = document.getElementById("nama").value.trim();
-      const nohp = document.getElementById("nohp").value.trim();
-      const pin = document.getElementById("pin").value.trim();
-
-      if (!nama || !nohp || !pin) {
-        alert("Semua kolom harus diisi!");
-        return;
-      }
-
-      const pengguna = {
-        nama,
-        nohp,
-        pin
-      };
-
-      // Ambil data yang sudah ada
-      const daftarPengguna = JSON.parse(localStorage.getItem("bkcashUsers")) || [];
-
-      // Cek duplikat berdasarkan no hp
-      const sudahAda = daftarPengguna.some(u => u.nohp === nohp);
-      if (sudahAda) {
-        alert("Nomor HP sudah terdaftar!");
-        return;
-      }
-
-      // Simpan data
-      daftarPengguna.push(pengguna);
-      localStorage.setItem("bkcashUsers", JSON.stringify(daftarPengguna));
-
-      alert("Pendaftaran berhasil!");
-      window.location.href = "bklogin.html"; // Arahkan ke halaman login
-    });
-  </script>
 </body>
 </html>
