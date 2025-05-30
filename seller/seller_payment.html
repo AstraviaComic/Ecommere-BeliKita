@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+  <title>BeliKita</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="payconfir.css"> <!-- Tambahkan ini -->
+  <script src="../index.js"></script>
+</head>
+<body>
+  <header>
+    <div class="judul">BeliKita</div>
+    <div class="atas">
+      <div class="keranjang"></div>
+    </div>
+  </header>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Menu</h2>
+      <a href="../profile/profil_admin.html" title="Profil / Login">&nbsp;<i class="fas fa-user"></i>&nbsp;&nbsp;&nbsp; Akun</a>
+      <a href="../produk/admin.html" title="admin">&nbsp;<i class="fas fa-user" style="color: yellowgreen;"></i>&nbsp;&nbsp;&nbsp; Manage &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Produk</a>
+      <a href="../seller/seller_payment.html"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp; Manage payment</a>
+      <a href="payment/bklogin.html"><span class="racing">BK </span>&nbsp;&nbsp;&nbsp;<span class="racing">BK </span><span class="rasis">Cash</span></a>
+      <a href="../about.html">About Us</a>
+    </aside>
+    <main class="main-content">
+      <form action="" method="post" enctype="multipart/form-data">
+        <img id="bukti" alt="Bukti Pembayaran" style="width: 150px; height: 250px;" />
+
+        <script>
+        const gambar = localStorage.getItem('buktiPembayaran');
+        if (gambar) {
+            document.getElementById('bukti').src = gambar;
+        } else {
+            document.getElementById('bukti').alt = "Bukti tidak ditemukan";
+        }
+        </script>
+
+      </form>
+      
+    </main>
+    
+  </div>
+</body>
+</html>
