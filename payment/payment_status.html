@@ -38,9 +38,8 @@
     </div>
     <div class="ips">
         <div id="statusContainer" class="status-box">
-            <!-- Status akan diisi oleh JavaScript -->
         </div>
-        <button id="nextBtn" class="btn-next" style="display: none;">Lanjutkan</button>
+        <button id="nextBtn" class="btn-next" style="display: none; align-items: center;">Lanjutkan</button>
     </div>
 
     <script>
@@ -52,16 +51,19 @@
             statusContainer.innerHTML = `
                 <h2>Pembayaran Diterima!</h2>
                 <p>Pembayaran telah diverifikasi dan diterima.</p>
-                <img src="img/success-icon.png" alt="Sukses" style="width: 100px;">
+                <img src="aset/credit-card.png" alt="Sukses" style="width: 100px;">
             `;
-            document.getElementById('nextBtn').style.display = 'block'; // Tampilkan tombol lanjutkan
+            document.getElementById('nextBtn').style.display = 'block';
+            document.getElementById('nextBtn').style.marginLeft = '80%';
         } else if (status === 'ditolak') {
             statusContainer.classList.add('ditolak');
             statusContainer.innerHTML = `
                 <h2>Pembayaran Ditolak</h2>
                 <p>Pembayaran tidak dapat diverifikasi.</p>
-                <img src="img/failed-icon.png" alt="Ditolak" style="width: 100px;">
+                <img src="aset/failed.png" alt="Ditolak" style="width: 100px;">
             `;
+            document.getElementById('nextBtn').style.display = 'block';
+            document.getElementById('nextBtn').style.marginLeft = '80%';
         } else {
             statusContainer.innerHTML = `
                 <h2>Silahkan Tunggu Konfirmasi dari admin</h2>
@@ -70,8 +72,7 @@
         }
 
         document.getElementById('nextBtn').addEventListener('click', function() {
-            // Arahkan ke halaman berikutnya sesuai kebutuhan
-            window.location.href = '../produk/admin.html'; // Ganti dengan halaman tujuan
+            window.location.href = '../produk/admin.html';
         });
     </script>
 </body>
