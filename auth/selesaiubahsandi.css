@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #13a7d4, #64f5e2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 400px;
+    width: 90%;
+    padding: 2rem;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    }
+
+.card p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+.btn-kembali {
+    display: inline-block;
+    background-color: #5a67d8;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-kembali:hover {
+    background-color: #0a1042;
+}

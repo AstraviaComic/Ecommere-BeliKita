@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verifikasi Akun - BeliKita</title>
+    <link rel="stylesheet" href="verif.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Verifikasi Akun</h2>
+            <p>Kami telah mengirimkan kode verifikasi ke email atau nomor telepon Anda.</p>
+
+            <form action="sandibaru.html" method="post" class="verify-form">
+                <label for="code">Masukkan Kode Verifikasi</label>
+                <input type="text" id="code" name="code" maxlength="6" placeholder="Contoh: 123456" required>
+
+                <button type="submit">Verifikasi</button>
+
+                <div class="resend">
+                    <p>Tidak menerima kode? <a href="terimakodeverif.html">Kirim ulang</a></p>
+                </div>
+            </form>
+            <div class="footer">
+                <p style="font-size: small;">&copy; 2025 TokoKita. Kelompok 2 "E-Commerce"</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
