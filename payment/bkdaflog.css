@@ -18,12 +18,17 @@ body{
     height: 30px;
     left: -100%;
 }
-
+.headbk{
+    margin-left: 18%;
+}
 .bkdaftar{
     text-align: center;
 }
 .bkdaftar button{
     background-color: #0BCDDB;
+}
+.bklog{
+    margin-left: 18%;
 }
 .bklog h1,.headbk h1{
     color: white;

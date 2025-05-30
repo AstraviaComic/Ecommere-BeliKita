@@ -69,6 +69,19 @@
           <button type="submit">Lanjutkan</button>
         </div>
       </form>
+          <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
+          if (selectedMethod) {
+            localStorage.setItem("metodePembayaran", selectedMethod.value);
+            window.location.href = "qris.html";
+          } else {
+            alert("Silakan pilih metode pembayaran terlebih dahulu.");
+          }
+        });
+      </script>
     </div>
   </div>
 </body>
