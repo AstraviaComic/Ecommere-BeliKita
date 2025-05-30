@@ -35,8 +35,7 @@
     }
 
     .cari {
-      flex: 2;
-      align-items: center;
+      flex: 1;
     }
 
     .cari input[type="search"] {
@@ -47,6 +46,15 @@
       font-size: 16px;
       outline: none;
     }
+
+    .saldo {
+      background-color: #3b82f6;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
     .keranjang svg {
       width: 28px;
       height: 28px;
