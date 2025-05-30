@@ -1,9 +1,360 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Rahardian Ananata</title>
-    <frameset cols="55%, *">
-        <frame name="kiri" src="tabels.html">
-        <frame name="kanan" src="profil.html">
-    </frameset>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahardian Ananta - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: var(--dark);
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .profile img {
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .profile h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+            border: none;
+        }
+        
+        .profile p {
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+        
+        /* Interface Table */
+        .interface-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .interface-table caption {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .interface-table th, 
+        .interface-table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid var(--gray-light);
+        }
+        
+        .interface-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .interface-table tr:nth-child(even) {
+            background-color: var(--light);
+        }
+        
+        .interface-table tr:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+        
+        /* Project Section */
+        .project-item {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .project-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-links a:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .contact-links i {
+            margin-right: 8px;
+        }
+        
+        /* Rating Section */
+        .rating-container {
+            margin-top: 20px;
+        }
+        
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+        
+        .star-rating input {
+            display: none;
+        }
+        
+        .star-rating label {
+            color: var(--gray-light);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star-rating input:checked ~ label,
+        .star-rating input:hover ~ label {
+            color: #ffc107;
+        }
+        
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffc107;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            nav a {
+                margin: 0 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+<body>
+    <header>
+        <h1>Rahardian Ananta</h1>
+    </header>
+    <nav>
+        <a href="#about">Home</a>
+        <a href="#interface">Interface</a>
+        <a href="#project">Project</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="about" class="section">
+            <div class="profile">
+                <img src="profil.jpg" alt="Rahardian Ananta">
+                <h2>Rahardian Ananta</h2>
+                <p>NIM: 240411100071</p>
+                <p>Kelas: DPW G</p>
+            </div>
+        </section>
+        
+        <section id="interface" class="section">
+            <table class="interface-table">
+                <caption><h2>Interface</h2></caption>
+                <tr>
+                    <th>Interface</th>
+                    <th>Deskripsi</th>
+                    <th>Aktor</th>
+                </tr>
+                <tr>
+                    <td>Beranda</td>
+                    <td>Menampilkan semua produk yang ada dalam E-Commerce kita seperti produk buah ataupun sayuran</td>
+                    <td>Rahardian Ananta</td>
+                </tr>
+                <tr>
+                    <td>Detail produk</td>
+                    <td>Menampilkan informasi produk secara lengkap seperti harga dan berat produk per harga</td>
+                    <td>Rahardian Ananta</td>
+                </tr>
+                <tr>
+                    <td>Banding Produk</td>
+                    <td>Membandingkan produk satu dengan lainnya baik membandingkan harga atau kuantitas agar memperoleh produk terbaik</td>
+                    <td>Rahardian Ananta</td>
+                </tr>
+                <tr>
+                    <td>Admin Produk</td>
+                    <td>Bagian yang mengatur untuk menambah produk atau menghapus produk</td>
+                    <td>Rahardian Ananta</td>
+                </tr>
+                <tr>
+                    <td>Beranda Admin</td>
+                    <td>Pada halaman ini menampilkan list produk dan juga ada navigasi yang berhubungan dengan admin</td>
+                    <td>Rahardian Ananta</td>
+                </tr>
+            </table>
+        </section>
+        
+        <section id="project" class="section">
+            <h2>Project</h2>
+            <div class="project-item">
+                <h3>E-Commerce (Belikita)</h3>
+                <p>Aplikasi E-Commerce untuk membeli produk seperti buah dan sayur secara online.</p>
+            </div>
+        </section>
+        
+        <section id="contact" class="section">
+            <h2>kontak</h2>
+            <p>Kontak saya:</p>
+            <div class="contact-links">
+                <a href="#"><i class="fas fa-envelope"></i> Email</a>
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+        </section>
+        
+        <section id="rating" class="section">
+            <h2>Beri nilai halaman web saya.</h2>
+            <div class="rating-container">
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" title="Excellent">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" title="Good">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" title="Average">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" title="Poor">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" title="Terrible">★</label>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        &copy; 2024-2025 Rahardian Ananta.
+    </footer>
+</body>
 </html>
