@@ -1,0 +1,231 @@
+* {
+  font-family: montserrat;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #515865;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Untuk layout utama */
+.main {
+  text-transform: capitalize;
+  color: white;
+  margin: 2rem auto;
+}
+
+.navbar {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  justify-content: space-between;
+  background-color: #494c51;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  border-bottom: 1px solid #ece0e0;
+}
+
+.navbar ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.navbar li {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-decoration: none;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #7a736c;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+  color: #827f7f;
+  transition: 0.5s;
+}
+
+.navbar h2 {
+  color: #827f7f;
+}
+
+/* Header */
+.main h1 {
+  text-align: center;
+}
+
+/* Gambar */
+.images img {
+  display: block;
+  margin: 6rem auto 0 auto;
+  border-radius: 13.448px;
+  width: 200px;
+  max-width: 100%;
+}
+
+/* Tabel */
+.my-education table {
+  margin: 1rem auto;
+  border: 2px solid #494c51;
+  padding: 2px;
+  background-color: #494c51;
+  border-radius: 8px;
+}
+
+.my-education td {
+  background-color: #494c51;
+  padding: 1rem;
+}
+
+.garisbawah {
+  border-bottom: 2px solid #474441;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Interface */
+.interface {
+  margin: 5rem auto;
+  width: 80%;
+  max-width: 700px;
+}
+
+.interface h1 {
+  margin-top: 4rem;
+  border-radius: 10px;
+  padding: 1.5rem;
+  background-color: #17202a;
+  color: #ece0e0;
+  text-align: center;
+  font-style: italic;
+}
+
+.interface p {
+  margin-top: 10px;
+  text-align: justify;
+  border: 2px solid white;
+  background-color: black;
+  color: #ece0e0;
+  padding: 10px;
+}
+
+.inteeface h1 {
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  padding: 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+}
+
+.tabel-interface table {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #474441;
+  color: #b3b5b8;
+  padding: 1rem;
+  background-color: #0c0d0d;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.tabel-interface td {
+  padding: 1rem;
+  background-color: #17202a;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.garisbawah {
+  border-bottom: 2px solid #474441;
+  max-width: 80%;
+  margin: 2rem auto;
+}
+
+/* contact */
+.contact h1 {
+  text-align: center;
+  margin-top: 10rem;
+}
+
+.contact {
+  margin: 5rem auto;
+  width: 80%;
+  max-width: 700px;
+  color: #474441;
+}
+
+.contact table {
+  margin: 2rem auto;
+}
+
+.contact table tr td {
+  padding: 0.5rem;
+}
+
+.inputan-melebar {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* --- Media Queries untuk Responsiveness --- */
+@media (max-width: 768px) {
+  .main {
+    width: 95%;
+    margin: 1rem auto;
+  }
+
+  .description {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    width: 100%;
+    margin: 0;
+  }
+
+  .description {
+    width: 95%;
+  }
+}
+
+@media (max-width: 616px) {
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .main {
+    margin-top: 10rem;
+  }
+
+  .interface {
+    margin-top: 10rem;
+  }
+
+  .contact {
+    margin-top: 10rem;
+  }
+}
