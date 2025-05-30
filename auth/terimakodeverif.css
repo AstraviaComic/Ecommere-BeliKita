@@ -64,3 +64,9 @@ body {
 .btn-kembali:hover {
     background-color: #0a1042;
 }
+
+.footer {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #777;
+}

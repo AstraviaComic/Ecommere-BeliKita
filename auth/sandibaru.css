@@ -87,3 +87,10 @@ body {
 .reset-form button:hover {
     background-color: #4a74d0;
 }
+
+.footer {
+    text-align: center;
+    margin-top: 1.5rem;
+
+    color: #777;
+}
