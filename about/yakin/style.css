@@ -1,0 +1,55 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.profile img {
+    width: 150px;
+    border-radius: 10%;
+    margin-top: 20px;
+}
+
+.profile {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact {
+    padding: 20px;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
