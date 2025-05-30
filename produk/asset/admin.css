@@ -116,6 +116,12 @@ body {
       justify-content: space-between;
       align-items: center;
     }
+    .image-preview {
+      max-width: 150px;
+      max-height: 150px;
+      margin-top: 10px;
+      display: none;
+    }
     #daftarVariasi button {
       background: #dc3545;
       padding: 0.2rem 0.5rem;

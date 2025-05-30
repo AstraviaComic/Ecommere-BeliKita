@@ -1,84 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Produk</title>
-  <link rel="stylesheet" href="asset/admin.css">
-  <style>
-    /* Tambahkan style untuk preview gambar */
-    .image-preview {
-      max-width: 150px;
-      max-height: 150px;
-      margin-top: 10px;
-      display: none;
-    }
-  </style>
-</head>
-<body>
-  <h1 style="text-align: center; color: #333;">Admin Produk</h1>
-  <div class="container">
-    <div class="form-section">
-      <h2 class="section-title">Form Produk</h2>
-      
-      <label>Nama Produk</label>
-      <input type="text" id="nama" placeholder="Masukkan nama produk" />
-
-      <label>Deskripsi</label>
-      <textarea id="deskripsi" rows="3" placeholder="Masukkan deskripsi produk"></textarea>
-
-      <label>Harga</label>
-      <input type="number" id="harga" placeholder="Masukkan harga" />
-
-      <label>Kategori</label>
-      <select id="kategori">
-        <option value="">-- Pilih Kategori --</option>
-        <option value="Elektronik">Elektronik</option>
-        <option value="Pakaian">Pakaian</option>
-        <option value="Makanan">Makanan</option>
-        <option value="Aksesoris">Aksesoris</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <label>Gambar Produk</label>
-      <input type="file" id="gambar" accept="image/*" />
-      <img id="imagePreview" class="image-preview" alt="Preview Gambar" />
-      
-      <!-- Sisanya tetap sama -->
-      <label>Variasi Produk</label>
-      <input type="text" id="namaVariasi" placeholder="Contoh: Merah / L">
-      <input type="number" id="stokVariasi" placeholder="Stok">
-      <button type="button" onclick="tambahVariasi()">+ Tambah Variasi</button>
-      <ul id="daftarVariasi"></ul>
-
-      <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-        <button onclick="simpanProduk()" style="flex: 1;">💾 Simpan Produk</button>
-        <button onclick="resetForm()" style="flex: 1; background: #6c757d;">🔄 Reset</button>
-      </div>
-    </div>
-
-    <div class="table-section">
-      <h2 class="section-title">Daftar Produk</h2>
-      <table class="produk-table">
-        <thead>
-          <tr>
-            <th>Gambar</th>
-            <th>Nama</th>
-            <th>Kategori</th>
-            <th>Harga</th>
-            <th>Filter Variasi</th>
-            <th>Stok</th>
-            <th>Terjual</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody id="tabelProduk"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <script>
-    let produk = JSON.parse(localStorage.getItem("produk")) || [];
+let produk = JSON.parse(localStorage.getItem("produk")) || [];
     let editIndex = null;
     let variasiSementara = [];
     let gambarBase64 = null;
@@ -124,7 +44,7 @@
         harga, 
         stok, 
         kategori, 
-        gambar: gambarBase64, // Simpan sebagai base64
+        gambar: gambarBase64,
         terjual: variasiDenganTerjual.reduce((a,b) => a + b.terjual, 0), 
         variasi: variasiDenganTerjual 
       };
@@ -275,6 +195,3 @@
     }
 
     tampilkanProduk();
-  </script>
-</body>
-</html>
