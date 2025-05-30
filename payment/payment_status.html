@@ -1,22 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAYMENET STATUS</title>
+    <title>STATUS PEMBAYARAN</title>
     <link rel="stylesheet" href="payment_status.css">
+    <style>
+        .status-box {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        .diterima {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .ditolak {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .btn-next {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="hps">
         <h1>STATUS PEMBAYARAN</h1>
     </div>
     <div class="ips">
-        <h2 >silahkan tunggu confirmasi pembayaran oleh admin</h2>
-        <br>
-        <img src="" alt="">
-        <br>
-        <p></p>
-        <button>next</button>
+        <div id="statusContainer" class="status-box">
+            <!-- Status akan diisi oleh JavaScript -->
+        </div>
+        <button id="nextBtn" class="btn-next" style="display: none;">Lanjutkan</button>
     </div>
+
+    <script>
+        const status = localStorage.getItem('paymentStatus');
+        const statusContainer = document.getElementById('statusContainer');
+        
+        if (status === 'diterima') {
+            statusContainer.classList.add('diterima');
+            statusContainer.innerHTML = `
+                <h2>Pembayaran Diterima!</h2>
+                <p>Pembayaran telah diverifikasi dan diterima.</p>
+                <img src="img/success-icon.png" alt="Sukses" style="width: 100px;">
+            `;
+            document.getElementById('nextBtn').style.display = 'block'; // Tampilkan tombol lanjutkan
+        } else if (status === 'ditolak') {
+            statusContainer.classList.add('ditolak');
+            statusContainer.innerHTML = `
+                <h2>Pembayaran Ditolak</h2>
+                <p>Pembayaran tidak dapat diverifikasi.</p>
+                <img src="img/failed-icon.png" alt="Ditolak" style="width: 100px;">
+            `;
+        } else {
+            statusContainer.innerHTML = `
+                <h2>Silahkan Tunggu Konfirmasi dari admin</h2>
+
+            `;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            // Arahkan ke halaman berikutnya sesuai kebutuhan
+            window.location.href = '../produk/admin.html'; // Ganti dengan halaman tujuan
+        });
+    </script>
 </body>
 </html>

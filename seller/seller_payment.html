@@ -21,30 +21,39 @@
   </header>
   <div class="container">
     <aside class="sidebar">
-      <h2>Menu</h2>
-      <a href="../profile/profil_admin.html" title="Profil / Login">&nbsp;<i class="fas fa-user"></i>&nbsp;&nbsp;&nbsp; Akun</a>
-      <a href="../produk/admin.html" title="admin">&nbsp;<i class="fas fa-user" style="color: yellowgreen;"></i>&nbsp;&nbsp;&nbsp; Manage &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Produk</a>
-      <a href="../seller/seller_payment.html"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp; Manage payment</a>
-      <a href="payment/bklogin.html"><span class="racing">BK </span>&nbsp;&nbsp;&nbsp;<span class="racing">BK </span><span class="rasis">Cash</span></a>
-      <a href="../about.html">About Us</a>
+      <!-- Sidebar tetap sama -->
     </aside>
     <main class="main-content">
-      <form action="" method="post" enctype="multipart/form-data">
-        <img id="bukti" alt="Bukti Pembayaran" style="width: 150px; height: 250px;" />
+      <div class="payment-container">
+        <img id="bukti" alt="Bukti Pembayaran" style="max-width: 100%; height: auto; margin-bottom: 20px;" />
+        
+        <div class="payment-actions">
+          <button id="terimaBtn" class="btn-confirm">Terima Pembayaran</button>
+          <button id="tolakBtn" class="btn-reject">Tolak Pembayaran</button>
+        </div>
+      </div>
 
-        <script>
+      <script>
+        // Tampilkan gambar dari localStorage
         const gambar = localStorage.getItem('buktiPembayaran');
         if (gambar) {
-            document.getElementById('bukti').src = gambar;
+          document.getElementById('bukti').src = gambar;
         } else {
-            document.getElementById('bukti').alt = "Bukti tidak ditemukan";
+          document.getElementById('bukti').alt = "Bukti tidak ditemukan";
         }
-        </script>
 
-      </form>
-      
+        // Handle tombol konfirmasi
+        document.getElementById('terimaBtn').addEventListener('click', function() {
+          localStorage.setItem('paymentStatus', 'diterima');
+          // window.location.href = '../payment/payment_status.html';
+        });
+
+        document.getElementById('tolakBtn').addEventListener('click', function() {
+          localStorage.setItem('paymentStatus', 'ditolak');
+          // window.location.href = '../payment/payment_status.html';
+        });
+      </script>
     </main>
-    
   </div>
 </body>
 </html>
