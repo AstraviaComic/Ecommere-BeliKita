@@ -15,7 +15,7 @@
     <fieldset>
         <div class="saldo">
             <h3>saldo tersedia</h3>
-            <p>Rp. 0,00</p>
+            <p id="saldo">Rp. 0,00</p> 
         </div>
         <div class="topup">
             <a href="bkmethod.html">
@@ -23,5 +23,18 @@
             </a>
         </div>
     </fieldset>
+
+    <script>
+        // Ambil data dari localStorage
+        var stored = localStorage.getItem('bkcash');
+        if (stored) {
+            var obj = JSON.parse(stored);
+            var poin = parseInt(obj.bkpoin);
+            // Format ke rupiah
+            var formatted = poin.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+            // Tampilkan di elemen <p id="saldo">
+            document.getElementById('saldo').textContent = formatted;
+        }
+    </script>
 </body>
 </html>

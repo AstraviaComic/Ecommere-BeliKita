@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
   <title>BeliKita</title>
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="payconfir.css"> <!-- Tambahkan ini -->
+  <link rel="stylesheet" href="payconfir.css">
   <script src="../index.js"></script>
 </head>
 <body>
@@ -36,6 +36,13 @@
           <button id="terimaBtn" class="btn-confirm">konfirmasi</button>
           <button id="tolakBtn" class="btn-reject">batalkan</button>
         </div>
+
+        <!-- BKCash Input & Save (Disisipkan di bawah tombol konfirmasi) -->
+        <div class="bkcash-input" style="margin-top: 20px;">
+          <label for="bkpoin">bkcash:</label>
+          <input type="number" id="bkpoin" value="1000" title="Enter BK Poin" placeholder="Enter BK Poin">
+          <button id="save" type="button">Save</button>
+        </div>
       </div>
 
       <script>
@@ -56,6 +63,14 @@
         document.getElementById('tolakBtn').addEventListener('click', function() {
           localStorage.setItem('paymentStatus', 'ditolak');
           // window.location.href = '../payment/payment_status.html';
+        });
+
+        // Simpan nilai BK Poin ke localStorage
+        document.getElementById('save').addEventListener('click', function () {
+          var bkpoin = document.getElementById('bkpoin').value;
+          var bkcash = { 'bkpoin': bkpoin };
+          localStorage.setItem('bkcash', JSON.stringify(bkcash));
+          alert("BKCash disimpan: " + bkpoin);
         });
       </script>
     </main>
