@@ -2,108 +2,173 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-Commerce BeliKita</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profil Admin - BeliKita</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-  <header class="bg-blue-500 p-4">
-    <div class="flex mx-20 items-center justify-between text-white">
-      <div class="h-7 w-7 text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <a href="../produk/home_admin.html">
-            <path fill="currentColor"
-              d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
-          </a>
-        </svg>
-      </div>
-      <a class="text-3xl" href="#">BeliKita</a>
+    <header class="bg-blue-500 p-4">
+        <div class="flex mx-20 items-center justify-between text-white">
+            <div class="h-7 w-7 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <a href="profil_admin.html"> 
+                        <path fill="currentColor"
+                            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                    </a>
+                </svg>
+            </div>
+            <a class="text-3xl" href="#">BeliKita</a>
+        </div>
+    </header>
+
+    <div class="px-20 py-10">
+        <div class="flex w-full h-full rounded-2xl">
+            <div class="flex flex-col w-1/4 h-[800px] p-10 bg-gray-200 rounded-2xl shadow-xl/20">
+                <div class="flex my-10 items-center justify-center">
+                    <div class="flex w-36 h-36 rounded-full overflow-hidden bg-gray-300 items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-full h-full text-gray-500">
+                            <path fill="currentColor"
+                                d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex flex-col my-30 gap-y-10">
+                    <div class="flex gap-x-4 items-center ml-10">
+                        <img src="./assets/svg/profil.svg" alt="profil" class="w-10 h-10"></img>
+                        <div
+                            class="text-2xl tracking-widest text-black hover:text-blue-700 hover:cursor-pointer hover:scale-110">
+                            <a href="profil_admin.html">Profil</a>
+                            </div>
+                    </div>
+                    <div class="flex gap-x-4 items-center ml-10">
+                        <div class="flex w-10 h-10 items-center justify-center">
+                            <img src="./assets/svg/logout.svg" alt="logout" class="ml-2 w-7 h-7"></img>
+                        </div>
+                        <div
+                            class="text-2xl tracking-widest text-black hover:text-blue-700 hover:cursor-pointer hover:scale-110">
+                            <a href="logout_admin.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col w-3/4 p-10 rounded-2xl">
+                <div class="flex gap-x-4 items-center justify-center mb-10">
+                    <div class="text-5xl font-bold">Edit Profil Admin</div>
+                    <button id="saveButtonIcon" class="text-gray-700 hover:text-blue-700 ml-4 focus:outline-none">
+                        <i class="fas fa-save text-4xl"></i> </button>
+                </div>
+                <div class="flex justify-center w-full">
+                    <form id="adminProfileForm" class="flex flex-col w-3/4 p-8">
+                        <div class="mb-6">
+                            <label for="name" class="block text-xl font-medium text-gray-700 mb-2">Nama Lengkap :</label>
+                            <input type="text" id="name" name="name" placeholder="Masukkan Nama Lengkap Anda"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required />
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="telephone" class="block text-xl font-medium text-gray-700 mb-2">Telepon :</label>
+                            <input type="tel" id="telephone" name="telephone" placeholder="Masukkan Nomor Telepon Anda"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required />
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="email" class="block text-xl font-medium text-gray-700 mb-2">Email :</label>
+                            <input type="email" id="email" name="email" placeholder="Masukkan Email Anda"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required />
+                        </div>
+
+                        <div class="mb-8">
+                            <label for="gender" class="block text-xl font-medium text-gray-700 mb-2">Jenis Kelamin :</label>
+                            <select id="gender" name="gender"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required>
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-8">
+                            <label for="birthdate" class="block text-xl font-medium text-gray-700 mb-2">Tanggal Lahir :</label>
+                            <input type="date" id="birthdate" name="birthdate"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required />
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" id="saveButton"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-lg shadow-md">
+                                Simpan Profil
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
-  <div class="px-20 py-10">
-    <div class="flex w-full h-full rounded-2xl">
-      <div class="flex flex-col w-1/4 h-[800px] p-10 bg-gray-200 rounded-2xl shadow-xl/20">
-        <div class="flex my-10 items-center justify-center">
-          <div class="flex w-36 h-36 rounded-full">
-            <div class="w-full h-full">
-              <img src="./assets/svg/profil.svg" alt="profil" class="w-100 h-50"></img>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col my-30 gap-y-10">
-          <div class="flex gap-x-4 items-center ml-10">
-            <img src="./assets/svg/profil.svg" alt="profil" class="w-10 h-10"></img>
-            <div class="text-2xl tracking-widest text-black hover:text-blue-700 hover:cursor-pointer hover:scale-110"><a
-                href="#">Profil</a></div>
-          </div>
-          <div class="flex gap-x-4 items-center ml-10">
-            <div class="flex w-10 h-10 items-center justify-center">
-              <img src="./assets/svg/logout.svg" alt="logout" class="ml-2 w-7 h-7"></img>
-            </div>
-            <div class="text-2xl tracking-widest text-black hover:text-blue-700 hover:cursor-pointer hover:scale-110"><a
-                href="logout_admin.html">Logout</a></div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col w-3/4 p-10 rounded-2xl">
-        <div class="flex gap-x-4 items-center justify-center mb-10">
-          <div class="text-5xl font-bold">Profil</div>
-          <i class="fas fa-pencil-alt text-4xl text-gray-700 ml-4"></i>
-        </div>
-        <div class="flex justify-center w-full">
-          <div class="flex flex-col w-3/4 p-8">
-            <div class="mb-6">
-              <label for="username" class="block text-xl font-medium text-gray-700 mb-2">Username :</label>
-              <input type="text" id="username" name="username"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
-            </div>
 
-            <div class="mb-6">
-              <label for="name" class="block text-xl font-medium text-gray-700 mb-2">Name :</label>
-              <input type="text" id="name" name="name"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
-            </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const adminProfileForm = document.getElementById('adminProfileForm');
+            const saveButton = document.getElementById('saveButton');
+            const saveButtonIcon = document.getElementById('saveButtonIcon');
 
-            <div class="mb-6">
-              <label for="telephone" class="block text-xl font-medium text-gray-700 mb-2">Telephone :</label>
-              <input type="tel" id="telephone" name="telephone"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
-            </div>
+            // Fungsi untuk memuat data profil dari Local Storage
+            const loadAdminProfile = () => {
+                const storedProfile = localStorage.getItem('adminProfile');
+                if (storedProfile) {
+                    const profileData = JSON.parse(storedProfile);
+                    // Hapus baris ini: document.getElementById('username').value = profileData.username || '';
+                    document.getElementById('name').value = profileData.name || '';
+                    document.getElementById('telephone').value = profileData.telephone || '';
+                    document.getElementById('email').value = profileData.email || '';
+                    document.getElementById('gender').value = profileData.gender || '';
+                    document.getElementById('birthdate').value = profileData.birthdate || '';
+                }
+            };
 
-            <div class="mb-6">
-              <label for="email" class="block text-xl font-medium text-gray-700 mb-2">Email :</label>
-              <input type="email" id="email" name="email"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
-            </div>
+            // Fungsi untuk menyimpan data profil ke Local Storage
+            const saveAdminProfile = () => {
+                const profileData = {
+                    // Hapus baris ini: username: document.getElementById('username').value,
+                    name: document.getElementById('name').value,
+                    telephone: document.getElementById('telephone').value,
+                    email: document.getElementById('email').value,
+                    gender: document.getElementById('gender').value,
+                    birthdate: document.getElementById('birthdate').value
+                };
 
-            <div class="mb-8">
-              <label for="gender" class="block text-xl font-medium text-gray-700 mb-2">Gender :</label>
-              <input type="text" id="gender" name="gender"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
-            </div>
+                // Validasi sederhana (pastikan semua required field terisi kecuali username)
+                if (!profileData.name || !profileData.telephone || !profileData.email || !profileData.gender || !profileData.birthdate) {
+                    alert('Harap isi semua kolom yang wajib diisi!');
+                    return false;
+                }
 
-            <div class="mb-8">
-              <label for="tanggal lahir" class="block text-xl font-medium text-gray-700 mb-2">Tangggal Lahir
-                :</label>
-              <input type="date" id="tanggal lahir" name="tanggal lahit"
-                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
-            </div>
-            <div class="flex justify-end">
-              <button type="submit"
-                class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-lg shadow-md">
-                <a href="profil_admin.html">Save</a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+                localStorage.setItem('adminProfile', JSON.stringify(profileData));
+                alert('Profil admin berhasil disimpan!');
+                // Opsional: Redirect kembali ke halaman tampilan setelah disimpan
+                window.location.href = 'profil_admin.html'; 
+                return true; 
+            };
+
+            // Event listener untuk submit form (tombol Simpan Profil)
+            adminProfileForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                saveAdminProfile();
+            });
+
+            // Event listener untuk ikon save
+            saveButtonIcon.addEventListener('click', () => {
+                adminProfileForm.requestSubmit(); 
+            });
+
+            // Panggil fungsi saat halaman dimuat
+            loadAdminProfile();
+        });
+    </script>
+    </body>
 
 </html>

@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Commerce BeliKita</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>E-Commerce BeliKita - Kelola Alamat</title> <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -14,8 +13,7 @@
         <div class="flex mx-20 items-center justify-between text-white">
             <div class="h-7 w-7 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <a href="../index.html">
-                        <path fill="currentColor"
+                    <a href="address.html"> <path fill="currentColor"
                             d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
                     </a>
                 </svg>
@@ -47,7 +45,7 @@
                         <img src="./assets/svg/addres.svg" alt="alamat" class="w-10 h-10"></img>
                         <div
                             class="text-2xl tracking-widest text-black hover:text-blue-700 hover:cursor-pointer hover:scale-110">
-                            Alamat</div>
+                            <a href="address.html">Alamat</a></div>
                     </div>
                     <div class="flex gap-x-4 items-center ml-10">
                         <img src="./assets/svg/history.svg" alt="pesanan" class="w-10 h-10"></img>
@@ -72,55 +70,116 @@
                 </div>
             </div>
             <div class="flex flex-col w-3/4 p-10 rounded-2xl">
-                <div class="flex gap-x-4 items-center justify-center">
-                    <div class="text-5xl font-bold">Alamat Saya</div>
-                    <svg class="w-10 h-10 text-black hover:text-blue-700 hover:scale-110"
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path fill="currentColor"
-                            d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z" />
-                    </svg>
+                <div class="flex gap-x-4 items-center justify-center mb-8">
+                    <div class="text-5xl font-bold" id="formTitle">Tambah Alamat Baru</div>
                 </div>
                 <div class="flex justify-center w-full">
-                    <div class="flex flex-col w-3/4 p-8">
+                    <form id="addressForm" class="flex flex-col w-3/4 p-8">
                         <div class="mb-6">
-                            <label for="recipient_name" class="block text-xl font-medium text-gray-700 mb-2">Name
+                            <label for="recipient_name" class="block text-xl font-medium text-gray-700 mb-2">Nama
                                 Penerima :</label>
                             <input type="text" id="recipient_name" name="recipient_name"
-                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required/>
                         </div>
 
                         <div class="mb-6">
-                            <label for="telephone" class="block text-xl font-medium text-gray-700 mb-2">Telephone
+                            <label for="telephone" class="block text-xl font-medium text-gray-700 mb-2">Telepon
                                 :</label>
-                            <input type="tel" id="telephone" name="telephone"
-                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
+                            <input type="tel" id="address_telephone" name="telephone"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required/>
                         </div>
 
                         <div class="mb-6">
                             <label for="full_address" class="block text-xl font-medium text-gray-700 mb-2">Alamat
                                 Lengkap :</label>
                             <textarea id="full_address" name="full_address" rows="4"
-                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg"></textarea>
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required></textarea>
                         </div>
 
                         <div class="mb-8">
                             <label for="postal_code" class="block text-xl font-medium text-gray-700 mb-2">Kode Pos
                                 :</label>
                             <input type="text" id="postal_code" name="postal_code"
-                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" />
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg" required/>
                         </div>
 
                         <div class="flex justify-end">
                             <button type="submit"
                                 class="bg-green-400 hover:bg-green-500 text-white font-bold py-3 px-8 rounded-lg shadow-md">
-                                <a href="address.html">Save</a>
+                                Simpan Alamat
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addressForm = document.getElementById('addressForm');
+            const formTitle = document.getElementById('formTitle');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const mode = urlParams.get('mode'); // 'add' or 'edit'
+            const editIndex = urlParams.get('index'); // Index for editing
+
+            let addresses = []; // Array untuk menyimpan semua alamat
+
+            // Fungsi untuk memuat semua alamat dari Local Storage
+            const loadAllAddresses = () => {
+                const storedAddresses = localStorage.getItem('userAddresses');
+                if (storedAddresses) {
+                    addresses = JSON.parse(storedAddresses);
+                }
+            };
+
+            // Panggil fungsi saat halaman dimuat
+            loadAllAddresses();
+
+            // Isi form jika dalam mode 'edit'
+            if (mode === 'edit' && editIndex !== null) {
+                formTitle.textContent = 'Edit Alamat';
+                if (addresses[editIndex]) {
+                    const addressToEdit = addresses[editIndex];
+                    document.getElementById('recipient_name').value = addressToEdit.recipientName || '';
+                    document.getElementById('address_telephone').value = addressToEdit.telephone || '';
+                    document.getElementById('full_address').value = addressToEdit.fullAddress || '';
+                    document.getElementById('postal_code').value = addressToEdit.postalCode || '';
+                } else {
+                    alert('Alamat tidak ditemukan.');
+                    window.location.href = 'address.html'; // Kembali ke daftar alamat
+                }
+            } else {
+                formTitle.textContent = 'Tambah Alamat Baru';
+            }
+
+            // Fungsi untuk menyimpan data ke Local Storage
+            addressForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Mencegah form melakukan submit default
+
+                const newAddressData = {
+                    recipientName: document.getElementById('recipient_name').value,
+                    telephone: document.getElementById('address_telephone').value,
+                    fullAddress: document.getElementById('full_address').value,
+                    postalCode: document.getElementById('postal_code').value
+                };
+
+                if (mode === 'edit' && editIndex !== null) {
+                    // Update alamat yang ada
+                    addresses[editIndex] = newAddressData;
+                    alert('Data alamat berhasil diperbarui!');
+                } else {
+                    // Tambah alamat baru
+                    addresses.push(newAddressData);
+                    alert('Alamat baru berhasil ditambahkan!');
+                }
+
+                localStorage.setItem('userAddresses', JSON.stringify(addresses));
+                window.location.href = 'address.html'; // Kembali ke halaman daftar alamat
+            });
+        });
+    </script>
+    </body>
 
 </html>

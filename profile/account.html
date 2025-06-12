@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E-Commerce BeliKita</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Akun Saya - BeliKita</title> <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
   <body>
-    <!-- untuk atas -->
     <header class="bg-blue-500 p-4">
       <div class="flex mx-20 items-center justify-between text-white">
         <div class="h-7 w-7 text-white">
@@ -18,12 +17,9 @@
         <a class="text-3xl" href="#">BeliKita</a>
       </div>
     </header>
-     <!-- main content -->
-    <div class="px-20 py-10">
+      <div class="px-20 py-10">
       <div class="flex w-full h-full rounded-2xl">
-        <!-- sidebar kiri -->
         <div class="flex flex-col w-1/4 h-[800px] p-10 bg-gray-200 rounded-2xl shadow-xl/20">
-          <!-- foto profile -->
           <div class="flex my-10 items-center justify-center">
             <div class="flex w-36 h-36 rounded-full">
               <div class="w-full h-full">
@@ -33,11 +29,10 @@
               </div>
             </div>
           </div>
-          <!-- navigasi sidebar -->
           <div class="flex flex-col my-15 gap-y-5">
             <div class="flex gap-x-4 items-center ml-10">
               <img src="./assets/svg/profil.svg" alt="profil" class="w-10 h-10"></img>
-              <div class="text-2xl tracking-widest text-black hover:text-blue-700 hover:cursor-pointer hover:scale-110">Akun</div>
+              <div class="text-2xl tracking-widest text-black hover:text-blue-700 hover:cursor-pointer hover:scale-110"><a href="account.html">Akun</a></div>
             </div>
             <div class="flex gap-x-4 items-center ml-10">
               <img src="./assets/svg/addres.svg" alt="alamat" class="w-10 h-10"></img>
@@ -59,16 +54,15 @@
             </div>
           </div>
         </div>
-        <!-- content sebelah kanan -->
         <div class="flex flex-col w-3/4 p-10 rounded-2xl">
-          <!-- content header -->
           <div class="flex gap-x-4 items-center justify-center">
             <div class="text-5xl font-bold">Akun Saya</div>
-            <svg class="w-10 h-10 text-black hover:text-blue-700 hover:scale-110" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path fill="currentColor" d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"/>
-            </svg>
+            <a href="edit_account.html" class="hover:scale-110 transform transition-transform duration-200">
+              <svg class="w-10 h-10 text-gray-700 hover:text-blue-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="currentColor" d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"/>
+              </svg>
+            </a>
           </div>
-          <!-- content -->
           <div class="flex mt-10 w-full h-full items-center justify-center">
             <div class="flex flex-col w-3/4 h-3/4 p-20 border-2 border-gray-300 rounded-xl">
               <table>
@@ -76,38 +70,32 @@
                   <td class="text-3xl tracking-widest w-60">Username</td>
                   <td class="text-3xl">:</td>
                   <td class="text-3xl w-4"></td>
-                  <td class="text-3xl">udinnnz</td>
-                </tr>
+                  <td class="text-3xl" id="displayUsername"></td> </tr>
                 <tr>
                   <td class="text-3xl tracking-widest w-60">Nama</td>
                   <td class="text-3xl">:</td>
                   <td class="text-3xl w-4"></td>
-                  <td class="text-3xl">Syahrifudin</td>
-                </tr>
+                  <td class="text-3xl" id="displayName"></td> </tr>
                 <tr>
                   <td class="text-3xl tracking-widest w-60">Telephone</td>
                   <td class="text-3xl">:</td>
                   <td class="text-3xl w-4"></td>
-                  <td class="text-3xl">085855455400</td>
-                </tr>
+                  <td class="text-3xl" id="displayTelephone"></td> </tr>
                 <tr>
                   <td class="text-3xl tracking-widest w-60">Email</td>
                   <td class="text-3xl">:</td>
                   <td class="text-3xl w-4"></td>
-                  <td class="text-3xl">syahrifu11@gmail.com</td>
-                </tr>
+                  <td class="text-3xl" id="displayEmail"></td> </tr>
                 <tr>
                   <td class="text-3xl tracking-widest w-60">Jenis Kelamin</td>
                   <td class="text-3xl">:</td>
                   <td class="text-3xl w-4"></td>
-                  <td class="text-3xl">Laki-laki</td>
-                </tr>
+                  <td class="text-3xl" id="displayGender"></td> </tr>
                 <tr>
                   <td class="text-3xl tracking-widest w-60">Tanggal Lahir</td>
                   <td class="text-3xl">:</td>
                   <td class="text-3xl w-4"></td>
-                  <td class="text-3xl">31-Februari-2000</td>
-                </tr>
+                  <td class="text-3xl" id="displayBirthdate"></td> </tr>
               </table>
               <div class="flex my-20 justify-end">
                 <button class="w-36 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
@@ -119,5 +107,43 @@
         </div>
       </div>
     </div>
-  </body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadProfileData = () => {
+                const storedData = localStorage.getItem('userProfile');
+                if (storedData) {
+                    const userData = JSON.parse(storedData);
+                    
+                    // Isi elemen-elemen td dengan data dari Local Storage
+                    document.getElementById('displayUsername').textContent = userData.username || 'Tidak ada data';
+                    document.getElementById('displayName').textContent = userData.name || 'Tidak ada data';
+                    document.getElementById('displayTelephone').textContent = userData.telephone || 'Tidak ada data';
+                    document.getElementById('displayEmail').textContent = userData.email || 'Tidak ada data';
+                    document.getElementById('displayGender').textContent = userData.gender || 'Tidak ada data';
+                    
+                    // Format tanggal lahir jika ada data
+                    if (userData.birthdate) {
+                        const date = new Date(userData.birthdate);
+                        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                        document.getElementById('displayBirthdate').textContent = date.toLocaleDateString('id-ID', options);
+                    } else {
+                        document.getElementById('displayBirthdate').textContent = 'Tidak ada data';
+                    }
+                } else {
+                    // Jika tidak ada data di Local Storage, tampilkan pesan default
+                    document.getElementById('displayUsername').textContent = 'Tidak ada data';
+                    document.getElementById('displayName').textContent = 'Tidak ada data';
+                    document.getElementById('displayTelephone').textContent = 'Tidak ada data';
+                    document.getElementById('displayEmail').textContent = 'Tidak ada data';
+                    document.getElementById('displayGender').textContent = 'Tidak ada data';
+                    document.getElementById('displayBirthdate').textContent = 'Tidak ada data';
+                }
+            };
+
+            // Panggil fungsi saat halaman dimuat
+            loadProfileData();
+        });
+    </script>
+    </body>
 </html>
