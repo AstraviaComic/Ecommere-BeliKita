@@ -19,7 +19,7 @@
                 <input type="password" id="password" name="password" placeholder="********" required />
             </div>
             <button type="submit">Masuk</button>
-            <p class="register-link"><a href="loginAdmin.html">Login sebagai Admin</a>
+            <!-- <p class="register-link"><a href="loginAdmin.html">Login sebagai Admin</a> -->
             <p class="register-link"><a href="forget.html">Lupa Password</a><br>
                 Belum punya akun? <a href="daftar.html">Daftar di sini</a></p>
         </form>
@@ -27,5 +27,23 @@
             <p>&copy; 2025 BeliKita. Kelompok 2 "E-Commerce"</p>
         </div>
     </div>
+
+            <script>
+            document.querySelector('.login-form').addEventListener('submit', function (event) {
+                event.preventDefault(); // Mencegah reload halaman
+
+                const email = document.getElementById('email').value.trim().toLowerCase();
+                const username = email.split('@')[0]; // Ambil nama sebelum @
+
+                if (username === 'admin') {
+                    // alert('Login sebagai ADMIN. Mengarahkan ke Beranda Admin...');
+                    window.location.href = '../produk/home_admin.html';
+                } else {
+                    // alert('Login sebagai USER. Mengarahkan ke Beranda User...');
+                    window.location.href = '../index.html';
+                }
+            });
+        </script>
+
 </body>
 </html>
