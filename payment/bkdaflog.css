@@ -1,11 +1,11 @@
 .headbk , .bklog{
-  background-color: #0B83DB; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1000px; 
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background-color: #0B83DB; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 370px; 
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 body{
     font-family: sans-serif;
@@ -16,7 +16,7 @@ body{
     position: relative;
     width: 30px;
     height: 30px;
-    left: -100%;
+    left: -50%;
 }
 .headbk{
     margin-left: 18%;
@@ -24,8 +24,19 @@ body{
 .bkdaftar{
     text-align: center;
 }
+
+.bkdaftar input{
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #0BCDDB;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .bkdaftar button{
     background-color: #0BCDDB;
+    border-radius: 5px;
 }
 .bklog{
     margin-left: 18%;
@@ -42,14 +53,27 @@ body{
 .bklogisi{
     text-align: center;
 }
+
+.bklogisi input{
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #0BCDDB;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .bklogisi button{
     background-color: #0BCDDB;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 fieldset{
     background-color: whitesmoke;
     border: 1px solid #0BCDDB;
-    padding: 20px;
+    padding: 50px;
     margin: 20px auto;
     width: fit-content;
-    border-radius: 8px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }

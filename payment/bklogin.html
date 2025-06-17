@@ -14,18 +14,47 @@
     <br>
     <fieldset>
         <div class="bklogisi">
-            <form id="formLogin" method="post" action="bkcash.html">
-                <label for="nohp">Masukan no handphone</label><br>
-                <input type="tel" id="nohp" name="nohp" pattern="08[0-9]{8,11}" minlength="10" maxlength="13" required>
-                <br><br>
-    
-                <label for="pin">Masukan PIN</label><br>
-                <input type="password" id="pin" name="pin" minlength="6" maxlength="6" required><br><br>
-    
-                <button type="submit">MASUK</button>
-            </form>
-            <p>Belum punya akun? <a href="BKdaftar.html">Daftar</a></p>
+        <form id="formLogin">
+            <label for="nohp">Masukan No Handphone</label><br>
+            <input type="tel" id="nohp" name="nohp" pattern="08[0-9]{8,11}" minlength="10" maxlength="13" required>
+            <br><br>
+
+            <label for="pin">Masukan PIN</label><br>
+            <input type="password" id="pin" name="pin" minlength="6" maxlength="6" required>
+            <br><br>
+
+            <button type="submit">MASUK</button>
+        </form>
+        <p>Belum punya akun? <a href="BKdaftar.html">Daftar</a></p>
         </div>
     </fieldset>
+
+    <script>
+        document.getElementById("formLogin").addEventListener("submit", function(event) {
+        event.preventDefault(); // cegah reload halaman
+
+        // Ambil input dari user
+        const inputNohp = document.getElementById("nohp").value.trim();
+        const inputPin = document.getElementById("pin").value.trim();
+
+        // Ambil data user dari localStorage
+        const storedData = localStorage.getItem("userBKCASH");
+
+        if (!storedData) {
+            alert("Data tidak ditemukan. Silakan daftar terlebih dahulu.");
+            return;
+        }
+
+        const user = JSON.parse(storedData);
+
+        // Cocokkan nohp dan pin
+        if (user.nohp === inputNohp && user.pin === inputPin) {
+            alert("Login berhasil!");
+            window.location.href = "bkcash.html";
+        } else {
+            alert("Login gagal! Nomor HP atau PIN salah.");
+        }
+        });
+    </script>
 </body>
 </html>

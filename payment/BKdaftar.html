@@ -13,13 +13,13 @@
   </div>
   <br>
   <fieldset>
-    <form id="formDaftar" class="bkdaftar" action="bklogin.html">
+    <form id="formDaftar" class="bkdaftar">
       <br>
-      <label for="nama">Masukan nama</label><br>
+      <label for="nama">Masukan Nama</label><br>
       <input type="text" id="nama" name="nama" minlength="8" maxlength="16" required>
       <br><br>
 
-      <label for="nohp">Masukan no handphone</label><br>
+      <label for="nohp">Masukan No Handphone</label><br>
       <input type="tel" name="nohp" id="nohp" pattern="08[0-9]{8,11}" minlength="10" maxlength="13" required>
       <br><br>
 
@@ -30,5 +30,30 @@
       <button type="submit">DAFTAR</button>
     </form>
   </fieldset>
+
+  <script>
+    document.getElementById("formDaftar").addEventListener("submit", function(event) {
+      event.preventDefault(); // cegah reload
+
+      // Ambil nilai input
+      const nama = document.getElementById("nama").value.trim();
+      const nohp = document.getElementById("nohp").value.trim();
+      const pin = document.getElementById("pin").value;
+
+      // Simpan ke localStorage
+      const userData = {
+        nama: nama,
+        nohp: nohp,
+        pin: pin
+      };
+
+      localStorage.setItem("userBKCASH", JSON.stringify(userData));
+
+      alert("Pendaftaran berhasil! Data disimpan.");
+
+      // Arahkan ke halaman login
+      window.location.href = "bklogin.html";
+    });
+  </script>
 </body>
 </html>
