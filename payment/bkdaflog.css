@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 370px; 
+    max-width: 100%; 
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
@@ -11,6 +11,7 @@ body{
     font-family: sans-serif;
     background: linear-gradient(135deg , #8DD8FF,#0B83DB);
     height: 101vh;
+    /* align-items: center; */
 }
 .headbk img {
     position: relative;
@@ -18,9 +19,7 @@ body{
     height: 30px;
     left: -50%;
 }
-.headbk{
-    margin-left: 18%;
-}
+
 .bkdaftar{
     text-align: center;
 }
@@ -38,9 +37,8 @@ body{
     background-color: #0BCDDB;
     border-radius: 5px;
 }
-.bklog{
-    margin-left: 18%;
-}
+
+
 .bklog h1,.headbk h1{
     color: white;
 }
