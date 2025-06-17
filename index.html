@@ -12,16 +12,32 @@
   <script src="index.js"></script>
 </head>
 <body>
-  <header>
-    <div class="judul">BeliKita</div>
-    <div class="atas">
-      <div class="cari">
-        <input type="search" placeholder="Cari barang..." />
-      </div>
-      <div class="keranjang">
-      </div>
+<header>
+  <div class="judul">BeliKita</div>
+  <div class="atas">
+    <div class="cari-container">
+      <form id="searchForm" action="produk/filter.html" method="get">
+        <div class="cari">
+          <input type="search" name="q" id="searchInput" placeholder="Cari barang..." />
+        </div>
+        <div class="filter-harga">
+          <select name="filterType" id="filterHarga">
+            <option value="semua">Semua Harga</option>
+            <option value="kurang">≤ Harga</option>
+            <option value="lebih">≥ Harga</option>
+            <option value="antara">Rentang Harga</option>
+          </select>
+          <input type="number" name="minPrice" id="hargaMin" placeholder="Rp Min" class="hidden">
+          <input type="number" name="maxPrice" id="hargaMax" placeholder="Rp Max" class="hidden">
+          <button type="submit" class="go-btn">Go</button>
+        </div>
+      </form>
     </div>
-  </header>
+    <div class="keranjang">
+      <!-- Icon keranjang -->
+    </div>
+  </div>
+</header>
   <div class="container">
     <aside class="sidebar">
       <h2>Menu</h2>
