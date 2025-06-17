@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Hasil Pencarian - BeliKita</title>
+  <link rel="stylesheet" href="asset/filter.css">
+  <script src="asset/filter.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="judul"><a href="../index.html">BeliKita</a></div>
+      <form id="searchForm" action="filter.html" method="get" class="search-container">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="search" name="q" id="searchInput" placeholder="Cari barang..." value="">
+        </div>
+        <div class="filter-group">
+          <select name="filterType" id="filterHarga">
+            <option value="semua">Semua Harga</option>
+            <option value="kurang">≤ Harga</option>
+            <option value="lebih">≥ Harga</option>
+            <option value="antara">Rentang Harga</option>
+          </select>
+          <input type="number" name="minPrice" id="hargaMin" placeholder="Min" class="hidden" value="">
+          <input type="number" name="maxPrice" id="hargaMax" placeholder="Max" class="hidden" value="">
+          <button type="submit" class="go-btn">Cari</button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <div class="filter-header">
+      <h1>Hasil Pencarian</h1>
+      <div class="filter-tags" id="filterTags"></div>
+      <div class="results-count" id="resultsCount"></div>
+    </div>
+    
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+
+  <script>
+  </script>
+</body>
+</html>

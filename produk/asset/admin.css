@@ -8,6 +8,12 @@ body {
       display: flex;
       gap: 2rem;
     }
+    .image-preview {
+      max-width: 150px;
+      max-height: 150px;
+      margin-top: 10px;
+      display: none;
+    }
     .form-section {
       width: 35%;
       padding: 1rem;
