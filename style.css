@@ -1,215 +1,265 @@
 * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: sans-serif;
-      background-color: #f3f4f6;
-      color: #111;
-    }
+body {
+  font-family: sans-serif;
+  background-color: #f3f4f6;
+  color: #111;
+}
 
-    header {
-      background-color: #2563eb;
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
+header {
+  background-color: #2563eb;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
-    .judul {
-      font-size: 22px;
-      font-weight: bold;
-    }
+.judul {
+  font-size: 22px;
+  font-weight: bold;
+}
 
-    .atas {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-grow: 1;
-      max-width: 600px;
-    }
+.atas {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-grow: 1;
+  max-width: 600px;
+}
 
-    .cari {
-      flex: 1;
-    }
+.cari-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
 
-    .cari input[type="search"] {
-      width: 100%;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: none;
-      font-size: 16px;
-      outline: none;
-    }
+.cari {
+  flex: 1;
+  min-width: 200px;
+}
 
-    .saldo {
-      background-color: #3b82f6;
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
+.cari input[type="search"] {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
 
-    .keranjang svg {
-      width: 28px;
-      height: 28px;
-      fill: white;
-    }
+.filter-harga {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-    .container {
-      display: flex;
-    }
+.filter-harga select {
+  padding: 8px 12px;
+  border-radius: 3px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
+}
 
-    .sidebar {
-      width: 200px;
-      background-color: #1e40af;
-      color: white;
-      padding: 20px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      min-height: calc(100vh - 72px);
-    }
+.filter-harga input {
+  padding: 8px 12px;
+  border-radius: 3px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  width: 100px;
+}
 
-    .sidebar h2 {
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
+.filter-harga input.hidden {
+  display: none;
+}
 
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: background-color 0.2s;
-    }
+.go-btn {
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  color: blue;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
-    .sidebar a:hover {
-      background-color: #2563eb;
-    }
+.go-btn:hover {
+  border-radius: 999px;
+}
 
-    main {
-      flex: 1;
-      padding: 24px;
-      background-color: #e5e7eb;
-    }
+#searchForm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
 
-    .kategori {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
+.keranjang svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
 
-    .kategori button {
-      background-color: white;
-      border: 2px solid #2563eb;
-      color: #2563eb;
-      padding: 8px 20px;
-      border-radius: 999px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.container {
+  display: flex;
+}
 
-    .kategori button.aktif {
-      background-color: #2563eb;
-      color: white;
-    }
+.sidebar {
+  width: 200px;
+  background-color: #1e40af;
+  color: white;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: calc(100vh - 72px);
+}
 
-    .daftar-barang {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-    }
+.sidebar h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
 
-    .kartu-barang {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
 
-    .gambar-barang {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
+.sidebar a:hover {
+  background-color: #2563eb;
+}
 
-    .isi-barang {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+main {
+  flex: 1;
+  padding: 24px;
+  background-color: #e5e7eb;
+}
 
-    .kategori-barang {
-      font-size: 12px;
-      font-weight: bold;
-      color: #2563eb;
-      border: 1px solid #2563eb;
-      padding: 2px 12px;
-      border-radius: 999px;
-      width: fit-content;
-      text-transform: uppercase;
-    }
+.kategori {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
 
-    .racing {
-      font-family: "Racing Sans One", sans-serif;
-      font-weight: 400;
-      font-style: italic;
-    }
+.kategori button {
+  background-color: white;
+  border: 2px solid #2563eb;
+  color: #2563eb;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .rasis {
-      font-family: "Racing Sans One", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
+.kategori button.aktif {
+  background-color: #2563eb;
+  color: white;
+}
 
+.daftar-barang {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
 
-    .nama-barang {
-      font-size: 16px;
-      font-weight: bold;
-      color: #111;
-    }
+.kartu-barang {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
-    .deskripsi-barang {
-      font-size: 14px;
-      color: #666;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.gambar-barang {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
 
-    .harga-barang {
-      font-size: 16px;
-      font-weight: bold;
-      color: #10b981;
-      margin-top: 8px;
-    }
+.isi-barang {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-    .info-stok {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 8px;
-      font-size: 12px;
-      color: #666;
-    }
+.kategori-barang {
+  font-size: 12px;
+  font-weight: bold;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+  padding: 2px 12px;
+  border-radius: 999px;
+  width: fit-content;
+  text-transform: uppercase;
+}
 
-    .info-stok div {
-      display: flex;
-      align-items: center;
-    }
+.racing {
+  font-family: "Racing Sans One", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
 
-    .info-stok i {
-      margin-right: 4px;
-    }
+.rasis {
+  font-family: "Racing Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.nama-barang {
+  font-size: 16px;
+  font-weight: bold;
+  color: #111;
+}
+
+.deskripsi-barang {
+  font-size: 14px;
+  color: #666;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.harga-barang {
+  font-size: 16px;
+  font-weight: bold;
+  color: #10b981;
+  margin-top: 8px;
+}
+
+.info-stok {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+}
+
+.info-stok div {
+  display: flex;
+  align-items: center;
+}
+
+.info-stok i {
+  margin-right: 4px;
+}
