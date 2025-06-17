@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Konfirmasi Pembayaran - bkcash</title>
+  <link rel="stylesheet" href="payconfir.css" />
+</head>
+<body>
+  <div class="headconfir">
+    <h1>Konfirmasi Pembayaran</h1>
+  </div>
+
+  <form id="formKonfirmasi" enctype="multipart/form-data">
+    <fieldset>
+      <div class="norek">
+        <label for="nohp">Masukan No Handphone</label><br>
+        <input type="tel" id="nohp" name="nohp" pattern="08[0-9]{8,11}" minlength="10" maxlength="13" required>
+      </div>
+
+      <div class="saldo">
+        <h3>Saldo Tersedia</h3>
+        <p id="saldo">Rp. 0,00</p> 
+      </div>
+
+      <div class="total">
+        <label for="total">Total Pembayaran</label>
+        <p id="totalBayar">Rp. 10.000,00</p> <!-- Bisa diganti dinamis -->
+      </div>
+
+      <div class="sisa">
+        <label for="sisa">Sisa Saldo</label>
+        <p id="sisaSaldo">Rp. 0,00</p>
+      </div>
+
+      <div class="pin">
+        <label for="pin">Masukan PIN</label><br>
+        <input type="password" id="pin" name="pin" maxlength="6" required>
+      </div>
+
+      <br>
+      <div class="pkirim">
+        <input type="submit" value="KONFIRMASI">
+      </div>
+    </fieldset>
+  </form>
+
+  <script>
+  const formatRupiah = (angka) => {
+    return 'Rp. ' + parseInt(angka).toLocaleString('id-ID') + ',00';
+  };
+
+  let userData = JSON.parse(localStorage.getItem("userBKCASH"));
+  let savedSaldo = parseInt(localStorage.getItem("saldoBkcash")) || 0;
+
+  // ✅ Ambil total pembayaran dari localStorage
+  const totalBayar = parseInt(localStorage.getItem("totalPembayaran")) || 0;
+
+  const inputNoHP = document.getElementById("nohp");
+  const saldoTampil = document.getElementById("saldo");
+  const sisaTampil = document.getElementById("sisaSaldo");
+  const totalBayarTampil = document.getElementById("totalBayar");
+  totalBayarTampil.textContent = formatRupiah(totalBayar);
+
+  // Update tampilan saldo saat nohp dimasukkan
+  inputNoHP.addEventListener("input", () => {
+    if (userData && inputNoHP.value === userData.nohp) {
+      saldoTampil.textContent = formatRupiah(savedSaldo);
+      const sisa = savedSaldo - totalBayar;
+      sisaTampil.textContent = formatRupiah(sisa);
+    } else {
+      saldoTampil.textContent = "Rp. 0,00";
+      sisaTampil.textContent = "Rp. 0,00";
+    }
+  });
+
+  // Handle form submit
+  document.getElementById("formKonfirmasi").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nohpInput = document.getElementById("nohp").value.trim();
+    const pinInput = document.getElementById("pin").value.trim();
+
+    if (!userData || nohpInput !== userData.nohp) {
+      alert("Nomor HP tidak cocok!");
+      return;
+    }
+
+    if (pinInput !== userData.pin) {
+      alert("PIN salah!");
+      return;
+    }
+
+    const sisa = savedSaldo - totalBayar;
+
+    if (sisa >= 0) {
+      // saldo cukup
+      localStorage.setItem("saldoBkcash", sisa); // update saldo
+      alert("Pembayaran berhasil!");
+      window.location.href = "../cart_checkout/dikemas.html";
+    } else {
+      // saldo tidak cukup
+      alert("Saldo tidak cukup. Silakan pilih metode pembayaran lain.");
+      window.location.href = "../cart_checkout/checkout.html";
+    }
+  });
+</script>
+
+</body>
+</html>

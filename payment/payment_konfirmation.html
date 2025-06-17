@@ -10,17 +10,20 @@
   <div class="headconfir">
     <h1>Konfirmasi Pembayaran</h1>
   </div>
+
   <form id="formKonfirmasi" enctype="multipart/form-data">
     <fieldset>
       <div class="norek">
         <label for="bank">Silakan kirim pada nomor rekening berikut:</label>
-        <p>085745294134</p>
+        <p id="nomorRekening">Memuat...</p>
       </div>
+
       <div class="cimg">
         <label for="pimg">Masukkan bukti pembayaran:</label><br><br>
         <input type="file" id="pimg" name="pimg" accept="image/*" required>
       </div>
       <br>
+
       <div class="pkirim">
         <input type="submit" value="KONFIRMASI">
       </div>
@@ -28,26 +31,50 @@
   </form>
 
   <script>
-    document.getElementById('formKonfirmasi').addEventListener('submit', function(e) {
-      e.preventDefault(); // Mencegah submit normal
+    document.addEventListener("DOMContentLoaded", () => {
+      const metode = localStorage.getItem("metodePembayaran");
+      const norekTag = document.getElementById("nomorRekening");
 
-      const fileInput = document.getElementById('pimg');
-      const file = fileInput.files[0];
-      const reader = new FileReader();
-
-      reader.onload = function(event) {
-        const base64 = event.target.result;
-        localStorage.setItem('buktiPembayaran', base64); // Simpan Base64 ke localStorage
-
-        // Arahkan ke halaman yang akan menampilkan gambar
-        window.location.href = 'payment_status.html';
+      // Daftar nomor rekening sesuai metode pembayaran
+      const rekeningMap = {
+        "mandiri": "1234567890 (Mandiri)",
+        "bri": "2345678901 (BRI)",
+        "bni": "3456789012 (BNI)",
+        "bca": "4567890123 (BCA)",
+        "dana": "0857-1111-1111 (Dana)",
+        "ovo": "0857-2222-2222 (OVO)",
+        "gopay": "0857-3333-3333 (GoPay)",
+        "shopeepay": "0857-4444-4444 (ShopeePay)",
+        "bk-cash": "Internal - Saldo Akun BKCash",
+        "cod": "Tidak perlu transfer. Bayar saat barang tiba."
       };
 
-      if (file) {
-        reader.readAsDataURL(file);
+      if (metode && rekeningMap[metode]) {
+        norekTag.textContent = rekeningMap[metode];
       } else {
-        alert("Silakan unggah gambar terlebih dahulu.");
+        norekTag.textContent = "Metode tidak dikenali. Silakan pilih ulang metode pembayaran.";
       }
+
+      // Proses konfirmasi bukti pembayaran
+      document.getElementById('formKonfirmasi').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const fileInput = document.getElementById('pimg');
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+          const base64 = event.target.result;
+          localStorage.setItem('buktiPembayaran', base64);
+          window.location.href = 'payment_status.html';
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          alert("Silakan unggah gambar terlebih dahulu.");
+        }
+      });
     });
   </script>
 </body>

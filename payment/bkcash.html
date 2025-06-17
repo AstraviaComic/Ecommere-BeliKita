@@ -18,23 +18,25 @@
             <p id="saldo">Rp. 0,00</p> 
         </div>
         <div class="topup">
-            <a href="bkmethod.html">
+            <a href="bknominal.html">
                 <h3>top up</h3>
             </a>
         </div>
     </fieldset>
 
     <script>
-        // Ambil data dari localStorage
-        var stored = localStorage.getItem('bkcash');
-        if (stored) {
-            var obj = JSON.parse(stored);
-            var poin = parseInt(obj.bkpoin);
-            // Format ke rupiah
-            var formatted = poin.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-            // Tampilkan di elemen <p id="saldo">
-            document.getElementById('saldo').textContent = formatted;
-        }
-    </script>
+  // Ambil saldo dari localStorage yang tersimpan dengan key 'saldoBkcash'
+  const storedSaldo = localStorage.getItem('saldoBkcash');
+
+  if (storedSaldo !== null) {
+    const saldo = parseInt(storedSaldo);
+    const formatted = "Rp. " + saldo.toLocaleString('id-ID') + ",00";
+    document.getElementById('saldo').textContent = formatted;
+  } else {
+    // Jika belum ada saldo tersimpan, tampilkan Rp. 0,00
+    document.getElementById('saldo').textContent = "Rp. 0,00";
+  }
+</script>
+
 </body>
 </html>

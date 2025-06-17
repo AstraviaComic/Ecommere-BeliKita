@@ -43,37 +43,41 @@
     </div>
 
     <script>
-        const status = localStorage.getItem('paymentStatus');
-        const statusContainer = document.getElementById('statusContainer');
-        
-        if (status === 'diterima') {
-            statusContainer.classList.add('diterima');
-            statusContainer.innerHTML = `
-                <h2>Pembayaran Diterima!</h2>
-                <p>Pembayaran telah diverifikasi dan diterima.</p>
-                <img src="aset/credit-card.png" alt="Sukses" style="width: 100px;">
-            `;
-            document.getElementById('nextBtn').style.display = 'block';
-            document.getElementById('nextBtn').style.marginLeft = '80%';
-        } else if (status === 'ditolak') {
-            statusContainer.classList.add('ditolak');
-            statusContainer.innerHTML = `
-                <h2>Pembayaran Ditolak</h2>
-                <p>Pembayaran tidak dapat diverifikasi.</p>
-                <img src="aset/failed.png" alt="Ditolak" style="width: 100px;">
-            `;
-            document.getElementById('nextBtn').style.display = 'block';
-            document.getElementById('nextBtn').style.marginLeft = '80%';
-        } else {
-            statusContainer.innerHTML = `
-                <h2>Silahkan Tunggu Konfirmasi dari admin</h2>
+    const status = localStorage.getItem('paymentStatus');
+    const statusContainer = document.getElementById('statusContainer');
+    const nextBtn = document.getElementById('nextBtn');
 
-            `;
-        }
+    if (status === 'diterima') {
+        statusContainer.classList.add('diterima');
+        statusContainer.innerHTML = `
+            <h2>Pembayaran Diterima!</h2>
+            <p>Pembayaran telah diverifikasi dan diterima.</p>
+            <img src="aset/credit-card.png" alt="Sukses" style="width: 100px;">
+        `;
+        nextBtn.style.display = 'block';
+        nextBtn.style.marginLeft = '80%';
+    } else if (status === 'ditolak') {
+        statusContainer.classList.add('ditolak');
+        statusContainer.innerHTML = `
+            <h2>Pembayaran Ditolak</h2>
+            <p>Pembayaran tidak dapat diverifikasi.</p>
+            <img src="aset/failed.png" alt="Ditolak" style="width: 100px;">
+        `;
+        nextBtn.style.display = 'block';
+        nextBtn.style.marginLeft = '80%';
+    } else {
+        statusContainer.innerHTML = `
+            <h2>Silakan Tunggu Konfirmasi dari Admin</h2>
+            <p>Status pembayaran Anda sedang dalam proses verifikasi.</p>
+            <img src="../payment/aset/hourglass.png" alt="Menunggu Konfirmasi" style="width: 100px;">
+        `;
+        nextBtn.style.display = 'none';
+    }
 
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            window.location.href = '../cart_checkout/dikemas.html';
-        });
-    </script>
+    nextBtn.addEventListener('click', function () {
+        window.location.href = '../cart_checkout/dikemas.html';
+    });
+</script>
+
 </body>
 </html>

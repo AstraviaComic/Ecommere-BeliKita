@@ -9,23 +9,22 @@
 <body>
   <div class="container"> 
     <div class="pmh">
-      <a href="bkcash.html">
-        <img src="aset/left-arrow.png" alt="Kembali ke Checkout" width="40px"/>
+      <a href="bknominal.html">
+        <img src="aset/left-arrow.png" alt="Kembali ke Checkout" />
       </a>
-      <h1>ISI SALDO</h1>
+      <h1>BKCASH PAYMENT</h1>
     </div> 
+
     <div class="metisi">
-        <form action="#" method="post">
-        <h2>MASUKAN NOMINAL</h2>
-        <br>
-        <input type="number" minlength="5" maxlength="7" required placeholder="10000" class="payment-nominal">
-      <h2 class="section-title">PILIH METODE PEMBAYARAN</h2>
+      <form action="#" method="post">
+        <h2 class="section-title">PILIH METODE PEMBAYARAN</h2>
         <div class="payment-options">
           <label>
             <input type="radio" name="payment-method" value="Qris" />
             <img src="aset/logo Qris.jpg" alt="Qris" />
           </label>
         </div> 
+
         <h2 class="section-title">Transfer Bank</h2>
         <div class="payment-options">
           <label>
@@ -45,6 +44,7 @@
             <img src="aset/logo bca.png" alt="Transfer Bank BCA" />
           </label>
         </div> 
+
         <h2 class="section-title">E-Wallet</h2>
         <div class="payment-options">
           <label>
@@ -69,20 +69,37 @@
           <button type="submit">Lanjutkan</button>
         </div>
       </form>
-          <script>
-        document.querySelector("form").addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
-          if (selectedMethod) {
-            localStorage.setItem("metodePembayaran", selectedMethod.value);
-            window.location.href = "qris.html";
-          } else {
-            alert("Silakan pilih metode pembayaran terlebih dahulu.");
-          }
-        });
-      </script>
     </div>
   </div>
+
+  <script>
+  document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    
+    const selected = document.querySelector('input[name="payment-method"]:checked');
+    if (!selected) {
+      alert("Silakan pilih metode pembayaran terlebih dahulu.");
+      return;
+    }
+
+    const metode = selected.value.toLowerCase();
+    localStorage.setItem("metodePembayaran", metode);
+
+    // Tentukan kategori: qris, transfer, ewallet
+    let kategori = "";
+    if (metode === "qris") {
+      kategori = "qris";
+    } else if (["mandiri", "bri", "bni", "bca"].includes(metode)) {
+      kategori = "transfer";
+    } else if (["dana", "ovo", "gopay", "shopeepay"].includes(metode)) {
+      kategori = "ewallet";
+    }
+
+    localStorage.setItem("kategoriPembayaran", kategori);
+
+    // Redirect
+    window.location.href = "../payment/bknominal.html";
+  });
+</script>
 </body>
 </html>

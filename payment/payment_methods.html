@@ -76,18 +76,50 @@
       </form>
     </div>
   </div>
-  <script>
-    document.querySelector("form").addEventListener("submit", function (e) {
-      e.preventDefault();
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const radioButtons = document.querySelectorAll('input[name="payment-method"]');
+    const form = document.querySelector("form");
 
-      const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
-      if (selectedMethod) {
-        localStorage.setItem("metodePembayaran", selectedMethod.value);
-        window.location.href = "../cart_checkout/checkout.html";
-      } else {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault(); // Hindari reload halaman default
+
+      let selectedMethod = null;
+      radioButtons.forEach(radio => {
+        if (radio.checked) {
+          selectedMethod = radio.value;
+        }
+      });
+
+      if (!selectedMethod) {
         alert("Silakan pilih metode pembayaran terlebih dahulu.");
+        return;
       }
+
+      // Tentukan kategori berdasarkan metode
+      let kategori = "";
+
+      if (["mandiri", "bri", "bni", "bca"].includes(selectedMethod)) {
+        kategori = "transfer";
+      } else if (["dana", "ovo", "gopay", "shopeepay"].includes(selectedMethod)) {
+        kategori = "ewallet";
+      } else if (selectedMethod === "cod") {
+        kategori = "cod";
+      } else if (selectedMethod === "bk-cash") {
+        kategori = "bkcash";
+      }
+
+      // Simpan ke localStorage
+      localStorage.setItem("metodePembayaran", selectedMethod);
+      localStorage.setItem("kategoriPembayaran", kategori);
+      localStorage.setItem("dariBkMethod", "true");
+
+      // Redirect kembali ke halaman checkout
+      window.location.href = "../cart_checkout/checkout.html";
     });
-  </script>
+  });
+</script>
+
+
 </body>
 </html>

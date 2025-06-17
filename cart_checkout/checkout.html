@@ -29,9 +29,7 @@
       margin-left: 12px;
       font-size: 14px;
     }
-    .header .user-menu span {
-      margin-left: 12px;
-    }
+
     .section {
       border-bottom: 1px solid #eee;
       padding: 20px 24px;
@@ -68,7 +66,7 @@
       margin-bottom: 16px;
     }
 
-    .product-detail img, .w-10h-10object-contain {
+    .product-detail img {
       width: 100px;
       height: auto;
       object-fit: cover;
@@ -153,26 +151,11 @@
       font-weight: bold;
       border-radius: 4px;
       text-align: center;
+      cursor: pointer;
     }
 
     .btn-order:hover {
       background-color: #0f5ed7;
-      padding: 0 24px 24px;
-    }
-
-    .btn-submit button {
-      background-color: #1677ff;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .btn-submit button:hover {
-      background-color: #105fcd;
     }
 
     #paymentImage {
@@ -240,8 +223,9 @@
       </div>
       <div class="shipping" style="font-weight: bold;">
         <span>Total</span>
-        <span>Rp. 170.000</span>
+        <span>Rp. 172.000</span>
       </div>
+    </div>
   </div>
 
   <!-- Opsi Pengiriman -->
@@ -254,13 +238,15 @@
       <a href="jasaPengiriman.html">Ubah</a>
     </div>
   </div>
+
   <!-- Metode Pembayaran -->
   <div class="section pmp">
-    <a href="../payment/payment_methods.html">
-      <button id="btnMetodePembayaran">Pilih Metode Pembayaran</button>
+    <a href="#" id="btnMetodePembayaran">
+      <button>Pilih Metode Pembayaran</button>
     </a>
     <img id="paymentImage" src="" alt="Metode Pembayaran" width="70px" height="auto" style="display: none;">
   </div>
+
   <!-- Ringkasan Pembayaran -->
   <div class="summary">
     <div class="summary-box">
@@ -273,7 +259,7 @@
         <span>Rp 0</span>
       </div>
       <div class="summary-row">
-        <span>Biaya Proteksi Kerusakan <span title="Biaya tambahan untuk layanan"></span></span>
+        <span>Biaya Proteksi Kerusakan</span>
         <span>Rp2.000</span>
       </div>
       <div class="summary-row total">
@@ -283,9 +269,82 @@
     </div>
   </div>
 
+  <!-- Tombol Buat Pesanan -->
   <div class="btn-submit">
-    <a href="../payment/payment_konfirmation.html" class="btn-order">Buat Pesanan</a>
+    <a href="#" class="btn-order">Buat Pesanan</a>
+  </div>
 
-  <script src="script.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnPembayaran = document.getElementById("btnMetodePembayaran");
+    const imgTag = document.getElementById("paymentImage");
+
+    const imageMap = {
+      "mandiri": "../payment/aset/logo mandiri.png",
+      "bri": "../payment/aset/logo bri.png",
+      "bni": "../payment/aset/logo bni.png",
+      "bca": "../payment/aset/logo bca.png",
+      "dana": "../payment/aset/logo dana.png",
+      "ovo": "../payment/aset/logo ovo.jpeg",
+      "gopay": "../payment/aset/logo gopay.png",
+      "shopeepay": "../payment/aset/logo shopeepay.png",
+      "bk-cash": "../payment/aset/bkcash.png",
+      "cod": "../payment/aset/cod.png"
+    };
+
+    const metode = localStorage.getItem("metodePembayaran");
+    const kembali = localStorage.getItem("dariBkMethod");
+
+    if (metode && kembali === "true" && imageMap[metode]) {
+      imgTag.src = imageMap[metode];
+      imgTag.alt = metode;
+      imgTag.style.display = "block";
+      localStorage.removeItem("dariBkMethod");
+    } else {
+      imgTag.style.display = "none";
+      imgTag.removeAttribute("src");
+      imgTag.removeAttribute("alt");
+    }
+
+    // Tombol pilih metode pembayaran
+    btnPembayaran.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.setItem("dariBkMethod", "true");
+      window.location.href = "../payment/payment_methods.html";
+    });
+
+    // Tombol buat pesanan
+    const btnOrder = document.querySelector(".btn-order");
+    if (btnOrder) {
+      btnOrder.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const metode = localStorage.getItem("metodePembayaran");
+        const kategori = localStorage.getItem("kategoriPembayaran");
+
+        if (!metode || !kategori) {
+          alert("Silakan pilih metode pembayaran terlebih dahulu.");
+          return;
+        }
+
+        // ✅ Simpan total pembayaran ke localStorage
+        const totalPembayaran = 172000;
+        localStorage.setItem("totalPembayaran", totalPembayaran);
+
+        // Arahkan ke halaman berdasarkan metode
+        let redirectUrl = "";
+        if (metode === "cod") {
+          redirectUrl = "../cart_checkout/dikemas.html";
+        } else if (metode === "bk-cash") {
+          redirectUrl = "../payment/bayarbk.html";
+        } else {
+          redirectUrl = "../payment/payment_konfirmation.html";
+        }
+
+        window.location.href = redirectUrl;
+      });
+    }
+  });
+</script>
 </body>
 </html>

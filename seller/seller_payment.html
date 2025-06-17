@@ -39,25 +39,50 @@
       </div>
 
       <script>
-        // Tampilkan gambar dari localStorage
-        const gambar = localStorage.getItem('buktiPembayaran');
-        if (gambar) {
-          document.getElementById('bukti').src = gambar;
-        } else {
-          document.getElementById('bukti').alt = "Bukti tidak ditemukan";
-        }
+  // Hapus status & gambar jika halaman dimuat ulang dan belum dikonfirmasi
+  window.addEventListener('load', function () {
+    // Kalau belum ada flag 'sudahKonfirmasi', berarti ini kunjungan awal atau reload
+    if (!localStorage.getItem('sudahKonfirmasi')) {
+      localStorage.removeItem('paymentStatus');
+      localStorage.removeItem('buktiPembayaran');
+    }
 
-        // Handle tombol konfirmasi
-        document.getElementById('terimaBtn').addEventListener('click', function() {
-          localStorage.setItem('paymentStatus', 'diterima');
-          // window.location.href = '../payment/payment_status.html';
-        });
+    // Reset flag supaya bisa deteksi reload di masa depan
+    localStorage.removeItem('sudahKonfirmasi');
+  });
 
-        document.getElementById('tolakBtn').addEventListener('click', function() {
-          localStorage.setItem('paymentStatus', 'ditolak');
-          // window.location.href = '../payment/payment_status.html';
-        });
-      </script>
+  // Tampilkan gambar dari localStorage jika ada
+  const gambar = localStorage.getItem('buktiPembayaran');
+  const imgEl = document.getElementById('bukti');
+  if (gambar) {
+    imgEl.src = gambar;
+  } else {
+    imgEl.alt = "Bukti tidak ditemukan";
+  }
+
+  // Tombol Konfirmasi (Set status dan redirect)
+  document.getElementById('terimaBtn').addEventListener('click', function () {
+    localStorage.setItem('paymentStatus', 'diterima');
+    localStorage.setItem('sudahKonfirmasi', 'true');
+
+    // Delay untuk memastikan localStorage tersimpan sebelum redirect
+    setTimeout(() => {
+      window.location.href = '../seller/seller_payment.html';
+    }, 100);
+  });
+
+  // Tombol Tolak (Set status dan redirect)
+  document.getElementById('tolakBtn').addEventListener('click', function () {
+    localStorage.setItem('paymentStatus', 'ditolak');
+    localStorage.setItem('sudahKonfirmasi', 'true');
+
+    // Delay untuk memastikan localStorage tersimpan sebelum redirect
+    setTimeout(() => {
+      window.location.href = '../seller/seller_payment.html';
+    }, 100);
+  });
+</script>
+
     </main>
   </div>
 </body>

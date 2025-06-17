@@ -7,27 +7,73 @@
     <link rel="stylesheet" href="payconfir.css">
 </head>
 <body>
-    <div class="headconfir">
-        <a href="bkcash.html">
-            <img src="aset/arrow-small-left.png" alt="Kembali ke Checkout" width="40px"/>
-        </a>
-        <h1>Konfirmasi Pembayaran</h1>
-    </div>
-    <form action="" method="post" enctype="multipart/form-data">
-        <fieldset>
-            <label>Scan Qris:</label>
-            <div class="Qris">
-                <img src="../payment/aset/pembayaran.png" alt="">
-            </div>
-            <div class="cimg">
-                <label>Masukkan bukti pembayaran:</label><br><br>
-                <input type="file" id="pimg" name="pimg" accept="image/*">
-            </div>
-            <br>
-            <div class="pkirim">
-                <input type="submit" value="KONFIRMASI">
-            </div>
-        </fieldset>
-    </form>
+  <div class="headconfir">
+    <a href="bkcash.html">
+      <img src="aset/arrow-small-left.png" alt="Kembali ke Checkout" width="40px"/>
+    </a>
+    <h1>Konfirmasi Pembayaran</h1>
+  </div>
+
+  <form action="" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <div id="metodeInfo"></div> <!-- Container dinamis -->
+
+      <div class="cimg">
+        <label>Masukkan bukti pembayaran:</label><br><br>
+        <input type="file" id="pimg" name="pimg" accept="image/*">
+      </div>
+      <br>
+      <div class="pkirim">
+        <input type="submit" value="KONFIRMASI">
+      </div>
+    </fieldset>
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const metode = localStorage.getItem("metodePembayaran");
+      const kategori = localStorage.getItem("kategoriPembayaran");
+      const container = document.getElementById("metodeInfo");
+
+      if (!metode || !kategori) {
+        container.innerHTML = "<p style='color:red'>Metode pembayaran tidak ditemukan.</p>";
+        return;
+      }
+
+      if (kategori === "qris") {
+        container.innerHTML = `
+          <label>Scan QRIS:</label>
+          <div class="Qris">
+            <img src="../payment/aset/pembayaran.png" alt="QRIS" width="200px" />
+          </div>
+        `;
+      } else if (kategori === "transfer") {
+        const nomorRek = {
+          "bri": "1234567890 (BRI)",
+          "bca": "0987654321 (BCA)",
+          "bni": "1122334455 (BNI)",
+          "mandiri": "6677889900 (Mandiri)"
+        };
+        container.innerHTML = `
+          <label>Nomor Rekening Transfer:</label>
+          <div class="rek">
+            <p><strong>${nomorRek[metode] || "Nomor rekening tidak ditemukan."}</strong></p>
+          </div>
+        `;
+      } else if (kategori === "ewallet") {
+        const nomorEwallet = {
+          "dana": "0812-3456-7890 (DANA)",
+          "ovo": "0813-4567-8901 (OVO)",
+          "gopay": "0814-5678-9012 (GOPAY)",
+          "shopeepay": "0815-6789-0123 (ShopeePay)"
+        };
+        container.innerHTML = `
+          <label>Nomor E-Wallet:</label>
+          <div class="rek">
+            <p><strong>${nomorEwallet[metode] || "Nomor e-wallet tidak ditemukan."}</strong></p>
+          </div>
+        `;
+      }
+    });
+  </script>
 </body>
-</html>

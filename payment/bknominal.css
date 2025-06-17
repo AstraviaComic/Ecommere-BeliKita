@@ -1,0 +1,136 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #8DD8FF, #0B83DB);
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2 {
+  text-align: center;
+  color: white;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+  background-color: rgb(63, 101, 121);
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 auto;
+  display: block;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #345e6b;
+}
+
+.container {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pmh {
+  width: 95%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 20px;
+  margin: 0 auto 30px auto;
+  max-width: 1500px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.pmh img {
+  width: 30px;
+}
+
+.pmh h1 {
+  color: #0B83DB;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.metisi {
+  padding: 20px;
+}
+
+.metisi h2 {
+  font-size: 22px;
+  color: white;
+}
+
+.nominal-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.nominal-options label {
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid white;
+  background-color: transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.nominal-options input[type="radio"] {
+  display: none;
+}
+
+.nominal-options label div {
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.nominal-options input[type="radio"]:checked + div {
+  background-color: white;
+  color: #0B83DB;
+  border-radius: 10px;
+}
+
+.section.pmp {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.section.pmp img {
+  margin-top: 15px;
+  width: 100px;
+  height: auto;
+}
+
+.bayar {
+  margin-top: auto;
+  text-align: center;
+  color: white;
+  margin: 20px auto;
+  border-radius: 12px;
+}
+.section.pmp img {
+  margin-top: 15px;
+  width: 150px; /* diperbesar */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

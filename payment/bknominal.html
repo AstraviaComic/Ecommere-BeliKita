@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Isi Saldo</title>
+  <link rel="stylesheet" href="bknominal.css" />
+</head>
+<body>
+  <div class="container"> 
+    <div class="pmh">
+      <a href="bkcash.html">
+        <img src="aset/left-arrow.png" alt="Kembali ke Checkout" />
+      </a>
+      <h1>ISI SALDO</h1>
+    </div> 
+
+    <div class="metisi">
+      <h2>PILIH NOMINAL SALDO</h2>
+      <form id="formNominal">
+        <div class="nominal-options">
+          <!-- Semua opsi nominal -->
+          <label><input type="radio" name="nominal" value="10000"><div>RP 10.000</div></label>
+          <label><input type="radio" name="nominal" value="20000"><div>RP 20.000</div></label>
+          <label><input type="radio" name="nominal" value="25000"><div>RP 25.000</div></label>
+          <label><input type="radio" name="nominal" value="30000"><div>RP 30.000</div></label>
+          <label><input type="radio" name="nominal" value="40000"><div>RP 40.000</div></label>
+          <label><input type="radio" name="nominal" value="50000"><div>RP 50.000</div></label>
+          <label><input type="radio" name="nominal" value="70000"><div>RP 70.000</div></label>
+          <label><input type="radio" name="nominal" value="100000"><div>RP 100.000</div></label>
+          <label><input type="radio" name="nominal" value="125000"><div>RP 125.000</div></label>
+          <label><input type="radio" name="nominal" value="150000"><div>RP 150.000</div></label>
+          <label><input type="radio" name="nominal" value="175000"><div>RP 175.000</div></label>
+          <label><input type="radio" name="nominal" value="200000"><div>RP 200.000</div></label>
+          <label><input type="radio" name="nominal" value="250000"><div>RP 250.000</div></label>
+          <label><input type="radio" name="nominal" value="300000"><div>RP 300.000</div></label>
+          <label><input type="radio" name="nominal" value="350000"><div>RP 350.000</div></label>
+          <label><input type="radio" name="nominal" value="400000"><div>RP 400.000</div></label>
+          <label><input type="radio" name="nominal" value="450000"><div>RP 450.000</div></label>
+          <label><input type="radio" name="nominal" value="500000"><div>RP 500.000</div></label>
+          <label><input type="radio" name="nominal" value="1000000"><div>RP 1.000.000</div></label>
+        </div>
+      </form>
+    </div>
+
+    <div class="section pmp">
+      <button id="btnMetodePembayaran">Pilih Metode Pembayaran</button>
+      <img id="paymentImage" src="" alt="Metode Pembayaran" style="display: none;">
+    </div>
+
+    <div class="bayar">
+      <button id="btnBayar">BAYAR</button>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnPembayaran = document.getElementById("btnMetodePembayaran");
+    const imgTag = document.getElementById("paymentImage");
+
+    const imageMap = {
+      "qris": "aset/logo Qris.jpg",
+      "mandiri": "aset/logo mandiri.png",
+      "bri": "aset/logo bri.png",
+      "bni": "aset/logo bni.png",
+      "bca": "aset/logo bca.png",
+      "dana": "aset/logo dana.png",
+      "ovo": "aset/logo ovo.jpeg",
+      "gopay": "aset/logo gopay.png",
+      "shopeepay": "aset/logo shopeepay.png"
+    };
+
+    // ✅ Tampilkan logo hanya jika baru kembali dari halaman metode
+    const metode = localStorage.getItem("metodePembayaran");
+    const kembali = localStorage.getItem("dariBkMethod");
+
+    if (metode && kembali === "true" && imageMap[metode]) {
+      imgTag.src = imageMap[metode];
+      imgTag.alt = metode;
+      imgTag.style.display = "block";
+
+      // ❌ Hapus penanda agar tidak tampil lagi saat refresh manual
+      localStorage.removeItem("dariBkMethod");
+    } else {
+      imgTag.style.display = "none";
+      imgTag.removeAttribute("src");
+      imgTag.removeAttribute("alt");
+    }
+
+    // ✅ Menuju halaman metode pembayaran
+    btnPembayaran.addEventListener("click", () => {
+      localStorage.setItem("dariBkMethod", "true");
+      window.location.href = "../payment/bkmethod.html";
+    });
+
+    // ✅ Simpan nominal saldo yang dipilih
+    const radioButtons = document.querySelectorAll('input[name="nominal"]');
+    radioButtons.forEach(radio => {
+      radio.addEventListener("change", () => {
+        localStorage.setItem("nominalSaldo", radio.value);
+      });
+    });
+
+    // ✅ Tombol Bayar
+    const btnBayar = document.getElementById("btnBayar");
+    btnBayar.addEventListener("click", () => {
+      const nominal = localStorage.getItem("nominalSaldo");
+      const metode = localStorage.getItem("metodePembayaran");
+
+      if (!nominal || !metode) {
+        alert("Silakan pilih nominal dan metode pembayaran terlebih dahulu.");
+        return;
+      }
+
+      window.location.href = "../payment/qris.html";
+    });
+  });
+</script>
+
+</body>
+</html>
