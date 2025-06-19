@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konfirmasi Pembayaran - bkcash</title>
-    <link rel="stylesheet" href="payconfir.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konfirmasi Pembayaran - bkcash</title>
+  <link rel="stylesheet" href="payconfir.css" />
 </head>
 <body>
   <div class="headconfir">
     <a href="bkcash.html">
-      <img src="aset/arrow-small-left.png" alt="Kembali ke Checkout" width="40px"/>
+      <img src="aset/arrow-small-left.png" alt="Kembali ke Checkout" width="40px" />
     </a>
     <h1>Konfirmasi Pembayaran</h1>
   </div>
 
-  <form action="" method="post" enctype="multipart/form-data">
+  <form id="formKonfirmasi" enctype="multipart/form-data">
     <fieldset>
       <div id="metodeInfo"></div> <!-- Container dinamis -->
 
       <div class="cimg">
-        <label>Masukkan bukti pembayaran:</label><br><br>
-        <input type="file" id="pimg" name="pimg" accept="image/*">
+        <label for="pimg">Masukkan bukti pembayaran:</label><br><br>
+        <input type="file" id="pimg" name="pimg" accept="image/*" required />
       </div>
       <br>
       <div class="pkirim">
-        <input type="submit" value="KONFIRMASI">
+        <input type="submit" value="KONFIRMASI" />
       </div>
     </fieldset>
   </form>
@@ -74,6 +74,29 @@
           </div>
         `;
       }
+
+      // Event saat form disubmit
+      document.getElementById('formKonfirmasi').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const fileInput = document.getElementById('pimg');
+        const file = fileInput.files[0];
+
+        if (!file) {
+          alert("Silakan unggah bukti pembayaran terlebih dahulu.");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const base64 = event.target.result;
+          localStorage.setItem('buktiPembayaran', base64); // Simpan gambar ke localStorage
+          window.location.href = "../payment/bkcash.html"; // Arahkan ke halaman bkcash
+        };
+
+        reader.readAsDataURL(file);
+      });
     });
   </script>
 </body>
+</html>
