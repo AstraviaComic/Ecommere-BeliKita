@@ -32,12 +32,7 @@
       <div class="payment-container">
         <img id="bukti" alt="Bukti Pembayaran" style="width: 150px; height: 250px; margin-bottom: 20px;" />
         
-        <!-- <div class="payment-actions">
-          <button id="terimaBtn" class="btn-confirm">konfirmasi</button>
-          <button id="tolakBtn" class="btn-reject">batalkan</button>
-        </div> -->
 
-        <!-- BKCash Input & Save (Disisipkan di bawah tombol konfirmasi) -->
         <div class="bkcash-input" style="margin-top: 20px;">
           <label for="saldo awal">Saldo:</label>
           <p id="saldo">Rp. 0,00</p> 
@@ -48,7 +43,6 @@
       </div>
 
           <script>
-            // Tampilkan gambar dari localStorage
             const gambar = localStorage.getItem('buktiPembayaran');
             if (gambar) {
               document.getElementById('bukti').src = gambar;
@@ -56,7 +50,6 @@
               document.getElementById('bukti').alt = "Bukti tidak ditemukan";
             }
 
-            // Inisialisasi saldo dari localStorage saat halaman dimuat
       window.addEventListener('DOMContentLoaded', function () {
         const saldoElement = document.getElementById('saldo');
         const savedSaldo = localStorage.getItem('saldoBkcash');
@@ -64,32 +57,25 @@
         let saldoAwal = savedSaldo ? parseInt(savedSaldo) : 0;
         saldoElement.textContent = formatRupiah(saldoAwal);
 
-        // Simpan saldo awal ke variabel global untuk digunakan saat klik tombol
         window.currentSaldo = saldoAwal;
       });
 
-      // Fungsi untuk memformat angka ke format Rupiah
       function formatRupiah(angka) {
         return 'Rp. ' + parseInt(angka).toLocaleString('id-ID') + ',00';
       }
 
-      // Simpan dan update saldo saat klik tombol Save
       document.getElementById('save').addEventListener('click', function () {
         let inputPoin = parseInt(document.getElementById('bkpoin').value);
         if (isNaN(inputPoin)) inputPoin = 0;
 
         let updatedSaldo = window.currentSaldo + inputPoin;
 
-        // Simpan ke localStorage
         localStorage.setItem('saldoBkcash', updatedSaldo);
 
-        // Update tampilan saldo
         document.getElementById('saldo').textContent = formatRupiah(updatedSaldo);
 
-        // Reset input ke 0
         document.getElementById('bkpoin').value = 0;
 
-        // Update variabel saldo global
         window.currentSaldo = updatedSaldo;
 
         alert("BKCash disimpan: " + formatRupiah(inputPoin));

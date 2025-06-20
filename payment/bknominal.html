@@ -70,7 +70,6 @@
       "shopeepay": "aset/logo shopeepay.png"
     };
 
-    // ✅ Tampilkan logo hanya jika baru kembali dari halaman metode
     const metode = localStorage.getItem("metodePembayaran");
     const kembali = localStorage.getItem("dariBkMethod");
 
@@ -79,7 +78,7 @@
       imgTag.alt = metode;
       imgTag.style.display = "block";
 
-      // ❌ Hapus penanda agar tidak tampil lagi saat refresh manual
+
       localStorage.removeItem("dariBkMethod");
     } else {
       imgTag.style.display = "none";
@@ -87,13 +86,13 @@
       imgTag.removeAttribute("alt");
     }
 
-    // ✅ Menuju halaman metode pembayaran
+
     btnPembayaran.addEventListener("click", () => {
       localStorage.setItem("dariBkMethod", "true");
       window.location.href = "../payment/bkmethod.html";
     });
 
-    // ✅ Simpan nominal saldo yang dipilih
+
     const radioButtons = document.querySelectorAll('input[name="nominal"]');
     radioButtons.forEach(radio => {
       radio.addEventListener("change", () => {

@@ -33,14 +33,12 @@
 
   <script>
     document.getElementById("formDaftar").addEventListener("submit", function(event) {
-      event.preventDefault(); // cegah reload
+      event.preventDefault();
 
-      // Ambil nilai input
       const nama = document.getElementById("nama").value.trim();
       const nohp = document.getElementById("nohp").value.trim();
       const pin = document.getElementById("pin").value;
 
-      // Simpan ke localStorage
       const userData = {
         nama: nama,
         nohp: nohp,
@@ -51,7 +49,6 @@
 
       alert("Pendaftaran berhasil! Data disimpan.");
 
-      // Arahkan ke halaman login
       window.location.href = "bklogin.html";
     });
   </script>

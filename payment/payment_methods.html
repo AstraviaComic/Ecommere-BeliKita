@@ -82,7 +82,7 @@
     const form = document.querySelector("form");
 
     form.addEventListener("submit", (e) => {
-      e.preventDefault(); // Hindari reload halaman default
+      e.preventDefault();
 
       let selectedMethod = null;
       radioButtons.forEach(radio => {
@@ -96,7 +96,6 @@
         return;
       }
 
-      // Tentukan kategori berdasarkan metode
       let kategori = "";
 
       if (["mandiri", "bri", "bni", "bca"].includes(selectedMethod)) {
@@ -109,16 +108,14 @@
         kategori = "bkcash";
       }
 
-      // Simpan ke localStorage
       localStorage.setItem("metodePembayaran", selectedMethod);
       localStorage.setItem("kategoriPembayaran", kategori);
       localStorage.setItem("dariBkMethod", "true");
 
-      // Redirect kembali ke halaman checkout
       window.location.href = "../cart_checkout/checkout.html";
     });
-  });
-</script>
+    });
+  </script>
 
 
 </body>

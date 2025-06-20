@@ -35,7 +35,6 @@
       const metode = localStorage.getItem("metodePembayaran");
       const norekTag = document.getElementById("nomorRekening");
 
-      // Daftar nomor rekening sesuai metode pembayaran
       const rekeningMap = {
         "mandiri": "1234567890 (Mandiri)",
         "bri": "2345678901 (BRI)",
@@ -55,7 +54,6 @@
         norekTag.textContent = "Metode tidak dikenali. Silakan pilih ulang metode pembayaran.";
       }
 
-      // Proses konfirmasi bukti pembayaran
       document.getElementById('formKonfirmasi').addEventListener('submit', function(e) {
         e.preventDefault();
 

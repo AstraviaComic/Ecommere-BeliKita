@@ -75,7 +75,6 @@
         `;
       }
 
-      // Event saat form disubmit
       document.getElementById('formKonfirmasi').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -90,8 +89,8 @@
         const reader = new FileReader();
         reader.onload = function(event) {
           const base64 = event.target.result;
-          localStorage.setItem('buktiPembayaran', base64); // Simpan gambar ke localStorage
-          window.location.href = "../payment/bkcash.html"; // Arahkan ke halaman bkcash
+          localStorage.setItem('buktiPembayaran', base64); 
+          window.location.href = "../payment/bkcash.html"; 
         };
 
         reader.readAsDataURL(file);

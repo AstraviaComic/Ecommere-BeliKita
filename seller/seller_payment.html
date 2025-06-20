@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
   <title>BeliKita</title>
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="payconfir.css"> <!-- Tambahkan ini -->
+  <link rel="stylesheet" href="payconfir.css"> 
   <script src="../index.js"></script>
 </head>
 <body>
@@ -39,9 +39,7 @@
       </div>
 
       <script>
-  // Hapus status & gambar jika halaman dimuat ulang dan belum dikonfirmasi
   window.addEventListener('load', function () {
-    // Kalau belum ada flag 'sudahKonfirmasi', berarti ini kunjungan awal atau reload
     if (!localStorage.getItem('sudahKonfirmasi')) {
       localStorage.removeItem('paymentStatus');
       localStorage.removeItem('buktiPembayaran');
@@ -51,7 +49,6 @@
     localStorage.removeItem('sudahKonfirmasi');
   });
 
-  // Tampilkan gambar dari localStorage jika ada
   const gambar = localStorage.getItem('buktiPembayaran');
   const imgEl = document.getElementById('bukti');
   if (gambar) {
@@ -60,28 +57,24 @@
     imgEl.alt = "Bukti tidak ditemukan";
   }
 
-  // Tombol Konfirmasi (Set status dan redirect)
   document.getElementById('terimaBtn').addEventListener('click', function () {
     localStorage.setItem('paymentStatus', 'diterima');
     localStorage.setItem('sudahKonfirmasi', 'true');
 
-    // Delay untuk memastikan localStorage tersimpan sebelum redirect
     setTimeout(() => {
       window.location.href = '../seller/seller_payment.html';
     }, 100);
   });
 
-  // Tombol Tolak (Set status dan redirect)
   document.getElementById('tolakBtn').addEventListener('click', function () {
     localStorage.setItem('paymentStatus', 'ditolak');
     localStorage.setItem('sudahKonfirmasi', 'true');
 
-    // Delay untuk memastikan localStorage tersimpan sebelum redirect
     setTimeout(() => {
       window.location.href = '../seller/seller_payment.html';
     }, 100);
-  });
-</script>
+    });
+  </script>
 
     </main>
   </div>

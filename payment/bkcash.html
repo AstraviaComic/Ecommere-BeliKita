@@ -25,7 +25,7 @@
     </fieldset>
 
     <script>
-  // Ambil saldo dari localStorage yang tersimpan dengan key 'saldoBkcash'
+
   const storedSaldo = localStorage.getItem('saldoBkcash');
 
   if (storedSaldo !== null) {
@@ -33,7 +33,7 @@
     const formatted = "Rp. " + saldo.toLocaleString('id-ID') + ",00";
     document.getElementById('saldo').textContent = formatted;
   } else {
-    // Jika belum ada saldo tersimpan, tampilkan Rp. 0,00
+
     document.getElementById('saldo').textContent = "Rp. 0,00";
   }
 </script>

@@ -31,13 +31,11 @@
 
     <script>
         document.getElementById("formLogin").addEventListener("submit", function(event) {
-        event.preventDefault(); // cegah reload halaman
+        event.preventDefault();
 
-        // Ambil input dari user
         const inputNohp = document.getElementById("nohp").value.trim();
         const inputPin = document.getElementById("pin").value.trim();
 
-        // Ambil data user dari localStorage
         const storedData = localStorage.getItem("userBKCASH");
 
         if (!storedData) {
@@ -47,7 +45,6 @@
 
         const user = JSON.parse(storedData);
 
-        // Cocokkan nohp dan pin
         if (user.nohp === inputNohp && user.pin === inputPin) {
             alert("Login berhasil!");
             window.location.href = "bkcash.html";

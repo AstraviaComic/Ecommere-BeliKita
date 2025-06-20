@@ -85,7 +85,6 @@
     const metode = selected.value.toLowerCase();
     localStorage.setItem("metodePembayaran", metode);
 
-    // Tentukan kategori: qris, transfer, ewallet
     let kategori = "";
     if (metode === "qris") {
       kategori = "qris";
@@ -97,7 +96,7 @@
 
     localStorage.setItem("kategoriPembayaran", kategori);
 
-    // Redirect
+
     window.location.href = "../payment/bknominal.html";
   });
 </script>
